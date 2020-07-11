@@ -26,6 +26,8 @@ from helios.datatypes.djangofield import LDObjectField
 from helios_auth.jsonfield import JSONField
 from helios_auth.models import User, AUTH_SYSTEMS
 
+from celery.utils.log import get_logger
+
 
 class HeliosModel(models.Model, datatypes.LDObjectContainer):
   class Meta:
@@ -697,6 +699,9 @@ class VoterFile(models.Model):
   # path where we store voter upload 
   PATH = settings.VOTER_UPLOAD_REL_PATH
 
+  logger = get_logger(VoterFile.__name__)
+  logger.error("PATH" % PATH)
+
   election = models.ForeignKey(Election, on_delete=models.CASCADE)
 
   # we move to storing the content in the DB
@@ -727,6 +732,10 @@ class VoterFile(models.Model):
       voter_stream = io.BytesIO(content)
     else:
       voter_stream = open(self.voter_file.path, "rU")
+      
+      logger = get_logger(itervoters.__name__)
+      logger.error("Open voter file" % voter_stream)
+
 
     #reader = unicode_csv_reader(voter_stream)
     reader = unicodecsv.reader(voter_stream, encoding='utf-8')
