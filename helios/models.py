@@ -699,7 +699,7 @@ class VoterFile(models.Model):
   # path where we store voter upload 
   PATH = settings.VOTER_UPLOAD_REL_PATH
 
-  logger = get_logger(VoterFile.__name__)
+  logger = get_logger()
   logger.error("PATH" % PATH)
 
   election = models.ForeignKey(Election, on_delete=models.CASCADE)
