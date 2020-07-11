@@ -42,6 +42,12 @@ DATABASES = {
     }
 }
 
+DATABASES['default']['HOST'] = get_from_env('DATABASE_HOST', '')
+DATABASES['default']['NAME'] = get_from_env('DATABASE_NAME', '')
+DATABASES['default']['PORT'] = get_from_env('DATABASE_PORT', '5432')
+DATABASES['default']['PASSWORD'] = get_from_env('DATABASE_PASSWORD', '')
+DATABASES['default']['USER'] = get_from_env('DATABASE_USER', '')
+
 # override if we have an env variable
 if get_from_env('DATABASE_URL', None):
     import dj_database_url
@@ -51,9 +57,8 @@ if get_from_env('DATABASE_URL', None):
 
     # require SSL
     DATABASES['default']['OPTIONS'] = {'sslmode': 'require'}
-    DATABASES['default']['PORT'] = get_from_env('DATABASE_PORT', '5432')
-    DATABASES['default']['PASSWORD'] = get_from_env('DATABASE_PASSWORD', '')
-    DATABASES['default']['USER'] = get_from_env('DATABASE_USER', '')
+
+
 
 
 
