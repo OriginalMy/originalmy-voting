@@ -138,7 +138,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'helios.security.HSTSMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
 
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
