@@ -185,7 +185,8 @@ INSTALLED_APPS = (
 MEDIA_ROOT = ROOT_PATH + "media/"
 
 # a relative path where voter upload files are stored
-VOTER_UPLOAD_REL_PATH = "voters/%Y/%m/%d"
+# VOTER_UPLOAD_REL_PATH = "voters/%Y/%m/%d"
+VOTER_UPLOAD_REL_PATH = "/tmp/%Y/%m/%d"
 
 
 # Change your email settings
