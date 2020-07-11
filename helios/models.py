@@ -702,7 +702,7 @@ class VoterFile(models.Model):
   # path where we store voter upload 
   PATH = settings.VOTER_UPLOAD_REL_PATH
 
-  logger.info("PATH" % PATH)
+  logger.info("PATH %s" % PATH)
 
   election = models.ForeignKey(Election, on_delete=models.CASCADE)
 
@@ -735,7 +735,7 @@ class VoterFile(models.Model):
     else:
       voter_stream = open(self.voter_file.path, "rU")
       
-      logger.info("Open voter file" % voter_stream)
+      logger.info("Open voter file %s" % voter_stream)
 
 
     #reader = unicode_csv_reader(voter_stream)
