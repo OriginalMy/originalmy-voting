@@ -138,7 +138,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'helios.security.HSTSMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
 
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -300,6 +300,3 @@ if ROLLBAR_ACCESS_TOKEN:
     'access_token': ROLLBAR_ACCESS_TOKEN,
     'environment': 'development' if DEBUG else 'production',  
   }
-
-
-## Run first time and disable forever

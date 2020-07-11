@@ -49,8 +49,6 @@ def get_user_info_after_auth(request):
   (resp_headers, content) = http.request("https://people.googleapis.com/v1/people/me?personFields=names", "GET")
 
   response = json.loads(content)
-  print (response)
-
 
   name = response['names'][0]['displayName']
   
