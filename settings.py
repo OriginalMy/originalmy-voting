@@ -51,6 +51,11 @@ if get_from_env('DATABASE_URL', None):
 
     # require SSL
     DATABASES['default']['OPTIONS'] = {'sslmode': 'require'}
+    DATABASES['default']['PORT'] = get_from_env('DATABASE_PORT', '5432')
+    DATABASES['default']['PASSWORD'] = get_from_env('DATABASE_PASSWORD', '')
+    DATABASES['default']['USER'] = get_from_env('DATABASE_USER', '')
+
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
