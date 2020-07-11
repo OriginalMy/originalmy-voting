@@ -28,6 +28,9 @@ from helios_auth.models import User, AUTH_SYSTEMS
 
 from celery.utils.log import get_logger
 
+logger = get_logger(__name__)
+
+
 
 class HeliosModel(models.Model, datatypes.LDObjectContainer):
   class Meta:
@@ -699,8 +702,7 @@ class VoterFile(models.Model):
   # path where we store voter upload 
   PATH = settings.VOTER_UPLOAD_REL_PATH
 
-  logger = get_logger()
-  logger.error("PATH" % PATH)
+  logger.info("PATH" % PATH)
 
   election = models.ForeignKey(Election, on_delete=models.CASCADE)
 
@@ -733,8 +735,7 @@ class VoterFile(models.Model):
     else:
       voter_stream = open(self.voter_file.path, "rU")
       
-      logger = get_logger(itervoters.__name__)
-      logger.error("Open voter file" % voter_stream)
+      logger.info("Open voter file" % voter_stream)
 
 
     #reader = unicode_csv_reader(voter_stream)
