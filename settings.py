@@ -290,10 +290,10 @@ logging.basicConfig(
 CELERY_BROKER_URL = get_from_env('CELERY_BROKER_URL', 'amqp://localhost')
 if TESTING:
     CELERY_TASK_ALWAYS_EAGER = True
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-#database_url = DATABASES['default']
+#CELERY_ACCEPT_CONTENT = ['json']
+#CELERY_TASK_SERIALIZER = 'json'
+#CELERY_RESULT_SERIALIZER = 'json'
+database_url = DATABASES['default']
 
 # Rollbar Error Logging
 ROLLBAR_ACCESS_TOKEN = get_from_env('ROLLBAR_ACCESS_TOKEN', None)
