@@ -77,8 +77,8 @@ TIME_ZONE = 'America/Sao_Paulo'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-#LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = 'pt-BR'
+LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'pt-BR'
 
 SITE_ID = 1
 
@@ -186,7 +186,7 @@ MEDIA_ROOT = ROOT_PATH + "media/"
 
 # a relative path where voter upload files are stored
 # VOTER_UPLOAD_REL_PATH = "voters/%Y/%m/%d"
-VOTER_UPLOAD_REL_PATH = "voters/%Y/%m/%d"
+VOTER_UPLOAD_REL_PATH = "voters/"
 
 
 # Change your email settings
