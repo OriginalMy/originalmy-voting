@@ -91,10 +91,10 @@ def admin_autologin(request):
   
   users = User.objects.filter(admin_p=True)
   if len(users) == 0:
-    return HttpResponse("no admin users!")
+    return HttpResponse("nenhum usuário administrador!")
 
   if len(users) == 0:
-    return HttpResponse("no users!")
+    return HttpResponse("nenhum usuário!")
 
   user = users[0]
   request.session['user'] = {'type' : user.user_type, 'user_id' : user.user_id}
@@ -161,7 +161,7 @@ def trustee_keygenerator(request, election, trustee):
 @login_required
 def elections_administered(request):
   if not can_create_election(request):
-    return HttpResponseForbidden('only an administrator has elections to administer')
+    return HttpResponseForbidden('somente um administrador tem eleições para administrar')
   
   user = get_user(request)
   elections = Election.get_by_user_as_admin(user)
@@ -179,7 +179,7 @@ def elections_voted(request):
 @login_required
 def election_new(request):
   if not can_create_election(request):
-    return HttpResponseForbidden('only an administrator can create an election')
+    return HttpResponseForbidden('somente um administrador pode criar uma eleição')
     
   error = None
   
@@ -211,9 +211,9 @@ def election_new(request):
           election.generate_trustee(ELGAMAL_PARAMS)
           return HttpResponseRedirect(settings.SECURE_URL_HOST + reverse(url_names.election.ELECTION_VIEW, args=[election.uuid]))
         except IntegrityError:
-          error = "An election with short name %s already exists" % election_params['short_name']
+          error = "Uma eleição com o nome %s já existe" % election_params['short_name']
       else:
-        error = "No special characters allowed in the short name."
+        error = "Não são permitidos caracteres especiais ou espaços no nome curto."
     
   return render_template(request, "election_new", {'election_form': election_form, 'error': error})
   
@@ -244,7 +244,7 @@ def one_election_edit(request, election):
         election.save()
         return HttpResponseRedirect(settings.SECURE_URL_HOST + reverse(url_names.election.ELECTION_VIEW, args=[election.uuid]))
       except IntegrityError:
-        error = "An election with short name %s already exists" % clean_data['short_name']
+        error = "Uma eleição com o nome %s já existe" % clean_data['short_name']
 
   return render_template(request, "election_edit", {'election_form' : election_form, 'election' : election, 'error': error})
 
@@ -329,13 +329,13 @@ def one_election_view(request, election):
   # status update message?
   if election.openreg:
     if election.voting_has_started:
-      status_update_message = u"Vote in %s" % election.name
+      status_update_message = u"Vote em %s" % election.name
     else:
-      status_update_message = u"Register to vote in %s" % election.name
+      status_update_message = u"Registrar para votar em %s" % election.name
 
   # result!
   if election.result:
-    status_update_message = u"Results are in for %s" % election.name
+    status_update_message = u"Resultados em %s" % election.name
   
   trustees = Trustee.get_by_election(election)
 
@@ -426,7 +426,7 @@ def trustee_login(request, election_short_name, trustee_email, trustee_secret):
         set_logged_in_trustee(request, trustee)
         return HttpResponseRedirect(settings.SECURE_URL_HOST + reverse(url_names.election.ELECTION_TRUSTEE_HOME, args=[election.uuid, trustee.uuid]))
     # bad secret or no such trustee
-    raise Http404("Trustee not recognized.")
+    raise Http404("Curador não reconhecido.")
   raise Http404("No election {} found.".format(election_short_name))
 
 @election_admin()
@@ -437,17 +437,17 @@ def trustee_send_url(request, election, trustee_uuid):
   
   body = """
 
-You are a trustee for %s.
+Você é curador para %s.
 
-Your trustee dashboard is at
+Seu dashboard de curador está em 
 
   %s
   
 --
-Helios  
+OmyVote
 """ % (election.name, url)
 
-  utils.send_email(settings.SERVER_EMAIL, ["%s <%s>" % (trustee.name, trustee.email)], 'your trustee homepage for %s' % election.name, body)
+  utils.send_email(settings.SERVER_EMAIL, ["%s <%s>" % (trustee.name, trustee.email)], 'sua página de curador para %s' % election.name, body)
 
   logging.info("URL %s " % url)
   return HttpResponseRedirect(settings.SECURE_URL_HOST + reverse(url_names.election.ELECTION_TRUSTEES_VIEW, args = [election.uuid]))
@@ -470,7 +470,7 @@ def trustee_upload_pk(request, election, trustee):
     
     # verify the pok
     if not trustee.public_key.verify_sk_proof(trustee.pok, algs.DLog_challenge_generator):
-      raise Exception("bad pok for this public key")
+      raise Exception("Chave privada errada para esta chave pública")
     
     trustee.public_key_hash = cryptoutils.hash_b64(utils.to_json(trustee.public_key.toJSONDict()))
 
@@ -478,7 +478,7 @@ def trustee_upload_pk(request, election, trustee):
     
     # send a note to admin
     try:
-      election.admin.send_message("%s - trustee pk upload" % election.name, "trustee %s (%s) uploaded a pk." % (trustee.name, trustee.email))
+      election.admin.send_message("%s - upload de chave privada de curador" % election.name, "curador %s (%s) carregou a pk." % (trustee.name, trustee.email))
     except:
       # oh well, no message sent
       pass
@@ -679,8 +679,8 @@ def one_election_cast_confirm(request, election):
 
     # status update this vote
     if voter and voter.can_update_status():
-      status_update_label = voter.user.update_status_template() % "your smart ballot tracker"
-      status_update_message = "I voted in %s - my smart tracker is %s.. #heliosvoting" % (get_election_url(election),cast_vote.vote_hash[:10])
+      status_update_label = voter.user.update_status_template() % "seu rastreador de cédula digital"
+      status_update_message = "Eu votei em %s - meu código de rastreamento de cédula é %s.. #omyvote" % (get_election_url(election),cast_vote.vote_hash[:10])
     else:
       status_update_label = None
       status_update_message = None
@@ -883,22 +883,22 @@ def voter_delete(request, election, voter_uuid):
     
     if voter.vote_hash:
       # send email to voter
-      subject = "Vote removed"
+      subject = "Voto removido"
       body = """
 
-Your vote were removed from the election "%s".
+Seu voto foi removido da eleição "%s".
   
 --
-Helios  
+OmyVote
 """ % (election.name)
       voter.user.send_message(subject, body)
 
       # log it
-      election.append_log("Voter %s/%s and their vote were removed after election frozen" % (voter.voter_type,voter.voter_id))
+      election.append_log("Eleitor %s/%s e seu voto foram removidos após a eleição ter sido congelada" % (voter.voter_type,voter.voter_id))
 
     elif election.frozen_at:
       # log it
-      election.append_log("Voter %s/%s removed after election frozen" % (voter.voter_type,voter.voter_id))
+      election.append_log("Eleitor %s/%s removido após a eleição ter sido congelada" % (voter.voter_type,voter.voter_id))
 
     voter.delete()
           
@@ -961,7 +961,7 @@ def one_election_copy(request, election):
     uuid = new_uuid,
     datatype = election.datatype,
     short_name = new_short_name,
-    name = "Copy of " + election.name,
+    name = "Copia de " + election.name,
     election_type = election.election_type,
     private_p = election.private_p,
     description = election.description,
@@ -1008,7 +1008,7 @@ def _register_voter(election, user):
 @election_view()
 def one_election_register(request, election):
   if not election.openreg:
-    return HttpResponseForbidden('registration is closed for this election')
+    return HttpResponseForbidden('Cadastramento fechado para esta eleição')
     
   check_csrf(request)
     
@@ -1107,7 +1107,7 @@ def trustee_upload_decryption(request, election, trustee_uuid):
     
     try:
       # send a note to admin
-      election.admin.send_message("%s - trustee partial decryption" % election.name, "trustee %s (%s) did their partial decryption." % (trustee.name, trustee.email))
+      election.admin.send_message("%s - descriptografia parcial para curador" % election.name, "curador %s (%s) executou sua descriptografia parcial." % (trustee.name, trustee.email))
     except:
       # ah well
       pass
@@ -1306,15 +1306,15 @@ def voters_upload(request, election):
           voters = [v for v in voter_file_obj.itervoters()][:5]
         except:
           voters = []
-          problems.append("your CSV file could not be processed. Please check that it is a proper CSV file.")
+          problems.append("seu CSV não pode ser processado. Verifique se você enviou um arquivo CSV")
 
         # check if voter emails look like emails
         if False in [validate_email(v['email']) for v in voters]:
-          problems.append("those don't look like correct email addresses. Are you sure you uploaded a file with email address as second field?")
+          problems.append("esses não parecem os endereços de e-mail corretos. Tem certeza de que enviou um arquivo com o endereço de email como segundo campo?")
 
         return render_template(request, 'voters_upload_confirm', {'election': election, 'voters': voters, 'problems': problems})
       else:
-        return HttpResponseRedirect("%s?%s" % (settings.SECURE_URL_HOST + reverse(voters_upload, args=[election.uuid]), urllib.urlencode({'e':'no voter file specified, try again'})))
+        return HttpResponseRedirect("%s?%s" % (settings.SECURE_URL_HOST + reverse(voters_upload, args=[election.uuid]), urllib.urlencode({'e':'nenhum arquivo de eleitor especificado, tente novamente'})))
 
 @election_admin()
 def voters_upload_cancel(request, election):
@@ -1334,10 +1334,10 @@ def voters_email(request, election):
   if not VOTERS_EMAIL:
     return HttpResponseRedirect(settings.SECURE_URL_HOST + reverse(url_names.election.ELECTION_VIEW, args=[election.uuid]))
   TEMPLATES = [
-    ('vote', 'Time to Vote'),
-    ('simple', 'Simple'),
-    ('info', 'Additional Info'),
-    ('result', 'Election Result')
+    ('vote', 'Hora de Votar'),
+    ('simple', 'Simples'),
+    ('info', 'Informação Adicional'),
+    ('result', 'Resultado da Eleição')
     ]
 
   template = request.GET.get('template', 'vote')

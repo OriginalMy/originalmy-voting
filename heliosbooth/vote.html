@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8" />
-  <title>Helios Voting Booth</title>
+  <title>OmyVote - Cabine de Votação</title>
   <link rel="stylesheet" type="text/css" href="css/booth.css" />
   <link rel="stylesheet" type="text/css" href="css/forms.css" />
 
@@ -28,8 +28,8 @@
 </head>
 <body>
 <div id="wrapper">
-<span style="float:right; padding: 7px 15px 5px 10px;">[<a href="javascript:BOOTH.exit();">exit</a>]</span>
-<div id="banner">Helios Voting Booth</div>
+<span style="float:right; padding: 7px 15px 5px 10px;">[<a href="javascript:BOOTH.exit();">sair</a>]</span>
+<div id="banner">OmyVote - Cabine de Votação</div>
 <div id="content">
 
 <div id="header">
@@ -66,7 +66,7 @@ window.onbeforeunload = function(evt) {
     evt = window.event;
   }
 
-  var message = "If you leave this page with an in-progress ballot, your ballot will be lost.";
+  var message = "Se você sair desta página com uma votação em andamento, sua votação será perdida.";
 
   if (evt) {
     evt.returnValue = message;
@@ -76,7 +76,7 @@ window.onbeforeunload = function(evt) {
 };
 
 BOOTH.exit = function() {
-    if (confirm("Are you sure you want to exit the booth and lose all information about your current ballot?")) {
+    if (confirm("Tem certeza de que deseja sair da cabine de voto e perder todas as informações sobre sua cédula/voto atual?")) {
         BOOTH.started_p = false;
         window.location = BOOTH.election.cast_url;
     }
@@ -224,7 +224,7 @@ BOOTH.launch_async_encryption_answer = function(question_num) {
 BOOTH.validate_question = function(question_num) {
     // check if enough answers are checked
     if (BOOTH.ballot.answers[question_num].length < BOOTH.election.questions[question_num].min) {
-        alert('You need to select at least ' + BOOTH.election.questions[question_num].min + ' answer(s).');
+        alert('Você precisa selecionar ao menos ' + BOOTH.election.questions[question_num].min + ' resposta(s).');
         return false;
     }
 
@@ -337,7 +337,7 @@ BOOTH.click_checkbox = function(question_num, answer_num, checked_p) {
 
      // do the warning only if the question allows more than one option, otherwise it's confusing
      if (BOOTH.election.questions[question_num].max > 1) {
-        $('#warning_box').html("Maximum number of options selected.<br />To change your selection, please de-select a current selection first.");
+        $('#warning_box').html("Número máximo de opções selecionadas. <br /> Para alterar sua seleção, desmarque uma seleção atual primeiro.");
      }
   } else {
      // enable the other checkboxes
@@ -349,7 +349,7 @@ BOOTH.click_checkbox = function(question_num, answer_num, checked_p) {
 };
 
 BOOTH.show_processing_before = function(str_to_execute) {
-    $('#processing_div').html("<h3 align='center'>Processing...</h3>");
+    $('#processing_div').html("<h3 align='center'>Processando...</h3>");
     BOOTH.show($('#processing_div'));
 
     // add a timeout so browsers like Safari actually display the processing message
@@ -484,7 +484,7 @@ BOOTH.wait_for_ciphertexts = function() {
     var percentage_done = Math.round((100 * answers_done.length) / BOOTH.encrypted_answers.length);
 
     if (BOOTH.total_cycles_waited > 250) {
-      alert('there appears to be a problem with the encryption process.\nPlease email help@heliosvoting.org and indicate that your encryption process froze at ' + percentage_done + '%');
+      alert('parece haver um problema com o processo de criptografia. \ nPor favor, envie um email para contato@originalmy.com e indique que seu processo de criptografia congelou em ' + percentage_done + '%');
       return;
     }
 
@@ -553,7 +553,7 @@ BOOTH.audit_ballot = function() {
 
 BOOTH.post_audited_ballot = function() {
   $.post(BOOTH.election_url + "/post-audited-ballot", {'audited_ballot': BOOTH.audit_trail}, function(result) {
-    alert('This audited ballot has been posted.\nRemember, this vote will only be used for auditing and will not be tallied.\nClick "back to voting" and cast a new ballot to make sure your vote counts.');
+    alert('Esta cédula auditada foi publicada. \nLembre-se de que esta cédula será usada apenas para auditoria e não será computada. \nClique em "voltar à votação" e faça uma nova cédula para garantir que seu voto conte.');
   });
 };
 
@@ -583,7 +583,7 @@ BOOTH.cast_ballot = function() {
 };
 
 BOOTH.show_receipt = function() {
-    UTILS.open_window_with_content("Your smart ballot tracker for " + BOOTH.election.name + ": " + BOOTH.encrypted_ballot_hash);
+    UTILS.open_window_with_content("Seu Rastreador de Cédula Digital para " + BOOTH.election.name + ": " + BOOTH.encrypted_ballot_hash);
 };
 
 BOOTH.do_done = function() {
@@ -594,21 +594,21 @@ BOOTH.do_done = function() {
 <div id="page">
   <div id="progress_div" style="display:none; width: 500px; margin:auto;">
       <table width="100%">
-          <tr><td id="progress_1">(1) Select</td><td id="progress_2">(2) Review</td><td id="progress_3">(3) Submit</td></tr>
+          <tr><td id="progress_1">(1) Selecionar</td><td id="progress_2">(2) Revisar</td><td id="progress_3">(3) Enviar</td></tr>
       </table>
   </div>
   <div id="election_div" class="panel">
-    <h3>Checking capabilities and loading election booth...</h3>
-    <div align="center"><img src="loading.gif" /><br />This may take up to 10 seconds</div>
+    <h3>Verificando recursos e carregando cabine de eleição...</h3>
+    <div align="center"><img src="loading.gif" /><br />Este processo pode levar até 10 segundos</div>
   </div>
 
   <div id="error_div" class="panel" style="display: none;">
-    <h3>There's a problem</h3>
+    <h3>Há um problema</h3>
     <p>
-      It appears that your browser does not have Java enabled. Helios needs Java to perform encryption within the browser.
+      Parece que seu navegador não possui o Java ativado. O OmyVote precisa do Java para executar criptografia no navegador.
     </p>
     <p>
-      You may be able to install Java by visiting <a target="_new" href="http://java.com">java.com</a>.
+      Você pode instalar Java em <a target="_new" href="http://java.com">java.com</a>.
     </p>
   </div>
 
@@ -616,14 +616,14 @@ BOOTH.do_done = function() {
   </div>
 
   <div id="processing_div" class="panel" style="display:none;">
-      <h3 align="center">Processing....</h3>
+      <h3 align="center">Processando....</h3>
   </div>
 
   <div id="encrypting_div" class="panel" style="display:none;">
-      <h3 align="center">Helios is now encrypting your ballot<br />
+      <h3 align="center">OmyVote está criptografando o seu voto<br />
           <img src="encrypting.gif" /> <span style="font-size:0.7em; display:none;" id="percent_done_container">(<span id="percent_done">0</span>%)</span></h3>
 
-      <p align="center"><b>This may take up to two minutes.</b>
+      <p align="center"><b>Este processo pode levar até 2 minutos.</b>
   </div>
 
   <div id="seal_div" class="panel">

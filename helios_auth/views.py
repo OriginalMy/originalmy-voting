@@ -148,7 +148,7 @@ def _do_auth(request):
   if auth_url:
     return HttpResponseRedirect(auth_url)
   else:
-    return HttpResponse("an error occurred trying to contact " + system_name +", try again later")
+    return HttpResponse("ocorreu um erro tentando contatar " + system_name +", tente novamente mais tarde")
   
 def start(request, system_name):
   if not (system_name in helios_auth.ENABLED_AUTH_SYSTEMS):

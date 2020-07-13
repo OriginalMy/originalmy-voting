@@ -98,7 +98,7 @@ def do_election_checks(election, props):
   
 def get_election_by_uuid(uuid):
   if not uuid:
-    raise Exception("no election ID")
+    raise Exception("ID de eleição não encontrado")
       
   return Election.get_by_uuid(uuid)
   

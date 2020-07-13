@@ -31,7 +31,7 @@ var ELECTION = null;
 var VOTE = null;
 
 function do_verify(message) {
-    console.log("verifying!");
+    console.log("verificando!");
 
     // json string
     ELECTION = message.election;

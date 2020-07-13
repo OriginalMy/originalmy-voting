@@ -75,7 +75,7 @@ def process_csv_file(election, f):
 
 class Command(BaseCommand):
     args = ''
-    help = 'load up voters from unprocessed voter files'
+    help = 'carregar eleitores de um arquivo não processado'
 
     def handle(self, *args, **options):
         # load up the voter files in order of last uploaded
