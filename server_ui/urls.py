@@ -8,5 +8,5 @@ urlpatterns = [
   url(r'^sobre$', about),
   url(r'^docs$', docs),
   url(r'^faq$', faq),
-  url(r'^privacidade$', privacy),
+  url(r'^privacy$', privacy),
 ]
