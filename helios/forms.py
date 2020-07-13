@@ -16,7 +16,7 @@ class ElectionForm(forms.Form):
   election_type = forms.ChoiceField(label="type", choices = Election.ELECTION_TYPES)
   use_voter_aliases = forms.BooleanField(required=False, initial=False, help_text='Se selecionado, as identidades dos eleitores serao substituidas por aliases, por exemplo "V12", no centro de rastreamento de votos')
   #use_advanced_audit_features = forms.BooleanField(required=False, initial=True, help_text='disable this only if you want a simple election with reduced security but a simpler user interface')
-  randomize_answer_order = forms.BooleanField(required=False, initial=False, help_text='ative isso se desejar que as respostas as perguntas apareçam em ordem aleatoria para cada eleitor')
+  randomize_answer_order = forms.BooleanField(required=False, initial=False, help_text='ative isso se desejar que as respostas as perguntas aparecam em ordem aleatoria para cada eleitor')
   private_p = forms.BooleanField(required=False, initial=False, label="Eleicao Privada?", help_text='Uma eleicao privada e visivel apenas para os eleitores registrados.')
   help_email = forms.CharField(required=False, initial="", label="Email de contato", help_text='Email para que os eleitores possam contatar em caso de necessidade.')
   
@@ -24,7 +24,7 @@ class ElectionForm(forms.Form):
     election_info_url = forms.CharField(required=False, initial="", label="URL com Detalhes para esta Eleicao", help_text="o URL de um documento PDF que contem informacoes adicionais sobre a eleicao, por exemplo biografias e declaracoes de candidatos")
   
   # times
-  voting_starts_at = SplitDateTimeField(help_text = 'Data e hora UTC em que a votacao começa',
+  voting_starts_at = SplitDateTimeField(help_text = 'Data e hora UTC em que a votacao comeca',
                                    widget=SplitSelectDateTimeWidget, required=False)
   voting_ends_at = SplitDateTimeField(help_text = 'Data e hora UTC em que a votacao termina',
                                    widget=SplitSelectDateTimeWidget, required=False)
