@@ -96,7 +96,7 @@ def election_compute_tally(election_id):
     election_notify_admin.delay(election_id=election_id,
                                 subject="contagem criptografada computada",
                                 body="""
-A contagem criptografada para a eleição %s foi computada.
+A contagem criptografada para a eleicao %s foi computada.
 
 --
 OmyVote
@@ -114,7 +114,7 @@ def tally_helios_decrypt(election_id):
                                 subject='OmyVote Decrypt',
                                 body="""
 OmyVote descriptografou sua parte da contagem
-para a eleição %s.
+para a eleicao %s.
 
 --
 OmyVote
@@ -128,8 +128,8 @@ def voter_file_process(voter_file_id):
     election_notify_admin.delay(election_id=voter_file.election.id,
                                 subject='arquivo de eleitores processado',
                                 body="""
-O upload do arquivo de eleitores para a eleição %s
-já foi processado.
+O upload do arquivo de eleitores para a eleicao %s
+ja foi processado.
 
 %s eleitores foram adicionados.
 
