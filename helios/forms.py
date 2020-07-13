@@ -36,7 +36,7 @@ class ElectionTimeExtensionForm(forms.Form):
 class EmailVotersForm(forms.Form):
   subject = forms.CharField(max_length=80)
   body = forms.CharField(max_length=4000, widget=forms.Textarea)
-  send_to = forms.ChoiceField(label="Enviar para", initial="todos", choices= [('todos', 'todos eleitores'), ('votaram', 'eleitores que já votaram'), ('Nao votaram', 'eleitores que ainda nao votaram')])
+  send_to = forms.ChoiceField(label="Enviar para", initial="todos", choices= [('todos', 'todos eleitores'), ('votaram', 'eleitores que ja votaram'), ('Nao votaram', 'eleitores que ainda nao votaram')])
 
 class TallyNotificationEmailForm(forms.Form):
   subject = forms.CharField(max_length=80)
