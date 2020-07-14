@@ -52,7 +52,7 @@ class Migration(migrations.Migration):
                 ('datatype', models.CharField(default=b'legacy/Election', max_length=250)),
                 ('short_name', models.CharField(max_length=100)),
                 ('name', models.CharField(max_length=250)),
-                ('election_type', models.CharField(default=b'0', max_length=250, choices=[(b'0', b'Eleição'), (b'referendo', b'Referendo')])),
+                ('election_type', models.CharField(default=b'eleição', max_length=250, choices=[(b'eleição', b'Eleição'), (b'referendo', b'Referendo')])),
                 ('private_p', models.BooleanField(default=False)),
                 ('description', models.TextField()),
                 ('public_key', helios.datatypes.djangofield.LDObjectField(null=True)),
