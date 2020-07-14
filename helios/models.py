@@ -52,11 +52,11 @@ class Election(HeliosModel):
   name = models.CharField(max_length=250)
   
   ELECTION_TYPES = (
-    ('eleição', 'Eleição'),
+    ('elei&ccedil;&atilde;o', 'Elei&ccedil;&atilde;o'),
     ('referendo', 'Referendo')
     )
 
-  election_type = models.CharField(max_length=250, null=False, default='eleição', choices = ELECTION_TYPES)
+  election_type = models.CharField(max_length=250, null=False, default='elei&ccedil;&atilde;o', choices = ELECTION_TYPES)
   private_p = models.BooleanField(default=False, null=False)
 
   description = models.TextField()
