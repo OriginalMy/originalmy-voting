@@ -19,7 +19,7 @@
 <input type="hidden" name="csrf_token" value="{{csrf_token}}" />
     
 <input class="button" type="submit" value="computar resultados criptografados!" />
-<button onclick="document.location='{% url "election@view" election.uuid %}'; return false;">never mind</button>
+<button onclick="document.location='{% url "election@view" election.uuid %}'; return false;">cancelar</button>
 </form>
 {% else %}
 <p>

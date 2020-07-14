@@ -111,9 +111,9 @@ os curadores deverão participar na descriptografia.
 {% else %}
 
 {% if election.result %}
-<a href="{% url "election@release-result" election.uuid %}">release result</a><br />
+<a href="{% url "election@release-result" election.uuid %}">publicar resultados</a><br />
 O resultado exibido abaixo é visível apenas para você.<br />
-Depois de liberar o resultado, ele ficará visível para todos.
+Depois de publicar o resultado, ele ficará visível para todos.
 {% else %}
 
 {% if election.ready_for_decryption_combination %}
@@ -152,7 +152,7 @@ Depois de fazer isso, a contagem ficará visível para você, administrador, ape
 {% if show_result %}
 {% if election.result_released_at %}
 <span class="highlight-box round">
-    Esta eleição está completada.
+    Esta eleição está encerrada.
 </span><br /><br /><br />
 {% endif %}
 
