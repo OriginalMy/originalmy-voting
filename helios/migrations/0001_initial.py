@@ -49,7 +49,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('uuid', models.CharField(max_length=50)),
-                ('datatype', models.CharField(default=b'legacy/Eleição', max_length=250)),
+                ('datatype', models.CharField(default=b'legacy/Election', max_length=250)),
                 ('short_name', models.CharField(max_length=100)),
                 ('name', models.CharField(max_length=250)),
                 ('election_type', models.CharField(default=b'eleição', max_length=250, choices=[(b'eleição', b'Eleição'), (b'referendo', b'Referendo')])),
