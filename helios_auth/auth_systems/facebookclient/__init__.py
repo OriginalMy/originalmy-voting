@@ -1406,24 +1406,24 @@ if __name__ == '__main__':
     facebook.login()
 
     # Login to the window, then press enter
-    print 'After logging in, press enter...'
+    print 'Após se autenticar, pressione Enter...'
     raw_input()
 
     facebook.auth.getSession()
-    print 'Session Key:   ', facebook.session_key
-    print 'Your UID:      ', facebook.uid
+    print 'Chave de Sessão:   ', facebook.session_key
+    print 'Seu UID:      ', facebook.uid
 
     info = facebook.users.getInfo([facebook.uid], ['name', 'birthday', 'affiliations', 'sex'])[0]
 
-    print 'Your Name:     ', info['name']
-    print 'Your Birthday: ', info['birthday']
-    print 'Your Gender:   ', info['sex']
+    print 'Seu Nome:     ', info['name']
+    print 'sua Data de Nascimento: ', info['birthday']
+    print 'Gênero:   ', info['sex']
 
     friends = facebook.friends.get()
     friends = facebook.users.getInfo(friends[0:5], ['name', 'birthday', 'relationship_status'])
 
     for friend in friends:
-        print friend['name'], 'has a birthday on', friend['birthday'], 'and is', friend['relationship_status']
+        print friend['name'], 'faz aniversário em', friend['birthday'], 'e é ', friend['relationship_status']
 
     arefriends = facebook.friends.areFriends([friends[0]['uid']], [friends[1]['uid']])
 

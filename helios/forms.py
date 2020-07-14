@@ -10,13 +10,13 @@ from django.conf import settings
 
 
 class ElectionForm(forms.Form):
-  short_name = forms.SlugField(max_length=40, help_text='sem espacos, fara parte do URL da sua eleicao, por exemplo convencao-2020')
-  name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'size':60}), help_text='o nome bonito para sua eleicao, por exemplo Eleicao do Conselho Administrativo 2010')
-  description = forms.CharField(max_length=4000, widget=forms.Textarea(attrs={'cols': 70, 'wrap': 'soft'}), required=False)
-  election_type = forms.ChoiceField(label="type", choices = Election.ELECTION_TYPES)
-  use_voter_aliases = forms.BooleanField(required=False, initial=False, help_text='Se selecionado, as identidades dos eleitores serao substituidas por aliases, por exemplo "V12", no centro de rastreamento de votos')
+  short_name = forms.SlugField(max_length=40, label="Nome curto", help_text='sem espacos, fara parte do URL da sua eleicao, por exemplo convencao-2020')
+  name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'size':60}), label="Nome", help_text='o nome bonito para sua eleicao, por exemplo Eleicao do Conselho Administrativo 2010')
+  description = forms.CharField(max_length=4000, label="Descricao", widget=forms.Textarea(attrs={'cols': 70, 'wrap': 'soft'}), required=False)
+  election_type = forms.ChoiceField(label="type", label="Tipo", choices = Election.ELECTION_TYPES)
+  use_voter_aliases = forms.BooleanField(required=False, label="Use alias para eleitores", initial=False, help_text='Se selecionado, as identidades dos eleitores serao substituidas por aliases, por exemplo "V12", no centro de rastreamento de votos')
   #use_advanced_audit_features = forms.BooleanField(required=False, initial=True, help_text='disable this only if you want a simple election with reduced security but a simpler user interface')
-  randomize_answer_order = forms.BooleanField(required=False, initial=False, help_text='ative isso se desejar que as respostas as perguntas aparecam em ordem aleatoria para cada eleitor')
+  randomize_answer_order = forms.BooleanField(required=False, label="Randomizar sequência de voto", initial=False, help_text='ative isso se desejar que as respostas as perguntas aparecam em ordem aleatoria para cada eleitor')
   private_p = forms.BooleanField(required=False, initial=False, label="Eleicao Privada?", help_text='Uma eleicao privada e visivel apenas para os eleitores registrados.')
   help_email = forms.CharField(required=False, initial="", label="Email de contato", help_text='Email para que os eleitores possam contatar em caso de necessidade.')
   
@@ -24,13 +24,13 @@ class ElectionForm(forms.Form):
     election_info_url = forms.CharField(required=False, initial="", label="URL com Detalhes para esta Eleicao", help_text="o URL de um documento PDF que contem informacoes adicionais sobre a eleicao, por exemplo biografias e declaracoes de candidatos")
   
   # times
-  voting_starts_at = SplitDateTimeField(help_text = 'Data e hora UTC em que a votacao comeca',
+  voting_starts_at = SplitDateTimeField(label="Votacao inicia em", help_text = 'Data e hora UTC em que a votacao comeca',
                                    widget=SplitSelectDateTimeWidget, required=False)
-  voting_ends_at = SplitDateTimeField(help_text = 'Data e hora UTC em que a votacao termina',
+  voting_ends_at = SplitDateTimeField(label="Votacao encerra em", help_text = 'Data e hora UTC em que a votacao termina',
                                    widget=SplitSelectDateTimeWidget, required=False)
 
 class ElectionTimeExtensionForm(forms.Form):
-  voting_extended_until = SplitDateTimeField(help_text = 'Votacao estendida para data e hora do UTC',
+  voting_extended_until = SplitDateTimeField(label="Estender votacao", help_text = 'Votacao estendida para data e hora do UTC',
                                    widget=SplitSelectDateTimeWidget, required=False)
   
 class EmailVotersForm(forms.Form):
