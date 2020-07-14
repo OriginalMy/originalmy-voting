@@ -9,7 +9,7 @@
 {% endif %}
 {% endif %}</h3>
 <p style="padding-top:0px; margin-top:0px">
-<em>{% if election.private_p %}privada{%else%}pública{% endif %}</em> {{ election.election_type }}{% if settings.SHOW_USER_INFO %} criada por <u><b>{{election.admin.display_html_small|safe}}</b></u>{% endif %}
+<em>Eleição {% if election.private_p %}privada{%else%}pública{% endif %}</em>{{# election.election_type #}}{% if settings.SHOW_USER_INFO %} criada por <u><b>{{election.admin.display_html_small|safe}}</b></u>{% endif %}
 {% if election.is_archived %}
 [arquivada]
 {% endif %}
@@ -21,12 +21,12 @@
 {% if admin_p %}
 {% if not election.private_p %}
 {% if election.featured_p %}
-esta eleição {{election.election_type}} está destacada na página principal.
+esta eleição {{# election.election_type #}} está destacada na página principal.
 {% if can_feature_p %}
 [<a href="{% url "election@set-featured" election.uuid %}?featured_p=0">remover destaque</a>]
 {% endif %}
 {% else %}
-esta eleição {{election.election_type}} <u>não</u> está destacada na página principal.
+esta eleição {{# election.election_type #}} <u>não</u> está destacada na página principal.
 {% if can_feature_p %}
 [<a href="{% url "election@set-featured" election.uuid %}?featured_p=1">adicionar destaque</a>]
 {% endif %}
@@ -175,18 +175,18 @@ Depois de fazer isso, a contagem ficará visível para você, administrador, ape
 {% else %}
 
 {% if election.voting_has_started %}
-<a class="button" href="{{test_cookie_url}}">Vote nesta {{election.election_type}} </a>
+<a class="button" href="{{test_cookie_url}}">Vote nesta eleição{{# election.election_type #}} </a>
 <br />
 <br />
 {% if election.voting_extended_until %}
-Esta {{election.election_type}} foi programada para encerrar em {{election.voting_ends_at}} (UTC),<br />
+Esta eleição{{# election.election_type #}} foi programada para encerrar em {{election.voting_ends_at}} (UTC),<br />
 mas foi estendida até {{ election.voting_extended_until }} (UTC).
 {% else %}
 {% if election.voting_ends_at %}
 <br />
-Esta {{election.election_type}} foi programada para encerrar em {{election.voting_ends_at}} (UTC).
+Esta eleição{{# election.election_type #}} foi programada para encerrar em {{election.voting_ends_at}} (UTC).
 {% else %}
-Esta {{election.election_type}} será finalizada pelo administrador.
+Esta eleição{{# election.election_type #}} será finalizada pelo administrador.
 {% endif %}
 <br />
 {% endif %}
@@ -210,7 +210,7 @@ Esta eleição é <em>privada</em>. Você se registrou como um eleitor válido <
 {% if user %}
 {% if voter %}
 <p style="padding-top:1px;">
-  Você está registrado para votar nesta {{election.election_type}}.
+  Você está registrado para votar nesta eleição{{# election.election_type #}}.
 {% if election.use_voter_aliases %}
 Seu alias de eleitor é {{voter.alias}}.
 {% endif %}
@@ -223,10 +223,10 @@ Seu alias de eleitor é {{voter.alias}}.
 {% if eligible_p %}
 Você é elegível para votar nesta eleição.
 {% else %}
-Você <em>não é elegível</em> para votar nesta {{election.election_type}}.
+Você <em>não é elegível</em> para votar nesta eleição{{# election.election_type #}}.
 {% endif %}
 {% else %}
-Você <em>não é elegível</em> para votar nesta {{election.election_type}}.
+Você <em>não é elegível</em> para votar nesta eleição{{# election.election_type #}}.
 <br />
 {% endif %}
 {% endif %}
