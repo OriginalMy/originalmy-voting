@@ -36,7 +36,7 @@ Você precisa congelar as configurações da eleição antes de contatar os elei
 <input type="hidden" name="csrf_token" value="{{csrf_token}}" />
     
 <input class="button" type="submit" value="Congelar as configurações" />
-<button onclick="document.location='{% url "election@view" election.uuid %}'; return false;">esqueça isso</button>
+<button onclick="document.location='{% url "election@view" election.uuid %}'; return false;">cancelar</button>
 </form>
 {% endif %}
 
