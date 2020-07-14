@@ -1,14 +1,14 @@
 {% extends TEMPLATE_BASE %}
 
 {% block content %}
-  <h2 class="title">{{election.name}} &mdash; Bulk Upload Voters &mdash; Confirm<span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">back to election</a>]</span></h2>
+  <h2 class="title">{{election.name}} &mdash; Envio em Massa de Eleitores &mdash; Confirmação<span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">voltar para eleição</a>]</span></h2>
 
 <p>
-You have uploaded a file of voters. The first few rows of this file are:
+  Você enviou um arquivo de eleitores. As primeiras linhas deste arquivo são:
 </p>
 
 <table>
-<tr><th>Voter Login</th><th>Email Address</th><th>Name</th></tr>
+<tr><th>Login do Eleitor</th><th>Endereço de Email</th><th>Nome</th></tr>
 {% for v in voters %}
 <tr><td>{{v.voter_id}}</td><td>{{v.email}}</td><td>{{v.name}}</td></tr>
 {% endfor %}
@@ -16,25 +16,25 @@ You have uploaded a file of voters. The first few rows of this file are:
 
 {% if problems %}
 <p style="font-size: 1.5em;">
-HOLD ON:<br />
+ESPERE:<br />
 {% for problem in problems %}
 - {{problem}}<br />
 {% endfor %}
 </p>
 <br />
 
-<a href="{% url "election@voters@upload-cancel" election.uuid %}">never mind, upload a different file</a>
+<a href="{% url "election@voters@upload-cancel" election.uuid %}">esqueça, quero enviar outro arquivo</a>
 </p>
 
 {% else %}
 <p></p>
 <form method="post" action="" id="upload_form">
-  Does this look right to you?
+  Você confirma estes dados?
   <input type="hidden" name="confirm_p" value="1" />
-  <input type="submit" value="Yes, let's go" />
+  <input type="submit" value="Sim, pode prosseguir" />
 </form>
 
-<a href="{% url "election@voters@upload-cancel" election.uuid %}">no, let me upload a different file</a>
+<a href="{% url "election@voters@upload-cancel" election.uuid %}">não, quero enviar outro arquivo</a>
 
 {% endif %}
 

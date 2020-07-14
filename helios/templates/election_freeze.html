@@ -1,42 +1,42 @@
 {% extends TEMPLATE_BASE %}
 
 {% block content %}
-  <h2 class="title">{{election.name}} &mdash; Freeze Ballot</h2>
+  <h2 class="title">{{election.name}} &mdash; Congelar as configurações da Eleição</h2>
 <p>
-Once the ballot is frozen, the questions and options can no longer be modified.<br />
-The list of trustees and their public keys will also be frozen.
+  Uma vez congeladas as configurações da eleição, as perguntas e opções não podem mais ser modificadas.<br />
+  A lista de administradores e suas chaves públicas também será congelada e não poderão ser modificadas.
 </p>
 
 <p>
 {% if election.openreg %}
-Registration for your election is currently <b>open</b>, which means anyone can vote, even after you freeze the ballot.
+O cadastramento para a sua eleição está <b>aberta</b>, o que significa que qualquer um pode votar, mesmo após o congelamento das configurações.
 {% else %}
-Registration for your election is currently <b>closed</b>, which means only the voters you designate will be able to cast a ballot. As the administrator, you will still be able to modify that voter list as the election progresses.
+O cadastramento para a sua eleição está <b>fechado</b>, o que significa que apenas os eleitores designados poderão enviar seus votos. Como Administrados, você pode alterar a lista de eleitores durante o progresso da eleição.
 {% endif %}
 </p>    
 
 {% if helios.VOTERS_EMAIL %}
 <p>
-You must freeze the ballot before you can contact voters.
+Você precisa congelar as configurações da eleição antes de contatar os eleitores.
 </p>
 {% endif %}
 
 {% if issues_p %}
 <p>
-    Before you can freeze the election, you will need to:
+    Antes de congelar as configurações da eleição, você precisa:
     <ul>
         {% for issue in issues %}
         <li>{{issue.action}}</li>
         {% endfor %}
     </ul>
-    <a href="{% url "election@view" election.uuid %}">go back to the election</a>
+    <a href="{% url "election@view" election.uuid %}">voltar para a eleição</a>
 </p>
 {% else %}
 <form method="post" action="">
 <input type="hidden" name="csrf_token" value="{{csrf_token}}" />
     
-<input class="button" type="submit" value="Freeze the ballot" />
-<button onclick="document.location='{% url "election@view" election.uuid %}'; return false;">never mind</button>
+<input class="button" type="submit" value="Congelar as configurações" />
+<button onclick="document.location='{% url "election@view" election.uuid %}'; return false;">esqueça isso</button>
 </form>
 {% endif %}
 

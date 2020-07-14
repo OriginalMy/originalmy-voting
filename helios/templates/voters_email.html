@@ -1,6 +1,6 @@
 {% extends TEMPLATE_BASE %}
 
-{% block title %}Contact Voters for {{election.name}}{% endblock %}
+{% block title %}Notificar Eleitores para {{election.name}}{% endblock %}
 {% block content %}
 <script>
 var voter_id = null;
@@ -9,16 +9,16 @@ voter_id = '{{voter.voter_id}}';
 {% endif %}
 </script>
 
-  <h2 class="title">{{election.name}} &mdash; Contact Voters <span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">back to election</a>]</span></h2>
+  <h2 class="title">{{election.name}} &mdash; Notificar Eleitores <span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">voltar para eleição</a>]</span></h2>
 
 {% if voter %}  
   <p>
-    You are sending this email to a specific user: <b>{{voter.name}} ({{voter.voter_id}})</b>
+    Você está enviando este email para um usuário específico: <b>{{voter.name}} ({{voter.voter_id}})</b>
   </p>
 {% endif %}
 
 <p>
-<b>Templates</b>:
+<b>Modelos</b>:
 
 {% for template_option in templates %}
 {% if template_option.0 == template %}
@@ -30,13 +30,13 @@ voter_id = '{{voter.voter_id}}';
 {% endfor %}
 
 <pre style="margin:10px; border: 1px solid #888; padding:20px">
-Subject: {{default_subject}}
+Assunto: {{default_subject}}
 
 {{default_body|safe}}
 </pre>
 
 <p>
-You may tweak the subject and add a custom message using the form below.
+  Você pode ajustar o assunto e adicionar uma mensagem personalizada usando o formulário abaixo.
 </p>
 
   <form class="prettyform" action="" method="POST" id="email_form">
@@ -47,19 +47,19 @@ You may tweak the subject and add a custom message using the form below.
      {{email_form.as_table}}
      </table>
   <div>
-  <label for="">&nbsp;</label><input type="submit" value="Send" id="send_button" class="button" />
+  <label for="">&nbsp;</label><input type="submit" value="Enviar" id="send_button" class="button" />
   </div>
   </form>
   
-  <div id="processing">
+  <div id="processando">
   </div>
   
   <div id="done" style="display:none;">
-    Done, go <a href="{% url "election@view" election.uuid %}">back to election</a>.
+    Feito, <a href="{% url "election@view" election.uuid %}">voltar para eleição</a>.
   </div>
 
   <div id="error" style="display:none;">
-    Error emailing participants. Check server settings, make sure there's an SMTP server.
+    Erro ao enviar e-mail aos participantes. Verifique as configurações do servidor, verifique se há um servidor SMTP.
   </div>
 
 {% endblock %}

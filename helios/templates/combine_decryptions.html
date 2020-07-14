@@ -1,16 +1,16 @@
 {% extends TEMPLATE_BASE %}
 
-{% block title %}Compute Tally &mdash; {{election.name}}{% endblock %}
+{% block title %}Computar resultados &mdash; {{election.name}}{% endblock %}
 {% block content %}
-  <h2 class="title">{{election.name}} &mdash; Compute Tally <span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">cancel</a>]</span></h2>
+  <h2 class="title">{{election.name}} &mdash; Computar resultados <span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">cancelar</a>]</span></h2>
 
   <p>
-    You are about to compute the tally for this election. You only will then see the results.
+    Você irá computar os resultados para esta eleição. Somente você verá os resultados.
   </p>
 
   <form method="POST" action="">
     <input type="hidden" name="csrf_token" value="{{csrf_token}}" />
-    <input type="submit" class="button" value="compute the tally!" />
+    <input type="submit" class="button" value="compute os resultados!" />
   </form>
 
 {% endblock %}

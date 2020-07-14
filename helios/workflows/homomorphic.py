@@ -140,7 +140,7 @@ class EncryptedAnswer(WorkflowObject):
     # num_selected_answers is 0 or 1, which is the index into the plaintext that is actually encoded
     
     if num_selected_answers < min_answers:
-      raise Exception("Need to select at least %s answer(s)" % min_answers)
+      raise Exception("Sao necessarias %s resposta(s)" % min_answers)
     
     if max_answers != None:
       sum_plaintexts = cls.generate_plaintexts(pk, min=min_answers, max=max_answers)
@@ -295,7 +295,7 @@ class Tally(WorkflowObject):
     # do we verify?
     if verify_p:
       if not encrypted_vote.verify(self.election):
-        raise Exception('Bad Vote')
+        raise Exception('Voto malformado')
 
     # for each question
     for question_num in range(len(self.questions)):
