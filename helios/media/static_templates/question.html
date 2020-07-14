@@ -4,7 +4,7 @@
 <h4>
 {#if $T.admin_p}[
 {#if $T.question$index > 0}<a href="javascript:question_move_up({$T.question$index});">^</a>]&nbsp;[{#/if}
-<a onclick="return confirm('Tem certeza que deseja remover esta questão?');" href="javascript:question_remove({$T.question$index})">x</a>] [<a href="javascript:question_edit({$T.question$index})">editar</a>] {#/if}{$T.question$index + 1}. {$T.question.question} ({$T.question.choice_type}, select between {$T.question.min} and {#if $T.question.max != null}{$T.question.max}{#else}unlimited{#/if} answers, result type {$T.question.result_type}.)</h4>
+<a onclick="return confirm('Tem certeza que deseja remover esta questão?');" href="javascript:question_remove({$T.question$index})">x</a>] [<a href="javascript:question_edit({$T.question$index})">editar</a>] {#/if}{$T.question$index + 1}. {$T.question.question} ({$T.question.choice_type}, selecionar entre {$T.question.min} e {#if $T.question.max != null}{$T.question.max}{#else}unlimited{#/if} opções, resultado tipo {$T.question.result_type}.)</h4>
 <ul>
 {#foreach $T.question.answers as answer}
 <li> {$T.answer}
@@ -24,7 +24,7 @@
     <option selected>approval</option>
   </select>
 -->
-<input type="hidden" name="choice_type" value="approval" />
+<input type="hidden" name="choice_type" value="aprovado" />
 <b>{$T.question$index + 1}.</b> &nbsp;&nbsp;&nbsp;Selecione entre &nbsp;&nbsp;
 <select name="min">
     <option selected>0</option>
@@ -84,7 +84,7 @@ Não há questões e opções cadastradas
     <option selected>approval</option>
   </select>
 -->
-<input type="hidden" name="choice_type" value="approval" />
+<input type="hidden" name="choice_type" value="aprovado" />
 &nbsp;&nbsp;&nbsp;Selecione entre &nbsp;&nbsp;
 <select name="min">
     <option selected>0</option>
