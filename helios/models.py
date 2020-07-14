@@ -381,7 +381,7 @@ class Election(HeliosModel):
     if self.voter_set.count() == 0 and not self.openreg:
       issues.append({
           "type" : "voters",
-          "action" : 'entre com a lista de eleitores (ou abra a eleição para pública)'
+          "action" : 'entre com a lista de eleitores (ou abra a eleição para o público)'
           })
 
     return issues    

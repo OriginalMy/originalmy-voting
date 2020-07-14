@@ -84,7 +84,7 @@ esta eleição {{election.election_type}} <u>não</u> está destacada na página
 {% if not election.frozen_at %}
 {% if election.issues_before_freeze %}
 {% for issue in election.issues_before_freeze %}
-{{issue.action}}{% if forloop.last %}{% else %}, and{% endif %}<br />
+{{issue.action}}{% if forloop.last %}{% else %}, e{% endif %}<br />
 {% endfor %}
 {% else %}
 <a href="{% url "election@freeze" election.uuid %}">congelar configurações e iniciar eleição.</a>
