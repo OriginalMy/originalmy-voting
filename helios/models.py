@@ -361,7 +361,7 @@ class Election(HeliosModel):
     if self.questions == None or len(self.questions) == 0:
       issues.append(
         {'type': 'questions',
-         'action': "adicionar questões à votação"}
+         'action': "adicionar questões para a votação"}
         )
   
     trustees = Trustee.get_by_election(self)
@@ -375,7 +375,7 @@ class Election(HeliosModel):
       if t.public_key == None:
         issues.append({
             'type': 'trustee keypairs',
-            'action': 'o curador %s gerou o par de chaves' % t.name
+            'action': 'o curador %s precisa gerar o par de chaves' % t.name
             })
 
     if self.voter_set.count() == 0 and not self.openreg:
