@@ -20,7 +20,7 @@ Para proteger sua privacidade, esta eleição está configurada
 para nunca exibir seu ID de login, nome ou endereço de email do eleitor ao público.
 Em vez disso, o centro de rastreamento de cédulas exibirá apenas seu apelido.
 
-Seu alias de eleitor é {{voter.alias}}.
+Seu codinome de eleitor é {{voter.alias}}.
 
 IMPORTANTE, quando você for solicitado a fazer login para votar,
 use seu * ID do eleitor *, não seu apelido.

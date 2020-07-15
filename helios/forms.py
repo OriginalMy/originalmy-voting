@@ -14,7 +14,7 @@ class ElectionForm(forms.Form):
   name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'size':60}), label="Nome", help_text='o nome bonito para sua eleicao, por exemplo Eleicao do Conselho Administrativo 2010')
   description = forms.CharField(max_length=4000, label="Descricao", widget=forms.Textarea(attrs={'cols': 70, 'wrap': 'soft'}), required=False)
   election_type = forms.ChoiceField(label="Tipo", choices = Election.ELECTION_TYPES)
-  use_voter_aliases = forms.BooleanField(required=False, label="Usar aliases para eleitores", initial=False, help_text='Se selecionado, as identidades dos eleitores serao substituidas por aliases, por exemplo "V12", no centro de rastreamento de votos')
+  use_voter_aliases = forms.BooleanField(required=False, label="Usar codinomes para eleitores", initial=False, help_text='Se selecionado, as identidades dos eleitores serao substituidas por codinomes, por exemplo "V12", no centro de rastreamento de votos')
   #use_advanced_audit_features = forms.BooleanField(required=False, initial=True, help_text='disable this only if you want a simple election with reduced security but a simpler user interface')
   randomize_answer_order = forms.BooleanField(required=False, label="Randomizar sequencia de voto", initial=False, help_text='ative isso se desejar que as respostas as perguntas aparecam em ordem aleatoria para cada eleitor')
   private_p = forms.BooleanField(required=False, initial=False, label="Eleicao Privada?", help_text='Uma eleicao privada e visivel apenas para os eleitores registrados.')

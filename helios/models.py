@@ -361,7 +361,7 @@ class Election(HeliosModel):
     if self.questions == None or len(self.questions) == 0:
       issues.append(
         {'type': 'questions',
-         'action': "adicionar questões para a votação"}
+         'action': "adicionar pautas para a votação"}
         )
   
     trustees = Trustee.get_by_election(self)

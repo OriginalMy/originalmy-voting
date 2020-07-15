@@ -24,7 +24,7 @@ Eleitores {{offset_plus_one}} - {{offset_plus_limit}} &nbsp;&nbsp;
 {% endif %}
 
 <table class="pretty">
-<tr><th>Alias</th><th>Nome</th><th>Nome de Usuário</th></tr>
+<tr><th>Codinome</th><th>Nome</th><th>Nome de Usuário</th></tr>
 {% for voter in voters %}
 <tr><td>{{voter.alias}}</td><td>{{voter.name}}</td><td>{{voter.voter_id}}
 {% if election.frozen_at %}

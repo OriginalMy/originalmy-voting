@@ -890,7 +890,7 @@ def voter_delete(request, election, voter_uuid):
       subject = "Voto removido"
       body = """
 
-Seu voto foi removido da eleição "%s".
+Seu voto foi removido da eleicao "%s".
   
 --
 OmyVote
@@ -898,11 +898,11 @@ OmyVote
       voter.user.send_message(subject, body)
 
       # log it
-      election.append_log("Eleitor %s/%s e seu voto foram removidos após a eleição ter sido congelada" % (voter.voter_type,voter.voter_id))
+      election.append_log("Eleitor %s/%s e seu voto foram removidos apos a eleicao ter sido congelada" % (voter.voter_type,voter.voter_id))
 
     elif election.frozen_at:
       # log it
-      election.append_log("Eleitor %s/%s removido após a eleição ter sido congelada" % (voter.voter_type,voter.voter_id))
+      election.append_log("Eleitor %s/%s removido apos a eleicao ter sido congelada" % (voter.voter_type,voter.voter_id))
 
     voter.delete()
           

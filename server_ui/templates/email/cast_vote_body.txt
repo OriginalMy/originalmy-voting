@@ -5,8 +5,8 @@ Você votou com sucesso em {{election.name}}.
 Sua cédula está arquivada em: {{cast_vote_url}}
 
 {% if election.use_voter_aliases %}
-Esta eleição utiliza pseudônimos para proteger sua privacidade.
-O seu alias de eleitor é: {{voter.alias}}.
+Esta eleição utiliza codinomes para proteger sua privacidade.
+O seu codinome de eleitor é: {{voter.alias}}.
 {% endif %}
 
 --

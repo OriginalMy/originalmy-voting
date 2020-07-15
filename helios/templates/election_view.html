@@ -51,7 +51,7 @@ esta eleição {# { election.election_type } #} <u>não</u> está destacada na p
 {% endif %}
 
 <p align="center" style="font-size: 1.5em;">
-<a href="{% url "election@questions" election.uuid %}">questões ({% if election.questions %}{{election.questions|length}}{% else %}0{% endif %})</a>
+<a href="{% url "election@questions" election.uuid %}">pautas ({% if election.questions %}{{election.questions|length}}{% else %}0{% endif %})</a>
 &nbsp;&nbsp;|&nbsp;&nbsp;
 <a href="{% url "election@voters@list-pretty" election.uuid %}">eleitores &amp; cédulas</a>
 &nbsp;&nbsp;|&nbsp;&nbsp;
@@ -212,7 +212,7 @@ Esta eleição é <em>privada</em>. Você se registrou como um eleitor válido <
 <p style="padding-top:1px;">
   Você está registrado para votar nesta eleição{# { election.election_type } #}.
 {% if election.use_voter_aliases %}
-Seu alias de eleitor é {{voter.alias}}.
+Seu codinome de eleitor é {{voter.alias}}.
 {% endif %}
 </p>
 
