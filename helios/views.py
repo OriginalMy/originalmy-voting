@@ -447,7 +447,7 @@ Acesse seu dashboard de curador em
 OmyVote
 """ % (election.name, url)
 
-  utils.send_email(settings.SERVER_EMAIL, ["%s <%s>" % (trustee.name, trustee.email)], 'sua página de curador para %s' % election.name, body)
+  utils.send_email(settings.SERVER_EMAIL, ["%s <%s>" % (trustee.name, trustee.email)], 'sua pagina de curador para %s' % election.name, body)
 
   logging.info("URL %s " % url)
   return HttpResponseRedirect(settings.SECURE_URL_HOST + reverse(url_names.election.ELECTION_TRUSTEES_VIEW, args = [election.uuid]))
@@ -470,7 +470,7 @@ def trustee_upload_pk(request, election, trustee):
     
     # verify the pok
     if not trustee.public_key.verify_sk_proof(trustee.pok, algs.DLog_challenge_generator):
-      raise Exception("Chave privada errada para esta chave pública")
+      raise Exception("Chave privada invalida para esta chave publica")
     
     trustee.public_key_hash = cryptoutils.hash_b64(utils.to_json(trustee.public_key.toJSONDict()))
 
