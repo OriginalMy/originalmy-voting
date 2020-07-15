@@ -441,7 +441,7 @@ Voce foi cadastrado como curador para %s
 
 Voce recebeu este email por 2 motivos:
 - ou precisa configurar as suas chaves
-- ou a eleicao encerrou e estao aguardando sua acao para que o resultado seja descriptografado
+- ou a eleicao encerrou e estao aguardando sua acao para que o resultado possa ser descriptografado
 
 Acesse agora seu dashboard de curador em 
 
