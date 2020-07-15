@@ -437,9 +437,13 @@ def trustee_send_url(request, election, trustee_uuid):
   
   body = """
 
-Voce foi cadastrado como curador para %s e precisa configurar as suas chaves, caso nao o tenha feito ainda. 
+Voce foi cadastrado como curador para %s 
 
-Acesse seu dashboard de curador em 
+Voce recebeu este email por 2 motivos:
+- ou precisa configurar as suas chaves
+- ou a eleicao encerrou e estao aguardando sua acao para que o resultado seja descriptografado
+
+Acesse agora seu dashboard de curador em 
 
   %s
   
@@ -447,7 +451,7 @@ Acesse seu dashboard de curador em
 OmyVote
 """ % (election.name, url)
 
-  utils.send_email(settings.SERVER_EMAIL, ["%s <%s>" % (trustee.name, trustee.email)], 'sua pagina de curador para %s' % election.name, body)
+  utils.send_email(settings.SERVER_EMAIL, ["%s <%s>" % (trustee.name, trustee.email)], 'Voce foi cadastrado como curador para %s' % election.name, body)
 
   logging.info("URL %s " % url)
   return HttpResponseRedirect(settings.SECURE_URL_HOST + reverse(url_names.election.ELECTION_TRUSTEES_VIEW, args = [election.uuid]))
