@@ -437,9 +437,7 @@ def trustee_send_url(request, election, trustee_uuid):
   
   body = """
 
-Voce foi cadastrado como curador para %s.
-
-Você precisa configurar as suas chaves, caso nao o tenha feito ainda. 
+Voce foi cadastrado como curador para %s e precisa configurar as suas chaves, caso nao o tenha feito ainda. 
 
 Acesse seu dashboard de curador em 
 
