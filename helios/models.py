@@ -505,7 +505,7 @@ class Election(HeliosModel):
     election is frozen when the voter registration, questions, and trustees are finalized
     """
     if len(self.issues_before_freeze) > 0:
-      raise Exception("não pode congelar uma eleição que possui problemas ou pendências")
+      raise Exception("nao pode congelar uma eleição que possui problemas ou pendencias")
 
     self.frozen_at = datetime.datetime.utcnow()
     
