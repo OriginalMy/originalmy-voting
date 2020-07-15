@@ -168,13 +168,15 @@ function load_election_and_ballots(election_url) {
                            result_append("<h3>Curadores</h3>");
                            // verify the keys
                            $(trustees).each(function(i, trustee) {
-                              result_append("Curador #" + (i+1) + ": " + trustee.uuid );
+                              console.log(JSON.stringify(trustee));
+                              result_append("Curador #" + (i+1));
+                              result_append("-- UUID: " + trustee.uuid);
                               if (trustee.public_key.verifyKnowledgeOfSecretKey(trustee.pok, ElGamal.fiatshamir_dlog_challenge_generator)) {
                                   result_append("-- PK " + trustee.public_key_hash + " -- VERIFICADO.");
 
                                   // FIXME check the public key hash
                               } else {
-                                  result_append("==== ERRO de PK do curador " + trustee.email);
+                                  result_append("==== ERRO de PK do curador " + trustee.uuid);
                                   overall_result = false;
                               }
 
