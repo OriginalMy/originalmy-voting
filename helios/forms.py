@@ -34,13 +34,13 @@ class ElectionTimeExtensionForm(forms.Form):
                                    widget=SplitSelectDateTimeWidget, required=False)
   
 class EmailVotersForm(forms.Form):
-  subject = forms.CharField(max_length=80)
-  body = forms.CharField(max_length=4000, widget=forms.Textarea)
+  subject = forms.CharField(label="Assunto" ,max_length=80)
+  body = forms.CharField(label="Informacoes Extras", max_length=4000, widget=forms.Textarea, required=False)
   send_to = forms.ChoiceField(label="Enviar para", initial="todos", choices= [('todos', 'todos eleitores'), ('votaram', 'eleitores que ja votaram'), ('Nao votaram', 'eleitores que ainda nao votaram')])
 
 class TallyNotificationEmailForm(forms.Form):
-  subject = forms.CharField(max_length=80)
-  body = forms.CharField(max_length=2000, widget=forms.Textarea, required=False)
+  subject = forms.CharField(label="Assunto", max_length=80)
+  body = forms.CharField(label="Informacoes Extras", max_length=2000, widget=forms.Textarea, required=False)
   send_to = forms.ChoiceField(label="Enviar para", choices= [('todos', 'todos eleitores'), ('votaram', 'somente eleitores que votaram'), ('nenhum', 'nenhum -- tem certeza disso?')])
 
 class VoterPasswordForm(forms.Form):
