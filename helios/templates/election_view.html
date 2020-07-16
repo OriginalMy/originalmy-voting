@@ -87,13 +87,14 @@ esta eleição {# { election.election_type } #} <u>não</u> está destacada na p
 {{issue.action}}{% if forloop.last %}{% else %}, e{% endif %}<br />
 {% endfor %}
 {% else %}
-<a href="{% url "election@freeze" election.uuid %}">congelar configurações e iniciar eleição.</a>
+<a href="{% url "election@freeze" election.uuid %}">congelar configurações e abrir a eleição.</a>
 <br />
 {% if election.voting_starts_at %}
 Depois de fazer isso, a eleição estará pronta para votação e será aberta automaticamente<br />
 em {{election.voting_starts_at}}, de acordo com as configurações.
 {% else %}
-Depois que você fizer isso, a eleição será imediatamente aberta para votação.
+Depois que você fizer isso, a eleição será imediatamente aberta para votação.<br />
+Não se esqueça de notificar os eleitores por email (Eleitores -> Enviar Email -> Enviar).
 {% endif %}
 {% endif %}
 
@@ -113,7 +114,8 @@ os curadores deverão participar na descriptografia.
 {% if election.result %}
 <a href="{% url "election@release-result" election.uuid %}">publicar resultados</a><br />
 O resultado exibido abaixo é visível apenas para você.<br />
-Depois de publicar o resultado, ele ficará visível para todos.
+Depois de publicar o resultado, ele ficará visível para todos.<br />
+Não se esqueça de notificar os eleitores por email.
 {% else %}
 
 {% if election.ready_for_decryption_combination %}
@@ -125,10 +127,12 @@ combinar descriptografia dos curadores e calcular resultados
 {% endif %}
 </a><br />
 {% if election.num_trustees == 1 %}
-O resultado será calculado e mostrado a você, administrador, apenas.
+O resultado será calculado e mostrado a você, administrador, apenas.<br />
+Não se esqueça de notificar os eleitores por email.
 {% else %}
 As ações de descriptografia dos curadores serão combinadas e a contagem computada.<br />
-Depois de fazer isso, a contagem ficará visível para você, administrador, apenas.
+Depois de fazer isso, a contagem ficará visível para você, administrador, apenas.<br />
+Não se esqueça de notificar os eleitores por email.
 {% endif %}
 {% else %}
 <a href="{% url "election@trustees@view" election.uuid %}">curadores (para descriptografar)</a>
