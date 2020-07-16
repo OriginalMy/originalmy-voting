@@ -211,9 +211,9 @@ def election_new(request):
           election.generate_trustee(ELGAMAL_PARAMS)
           return HttpResponseRedirect(settings.SECURE_URL_HOST + reverse(url_names.election.ELECTION_VIEW, args=[election.uuid]))
         except IntegrityError:
-          error = "Uma eleição com o nome %s já existe" % election_params['short_name']
+          error = "Uma eleicao com o nome %s ja existe" % election_params['short_name']
       else:
-        error = "Não são permitidos caracteres especiais ou espaços no nome curto."
+        error = "Nao sao permitidos caracteres especiais ou espaços no nome curto."
     
   return render_template(request, "election_new", {'election_form': election_form, 'error': error})
   
