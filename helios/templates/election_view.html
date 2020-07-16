@@ -94,7 +94,7 @@ Depois de fazer isso, a eleição estará pronta para votação e será aberta a
 em {{election.voting_starts_at}}, de acordo com as configurações.
 {% else %}
 Depois que você fizer isso, a eleição será imediatamente aberta para votação.<br />
-Não se esqueça de notificar os eleitores por email (eleitores & cédulas > enviar email > instruções Extras > enviar).
+Não se esqueça de notificar os eleitores por email (eleitores & cédulas > enviar email > enviar).
 {% endif %}
 {% endif %}
 
@@ -106,7 +106,7 @@ O cálculo dos resultados está a caminho.<br />
 Recarregue esta página em alguns minutos.
 {% else %}
 <a href="{% url "election@compute-tally" election.uuid %}">computar resultados criptografados</a><br />
-Você já notificou os eleitores de que a eleição está aberta? (eleitores & cédulas > enviar email > instruções Extras > enviar)<br /><br />
+Você já notificou os eleitores de que a eleição está aberta? (eleitores & cédulas > enviar email > enviar)<br /><br />
 Os votos criptografados serão combinados em uma contagem criptografada. Uma vez feito isso,<br />
 os curadores deverão participar na descriptografia.
 {% endif %}
