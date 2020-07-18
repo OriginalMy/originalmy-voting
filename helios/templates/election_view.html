@@ -114,7 +114,7 @@ Não se esqueça de notificar os eleitores por email (eleitores & cédulas > env
 O cálculo dos resultados está a caminho.<br />
 Recarregue esta página em alguns minutos.
 {% else %}
-[<a href="{% url "election@compute-tally" election.uuid %}">Clique aqui para computar resultados criptografados</a>]<br />
+[<a href="{% url "election@compute-tally" election.uuid %}">Clique aqui para computar resultados criptografados</a>]<br /><br />
 Você já notificou os eleitores de que a eleição está aberta? (eleitores & cédulas > enviar email > enviar)<br /><br />
 Os votos criptografados serão combinados em uma contagem criptografada. Uma vez feito isso,<br />
 os curadores deverão participar na descriptografia.
@@ -122,7 +122,7 @@ os curadores deverão participar na descriptografia.
 {% else %}
 
 {% if election.result %}
-[<a href="{% url "election@release-result" election.uuid %}">Clique aqui para publicar os resultados</a>]<br />
+[<a href="{% url "election@release-result" election.uuid %}">Clique aqui para publicar os resultados</a>]<br /><br />
 O resultado exibido abaixo é visível apenas para você.<br />
 Depois de publicar o resultado, ele ficará visível para todos.<br />
 Não se esqueça de notificar os eleitores por email.
@@ -135,7 +135,7 @@ Clique aqui para computar resultados
 {% else %}
 Clique aqui para combinar descriptografia dos curadores e calcular resultados
 {% endif %}
-</a>]<br />
+</a>]<br /><br />
 {% if election.num_trustees == 1 %}
 O resultado será calculado e mostrado a você, administrador, apenas.<br />
 Não se esqueça de notificar os eleitores por email.
