@@ -16,8 +16,8 @@ class ElectionForm(forms.Form):
   election_type = forms.ChoiceField(label="Tipo", choices = Election.ELECTION_TYPES)
   use_voter_aliases = forms.BooleanField(required=False, label="Usar codinomes para eleitores", initial=False, help_text='Se selecionado, as identidades dos eleitores serao substituidas por codinomes, por exemplo "V12", no centro de rastreamento de votos')
   #use_advanced_audit_features = forms.BooleanField(required=False, initial=True, help_text='disable this only if you want a simple election with reduced security but a simpler user interface')
-  randomize_answer_order = forms.BooleanField(required=False, label="Randomizar sequencia de voto", initial=False, help_text='Se selecionado, as perguntas e respostas aparecerão em ordem aleatória para cada eleitor.')
-  private_p = forms.BooleanField(required=False, initial=False, label="Eleicao Privada?", help_text='Se selecionado, a sua eleição será privada e visível apenas para os eleitores registrados.')
+  randomize_answer_order = forms.BooleanField(required=False, label="Randomizar sequencia de voto", initial=False, help_text='Se selecionado, as opcoes aparecerao em ordem aleatoria para cada eleitor.')
+  private_p = forms.BooleanField(required=False, initial=False, label="Eleicao Privada?", help_text='Se selecionado, a sua eleicao sera privada e visivel apenas para os eleitores registrados.')
   help_email = forms.CharField(required=False, initial="", label="Email de contato", help_text='Email para que os eleitores possam contatar em caso de necessidade.')
   
   if settings.ALLOW_ELECTION_INFO_URL:
