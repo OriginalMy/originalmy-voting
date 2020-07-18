@@ -60,7 +60,7 @@ esta eleição {# { election.election_type } #} <u>não</u> está destacada na p
 
 {% if admin_p %}
 {% if election.frozen_p %}
-<div style="background: lightyellow; padding:5px; padding-left: 10px; margin-top: 15px; border: 1px solid #aaa; width: 720px;" class="round">
+<div style="background: lightgrey; padding:5px; padding-left: 10px; margin-top: 15px; border: 1px solid #aaa; width: 720px;" class="round">
 <a href="#" onclick="$('#badgebody').slideToggle(250);">Incorporar um badge de eleição</a>
 <div id="badgebody" style="display:none;">
 <br />
@@ -257,7 +257,7 @@ Qualquer pessoa pode votar nesta eleição.
 <br /><a href="{% url "election@extend" election.uuid %}">extend voting</a><br />
 {% endif %}
 
-<div style="background: lightyellow; padding:5px; padding-left: 10px; margin-top: 15px; border: 1px solid #aaa; width: 720px;" class="round">
+<div style="background: lightgrey; padding:5px; padding-left: 10px; margin-top: 15px; border: 1px solid #aaa; width: 720px;" class="round">
 <a href="#" onclick="$('#auditbody').slideToggle(250);">Informações de Auditoria</a>
 <div id="auditbody" style="display:none;">
 <br />URL da Eleição:<br />
