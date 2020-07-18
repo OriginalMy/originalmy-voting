@@ -1,10 +1,10 @@
 
 {#foreach $T.questions as question}
 <div id="q_view_{$T.question$index}">
-<h4>
+<h5>
 {#if $T.admin_p}[
 {#if $T.question$index > 0}<a href="javascript:question_move_up({$T.question$index});">^</a>]&nbsp;[{#/if}
-<a onclick="return confirm('Tem certeza que deseja remover esta pauta?');" href="javascript:question_remove({$T.question$index})">x</a>] [<a href="javascript:question_edit({$T.question$index})">editar</a>] {#/if}{$T.question$index + 1}. {$T.question.question} ({$T.question.choice_type}, selecionar entre {$T.question.min} e {#if $T.question.max != null}{$T.question.max}{#else}unlimited{#/if} opções, resultado tipo {$T.question.result_type}.)</h4>
+<a onclick="return confirm('Tem certeza que deseja remover esta pauta?');" href="javascript:question_remove({$T.question$index})">x</a>] [<a href="javascript:question_edit({$T.question$index})">editar</a>] {#/if}{$T.question$index + 1}. {$T.question.question} ({$T.question.choice_type}, selecionar entre {$T.question.min} e {#if $T.question.max != null}{$T.question.max}{#else}unlimited{#/if} opções, resultado tipo {$T.question.result_type}.)</h5>
 <ul>
 {#foreach $T.question.answers as answer}
 <li> {$T.answer}
@@ -14,7 +14,6 @@
 </li>
 {#/for}
 </ul>
-<h4><span style="font-size:0.7em;"></span>[<a href="{% url "election@view" election.uuid %}">voltar para eleição</a>]</span></h4>
 </div>
 <div id="q_edit_{$T.question$index}" style="display:none;">
 <form id="question_edit_{$T.question$index}_form" onsubmit="question_update({$T.question$index}, this); return false;" action="#">
@@ -76,6 +75,8 @@ Não há pautas e opções cadastradas
 {#/for}
 
 {#if $T.admin_p}
+<h5><span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">voltar para eleição</a>]</span></h5>
+<br />
 <h4>Adicione uma pauta:</h4>
 <form id="question_form" onsubmit="question_add(this); return false;" action="#">
 <p>
