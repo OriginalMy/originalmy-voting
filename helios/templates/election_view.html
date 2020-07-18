@@ -11,7 +11,16 @@
     <!-- </div> -->
 {% if admin_p %}
 {% if not election.frozen_at %}
-<br /><small><a class="small button" href="{% url "election@edit" election.uuid %}">editar</a></small>
+<br /><small><a class="small button" href="{% url "election@edit" election.uuid %}">editar</a>
+  {% if admin_p %}
+  {% if election.is_archived %}<a class="small button" href="{% url "election@archive" election_uuid=election.uuid %}?archive_p=0">desarquivar</a>{% else %}
+  <a class="small button"href="{% url "election@archive" election_uuid=election.uuid %}?archive_p=1">arquivar</a>{% endif %}
+  <a class="small button" onclick="return window.confirm('Ao copiar, você criará uma nova eleição com as configurações e pautas da eleição anterior.\n\nVocê tem certeza de que deseja copiar esta eleição?');" href="{% url "election@copy" election_uuid=election.uuid %}">copiar</a>
+  {% endif %}
+</small>
+<br />
+&nbsp;{% if election.is_archived %}[<a href="{% url "election@archive" election_uuid=election.uuid %}?archive_p=0">desarquivar</a>]{% else %}[<a  href="{% url "election@archive" election_uuid=election.uuid %}?archive_p=1">arquivar</a>]{% endif %}
+[<a onclick="return window.confirm('Ao copiar, você criará uma nova eleição com as configurações e pautas da eleição anterior.\n\nVocê tem certeza de que deseja copiar esta eleição?');" href="{% url "election@copy" election_uuid=election.uuid %}">copiar</a>]
 </h4>
 {% endif %}
 {% endif %}
@@ -21,9 +30,9 @@
 [arquivada]
 {% endif %}
 {% if admin_p %}
-<br />
+<!-- <br />
 &nbsp;{% if election.is_archived %}[<a href="{% url "election@archive" election_uuid=election.uuid %}?archive_p=0">desarquivar</a>]{% else %}[<a  href="{% url "election@archive" election_uuid=election.uuid %}?archive_p=1">arquivar</a>]{% endif %}
-[<a class="small button" onclick="return window.confirm('Ao copiar, você criará uma nova eleição com as configurações e pautas da eleição anterior.\n\nVocê tem certeza de que deseja copiar esta eleição?');" href="{% url "election@copy" election_uuid=election.uuid %}">copiar</a>]
+[<a onclick="return window.confirm('Ao copiar, você criará uma nova eleição com as configurações e pautas da eleição anterior.\n\nVocê tem certeza de que deseja copiar esta eleição?');" href="{% url "election@copy" election_uuid=election.uuid %}">copiar</a>] -->
 {% endif %}
 <br />
 {% if admin_p %}
