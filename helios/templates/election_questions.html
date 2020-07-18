@@ -2,9 +2,9 @@
 
 {% block title %}Pautas para {{election.name}}{% endblock %}
 {% block content %}
-  <h3 class="title">{{election.name}} &mdash; Pautas</h3>
-  <br /><small><a class="small button" href="{% url "election@view" election.uuid %}">voltar para a eleição</a></small>
-
+  <h3 class="title">{{election.name}} &mdash; Pautas
+  <small><a class="small button" href="{% url "election@view" election.uuid %}">voltar para a eleição</a></small>
+  </h3>
   <script language="javascript">
 {% if election.questions %}
   QUESTIONS = JSON.parse("{{questions_json|escapejs}}");
