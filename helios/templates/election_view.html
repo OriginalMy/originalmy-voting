@@ -3,11 +3,11 @@
 {% block content %}
 <div style="float: left; margin-right: 50px;">
   <h3 class="title">{{ election.name }}
-  <br />
+    <!-- <br clear="left" />
 
-  <!-- <div style="margin-bottom: 25px; line-height: 1.3;"> -->
-  {{election.description_bleached|safe}}
-  <!-- </div> -->
+    <div style="margin-bottom: 25px; line-height: 1.3;"> -->
+    {{election.description_bleached|safe}}
+    <!-- </div> -->
 {% if admin_p %}
 {% if not election.frozen_at %}
 <br />
@@ -46,6 +46,7 @@ esta eleição {# { election.election_type } #} <u>não</u> está destacada na p
 
 
 <br />
+<br clear="left" />
 
 {% if election.election_info_url %}
 <p style="font-size:1.5em;">[<a target="_blank" href="{{election.election_info_url}}" rel="noopener noreferrer">baixar declarações e biografias dos candidatos</a>]</p>
