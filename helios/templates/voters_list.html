@@ -92,13 +92,12 @@ Informações da lista de eleitores enviada:
 {% if voters %}
 
 <p>
-
--- Total de eleitores: {{total_voters}}
+-- Total de eleitores: {{total_voters}}<br />
 {% if election.num_cast_votes %}
--- Total de votos: {{election.num_cast_votes}} {% ifequal election.num_cast_votes 1 %}voto registrado{% else %}votos registrados{% endifequal %}
+-- Total de votos: {{election.num_cast_votes}} {% ifequal election.num_cast_votes 1 %}voto registrado{% else %}votos registrados{% endifequal %}<br />
 {% else %}
--- Total de votos: 0 (zero)
-<b>Esta eleição não possui votos registrados.</b>
+-- Total de votos: 0 (zero)<br />
+<b>Esta eleição não possui votos registrados.</b><br />
 {% endif %}
 </p>
 
