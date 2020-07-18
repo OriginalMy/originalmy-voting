@@ -2,18 +2,20 @@
 {% block title %}{{election.name}}{% endblock %}
 {% block content %}
 <div style="float: left; margin-right: 50px;">
-  <h3 class="title">{{ election.name }}
+  <h3 class="title">{{ election.name }}</h3>
+  <h4>{{election.description_bleached|safe}}</h4>
     <!-- <br clear="left" />
 
     <div style="margin-bottom: 25px; line-height: 1.3;"> -->
-    {{election.description_bleached|safe}}
+    
     <!-- </div> -->
 {% if admin_p %}
 {% if not election.frozen_at %}
+
 <br />
 <br /><small><a class="small button" href="{% url "election@edit" election.uuid %}">editar</a></small>
 {% endif %}
-{% endif %}</h3>
+{% endif %}
 <p style="padding-top:0px; margin-top:0px">
 <em>Eleição {% if election.private_p %}privada{%else%}pública{% endif %}</em>{# { election.election_type } #}{% if settings.SHOW_USER_INFO %} criada por <u><b>{{election.admin.display_html_small|safe}}</b></u>{% endif %}
 {% if election.is_archived %}
