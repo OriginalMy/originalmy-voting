@@ -92,6 +92,13 @@ Informações da lista de eleitores enviada:
 {% if voters %}
 
 <p>
+{% if election.voting_has_stopped %}
+Status da Eleição: Eleição encerrada.<br /><br />
+{% else %}
+{% if election.voting_has_started %}
+Status da Eleição: Eleição aberta.<br /><br />
+{% endif %}
+{% endif %}
 -- Total de eleitores: {{total_voters}}<br />
 {% if election.num_cast_votes %}
 -- Total de votos: {{election.num_cast_votes}} {% ifequal election.num_cast_votes 1 %}voto registrado{% else %}votos registrados{% endifequal %}<br />
