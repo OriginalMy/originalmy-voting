@@ -2,7 +2,7 @@
 {% block title %}Confirmação de Voto{% endblock %}
 
 {% block content %}
-<h1>{{election.name}} &mdash; Voto registrado com sucesso!</h1>
+<h3>Voto registrado com sucesso em {{election.name}}!</h3>
 
 <p>
     Parabéns, seu voto foi <b><u>registrado com sucesso</u></b>!
@@ -19,8 +19,8 @@
 </iframe>
 {% endif %}
 
-<p style="font-size: 1.4em;">
-[ <a href="{% url "election@view" election.uuid %}">voltar para informações da eleição</a> ]
+<p>
+<small><a class="small button" href="{% url "election@view" election.uuid %}">voltar para página da eleição</a></small>
 </p>
 
 {% endblock %}
