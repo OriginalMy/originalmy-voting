@@ -18,9 +18,6 @@
   <a class="small button" onclick="return window.confirm('Ao copiar, você criará uma nova eleição com as configurações e pautas da eleição anterior.\n\nVocê tem certeza de que deseja copiar esta eleição?');" href="{% url "election@copy" election_uuid=election.uuid %}">copiar</a>
   {% endif %}
 </small>
-<br />
-&nbsp;{% if election.is_archived %}[<a href="{% url "election@archive" election_uuid=election.uuid %}?archive_p=0">desarquivar</a>]{% else %}[<a  href="{% url "election@archive" election_uuid=election.uuid %}?archive_p=1">arquivar</a>]{% endif %}
-[<a onclick="return window.confirm('Ao copiar, você criará uma nova eleição com as configurações e pautas da eleição anterior.\n\nVocê tem certeza de que deseja copiar esta eleição?');" href="{% url "election@copy" election_uuid=election.uuid %}">copiar</a>]
 </h4>
 {% endif %}
 {% endif %}
