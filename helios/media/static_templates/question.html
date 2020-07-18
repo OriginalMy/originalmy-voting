@@ -14,7 +14,7 @@
 </li>
 {#/for}
 </ul>
-[<a href="{% url "election@view" election.uuid %}">voltar para eleição</a>]</span></h3>
+<h4><span style="font-size:0.7em;"></span>[<a href="{% url "election@view" election.uuid %}">voltar para eleição</a>]</span></h4>
 </div>
 <div id="q_edit_{$T.question$index}" style="display:none;">
 <form id="question_edit_{$T.question$index}_form" onsubmit="question_update({$T.question$index}, this); return false;" action="#">
