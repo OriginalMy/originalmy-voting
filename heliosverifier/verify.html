@@ -208,9 +208,9 @@ function load_election_and_ballots(election_url) {
                                    $(trustees).each(function(t_num, trustee) {
                                        if (trustee.public_key.verifyDecryptionFactor(a, trustee.decryption_factors[q_num][a_num],
                                                        trustee.decryption_proofs[q_num][a_num], ElGamal.fiatshamir_challenge_generator)) {
-                                           result_append("-- Curador " + trustee.email + ": fator de descriptografia verificada");
+                                           result_append("-- Curador " + trustee.uuid + ": fator de descriptografia verificada");
                                        } else {
-                                           result_append("==== ERRO com o curador " + trustee.email + ": fator de descriptografia não verificada");
+                                           result_append("==== ERRO com o curador " + trustee.uuid + ": fator de descriptografia não verificada");
                                            check= false;
                                            overall_result = false;
                                        }
@@ -232,7 +232,7 @@ function load_election_and_ballots(election_url) {
 
                            });
 
-                           result_append("<h3>RESULTADO FINAL</h3>");
+                           result_append("<br /><h3>RESULTADO FINAL DA AUDITORIA</h3>");
 
                            if (overall_result) {
                              result_append("ELEIÇÃO VERIFICADA COM SUCESSO!");
