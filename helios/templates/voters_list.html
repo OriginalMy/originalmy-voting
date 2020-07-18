@@ -18,7 +18,7 @@
 
 {% if admin_p and not election.frozen_at %}
 {% if election.private_p %}
-<em>Sua eleição é marcada como privada, o que significa que você não pode abrir o registro mais amplamente</em>.<br />
+<em>Sua eleição é marcada como privada, o que significa que você preciso enviar a lista de eleitores</em>.<br />
 {% else %}
 Você pode alterar esta configuração:
 <form method="post" action="{% url "election@voters@eligibility" election.uuid %}">
@@ -40,7 +40,7 @@ Você pode alterar esta configuração:
 {% endif %}
 
 {% if email_voters and election.frozen_at and admin_p %}
-<p><a class="button" href="{% url "election@voters@email" election.uuid %}">enviar email para eleitores</a></p>
+<p><a class="small button" href="{% url "election@voters@email" election.uuid %}">enviar email para eleitores</a></p>
 {% endif %}
 
 {% if election.num_voters > 20 %}
@@ -57,7 +57,7 @@ Você pode alterar esta configuração:
 <!-- Add a Voter: WORK HERE-->
 {% if upload_p and not election.openreg %}
 <p>
-<a class="button" href="{% url "election@voters@upload" election_uuid=election.uuid %}">upload de eleitores em massa</a>
+<a class="small button" href="{% url "election@voters@upload" election_uuid=election.uuid %}">upload de eleitores em massa</a>
 </p>
 
 {% if voter_files %}
