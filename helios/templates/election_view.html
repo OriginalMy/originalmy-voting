@@ -22,8 +22,8 @@
 {% endif %}
 {% if admin_p %}
 <br />
-&nbsp;{% if election.is_archived %}<a class="small button" href="{% url "election@archive" election_uuid=election.uuid %}?archive_p=0">desarquivar</a>{% else %}<a class="small button" href="{% url "election@archive" election_uuid=election.uuid %}?archive_p=1">arquivar</a>{% endif %}
-<a class="small button" onclick="return window.confirm('Ao copiar, você criará uma nova eleição com as configurações e pautas da eleição anterior.\n\nVocê tem certeza de que deseja copiar esta eleição?');" href="{% url "election@copy" election_uuid=election.uuid %}">copiar</a>
+&nbsp;{% if election.is_archived %}[<a href="{% url "election@archive" election_uuid=election.uuid %}?archive_p=0">desarquivar</a>]{% else %}[<a  href="{% url "election@archive" election_uuid=election.uuid %}?archive_p=1">arquivar</a>]{% endif %}
+[<a class="small button" onclick="return window.confirm('Ao copiar, você criará uma nova eleição com as configurações e pautas da eleição anterior.\n\nVocê tem certeza de que deseja copiar esta eleição?');" href="{% url "election@copy" election_uuid=election.uuid %}">copiar</a>]
 {% endif %}
 <br />
 {% if admin_p %}
@@ -91,7 +91,7 @@ esta eleição {# { election.election_type } #} <u>não</u> está destacada na p
 {{issue.action}}{% if forloop.last %}{% else %}, e{% endif %}<br />
 {% endfor %}
 {% else %}
-<a href="{% url "election@freeze" election.uuid %}">congelar configurações e abrir a eleição.</a>
+<a href="{% url "election@freeze" election.uuid %}">-- Congelar configurações e abrir a eleição.</a>
 <br />
 {% if election.voting_starts_at %}
 Depois de fazer isso, a eleição estará pronta para votação e será aberta automaticamente<br />
