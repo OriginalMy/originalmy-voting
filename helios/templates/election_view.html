@@ -131,7 +131,7 @@ Não se esqueça de notificar os eleitores por email.
 {% if election.ready_for_decryption_combination %}
 [<a href="{% url "election@combine-decryptions" election.uuid %}">
 {% if election.num_trustees == 1 %}
-Clique aqui para computar resultados
+Clique aqui para apurar os resultados
 {% else %}
 Clique aqui para combinar descriptografia dos curadores e calcular resultados
 {% endif %}

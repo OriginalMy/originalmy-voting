@@ -1,29 +1,29 @@
 {% extends TEMPLATE_BASE %}
 
-{% block title %}Computar resultado criptografado para {{election.name}}{% endblock %}
+{% block title %}Apurar resultados para {{election.name}}{% endblock %}
 
 {% block content %}
-  <h2 class="title">Computar resultado para Eleição: {{election.name}}</h2>
+  <h3 class="title">Apurar resultados para Eleição: {{election.name}}</h3>
 
 <div id="instructions">
 {% if election.num_cast_votes %}
 <p>
-    Você ira computar os resultados criptografados para a eleição <b>{{election.name}}</b>.
+    Você ira apurar os resultados criptografados para a eleição <b>{{election.name}}</b>.
 </p>
 
 <p>
     Assim que executar esta ação, os eleitores não poderão mais enviar seus votos.
 </p>
 
-<form method="post" action="" onsubmit="alert('ok, cálculo de resultados já iniciado')" class="pretty">
+<form method="post" action="" onsubmit="alert('ok, apuração de resultados já iniciada')" class="pretty">
 <input type="hidden" name="csrf_token" value="{{csrf_token}}" />
     
-<input class="button" type="submit" value="computar resultados criptografados!" />
+<input class="button" type="submit" value="encerrar a eleição e iniciar apuração" />
 <button onclick="document.location='{% url "election@view" election.uuid %}'; return false;">cancelar</button>
 </form>
 {% else %}
 <p>
-Nenhum voto efetuado nesta eleição. Pelo menos um voto precisa ser feito para que você possa computar os resultados.<br /><br />
+Nenhum voto efetuado nesta eleição. Pelo menos um voto precisa ser feito para que você possa apurar os resultados.<br /><br />
 <a href="{% url "election@view" election.uuid %}">voltar para a eleição</a>
 </p>
 {% endif %}

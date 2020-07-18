@@ -1,16 +1,16 @@
 {% extends TEMPLATE_BASE %}
 
-{% block title %}Computar resultados &mdash; {{election.name}}{% endblock %}
+{% block title %}Apurar resultados &mdash; {{election.name}}{% endblock %}
 {% block content %}
-  <h2 class="title">{{election.name}} &mdash; Computar resultados <span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">cancelar</a>]</span></h2>
+  <h2 class="title">{{election.name}} &mdash; Apurar resultados <span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">cancelar</a>]</span></h2>
 
   <p>
-    Você irá computar os resultados para esta eleição. Somente você verá os resultados.
+    Você irá apurar os resultados para esta eleição. Somente você verá os resultados.
   </p>
 
   <form method="POST" action="">
     <input type="hidden" name="csrf_token" value="{{csrf_token}}" />
-    <input type="submit" class="button" value="compute os resultados!" />
+    <input type="submit" class="button" value="apure os resultados!" />
   </form>
 
 {% endblock %}
