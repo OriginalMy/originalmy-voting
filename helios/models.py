@@ -361,27 +361,27 @@ class Election(HeliosModel):
     if self.questions == None or len(self.questions) == 0:
       issues.append(
         {'type': 'questions',
-         'action': "adicionar pautas para a votação"}
+         'action': "Adicione as pautas que serão votadas no link acima"}
         )
   
     trustees = Trustee.get_by_election(self)
     if len(trustees) == 0:
       issues.append({
           'type': 'trustees',
-          'action': "adicione pelo menos um curador"
+          'action': "Adicione pelo menos um curador"
           })
 
     for t in trustees:
       if t.public_key == None:
         issues.append({
             'type': 'trustee keypairs',
-            'action': 'o curador %s precisa gerar o par de chaves' % t.name
+            'action': 'O curador %s precisa gerar o par de chaves' % t.name
             })
 
     if self.voter_set.count() == 0 and not self.openreg:
       issues.append({
           "type" : "voters",
-          "action" : 'entre com a lista de eleitores (ou abra a eleição para o público)'
+          "action" : 'Caso a eleicao seja privada, faça o upload da lista com os eleitores em arquivo .csv no link acima.\nCaso seja publica, abra a eleição para o publico)'
           })
 
     return issues    
