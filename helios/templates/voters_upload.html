@@ -27,7 +27,7 @@ Por exemplo:
   </pre> 
 
   <p>
-    A maneira mais fácil de preparar esse arquivo é usar um programa de planilha como o Excel, e exportar para um arquivo em formato "CSV".
+    A maneira mais fácil de preparar esse arquivo é usar um programa de planilha como o Excel, <br />e exportar para um arquivo em formato "CSV".
   </p>
   {% if error %}
   <div style="color: red;">{{error}}</div>
@@ -36,9 +36,6 @@ Por exemplo:
     <div>
       <label for="voters_file">Envie um arquivo .csv</label>
       <input type="file" name="voters_file" id="voters_file" accept=".csv"/>  
-    </div>
-    <div class="preview">
-      <p>Nenhum arquivo selecionado</p>
     </div>
     <input type="submit" value="enviar" />
     
