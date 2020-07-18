@@ -269,7 +269,7 @@ Qualquer pessoa pode votar nesta eleição.
 {% endif %}
 
 <div style="background: lightgrey; padding:5px; padding-left: 10px; margin-top: 15px; border: 1px solid #aaa; width: 720px;" class="round">
-<a href="#" onclick="$('#auditbody').slideToggle(250);">Informações de Auditoria</a>
+<a href="#" onclick="$('#auditbody').slideToggle(250);">Centro de Informações de Auditoria</a>
 <div id="auditbody" style="display:none;">
 <br />URL da Eleição:<br />
 <tt style="font-size: 1.2em;"><a href="{{election.url}}">{{election.url}}</a></tt>
@@ -288,24 +288,24 @@ Qualquer pessoa pode votar nesta eleição.
 
 <p style="font-size: 1.3em;">
 <a href="{% url "election@voters@list-pretty" election.uuid %}">Centro de Rastreamento de Cédulas</a> &nbsp;| &nbsp;
-<a href="{% url "election@audited-ballots" election.uuid %}">Cédulas Auditadas</a>
+<a href="{% url "election@audited-ballots" election.uuid %}">Visualizar Cédulas Auditadas</a>
 </p>
 
 {% endif %}
 
 {% if not election.voting_has_started %}
 <p style="font-size: 1.2em;">
-  <a href="{{SECURE_URL_HOST}}/booth/vote.html?election_url={% url "election@home" election.uuid %}">pré-visualizar cabine de votação</a>
+  [<a href="{{SECURE_URL_HOST}}/booth/vote.html?election_url={% url "election@home" election.uuid %}">pré-visualizar cabine de votação</a>]
 </p>
 {% endif %}  
 
 {% if election.voting_has_stopped %}
 <p style="font-size: 1.2em;">
 {% if election.result %}
-verificar <a target="_blank" href="/verifier/verify.html?election_url={% url "election@home" election.uuid %}">resultados da eleição</a>.
+[<a target="_blank" href="/verifier/verify.html?election_url={% url "election@home" election.uuid %}">verificar resultados da eleição</a>]
 {% endif %}
 
-revisar <a href="{{vote_url}}">a cabine de votação</a>.
+[<a href="{{vote_url}}">revisar a cabine de votação</a>]
 </p>
 
 {% endif %}
