@@ -142,9 +142,9 @@ function load_election_and_ballots(election_url) {
                                 // keep track of tally
                                 tally[answer_num][choice_num] = choice.multiply(tally[answer_num][choice_num]);
 
-                                result_append("Questão #" + (answer_num+1) + ", Opção #" + (choice_num+1) + " -- " + pretty_result(result));
+                                result_append("Pauta #" + (answer_num+1) + ", Opção #" + (choice_num+1) + " -- " + pretty_result(result));
                             } else {
-                                result_append("Questão #" + (answer_num+1) + " TOTAL -- " + pretty_result(result));
+                                result_append("Pauta #" + (answer_num+1) + " TOTAL -- " + pretty_result(result));
                             }
                         });
 
@@ -195,7 +195,7 @@ function load_election_and_ballots(election_url) {
                            result_append("<h3>Contagem</h3>");
 
                            $(tally).each(function(q_num, q) {
-                               result_append("Questão #" + (q_num+1) + ": " + election.questions[q_num].short_name);
+                               result_append("Pauta #" + (q_num+1) + ": " + election.questions[q_num].short_name);
                                $(q).each(function(a_num, a) {
                                    var plaintext = new ElGamal.Plaintext(election.public_key.g.modPow(BigInt.fromInt(results[q_num][a_num]), election.public_key.p), election.public_key);
 

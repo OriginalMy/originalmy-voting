@@ -21,7 +21,7 @@
 <div style="padding: 10px; margin-bottom: 10px; background-color: #eee; border: 1px #ddd solid; max-width: 340px;">
 {#foreach $T.questions as question}
 
-<b>Questão #{$T.question$index + 1}: {$T.question.short_name}</b><br>
+<b>Pauta #{$T.question$index + 1}: {$T.question.short_name}</b><br>
 {#if $T.choices[$T.question$index].length == 0}
 <div style="margin-left: 15px;">&#x2610; <i>Nenhuma opção selecionada</i></div>
 {#/if}

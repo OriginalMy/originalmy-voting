@@ -172,7 +172,7 @@ Não se esqueça de notificar os eleitores por email.
 
 <h3 class="highlight-box">Resultado da Eleição</h3>
 {% for question in election.pretty_result %}
-<b><span style="font-size:0.8em;">Questão #{{forloop.counter}}</span><br />{{question.question}}</b><br />
+<b><span style="font-size:0.8em;">Pauta #{{forloop.counter}}</span><br />{{question.question}}</b><br />
 <table class="pretty" style="width: auto;">
 {% for answer in question.answers %}
 <tr><td style="padding-right:80px;{% if answer.winner %}font-weight:bold;{% endif %}">{{answer.answer}}</td><td align="right" style="{% if answer.winner %}font-weight:bold;{% endif %}">{{answer.count}}</td></tr>

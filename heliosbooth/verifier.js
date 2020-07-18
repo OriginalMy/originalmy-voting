@@ -30,7 +30,7 @@ function verify_ballot(election_raw_json, encrypted_vote_json, status_cb) {
 	      var answer_pretty_list = _(encrypted_vote.encrypted_answers[qnum].answer).map(function(aindex, anum) {
 		      return q.answers[aindex];
 		  });
-	      status_cb("Questão #" + (qnum+1) + " - " + q.short_name + " : " + answer_pretty_list.join(", "));
+	      status_cb("Pauta #" + (qnum+1) + " - " + q.short_name + " : " + answer_pretty_list.join(", "));
       });
       
       // verify the encryption
