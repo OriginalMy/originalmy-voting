@@ -61,7 +61,7 @@ Você pode alterar esta configuração:
 </p>
 
 {% if voter_files %}
-Antes do Envio em Massa:
+Informações da lista de eleitores enviada:
 <ul>
 {% for vf in voter_files %}
 <li>
@@ -92,13 +92,14 @@ Antes do Envio em Massa:
 {% if voters %}
 
 <p>
-<b>
+
+-- Total de eleitores: {{total_voters}}
 {% if election.num_cast_votes %}
-{{election.num_cast_votes}} votos enviado{% ifequal election.num_cast_votes 1 %}{% else %}s{% endifequal %}
+-- Total de votos: {{election.num_cast_votes}} {% ifequal election.num_cast_votes 1 %}voto registrado{% else %}votos registrados{% endifequal %}
 {% else %}
-nenhum voto registrado ainda
+-- Total de votos: 0 (zero)
+<b>Esta eleição não possui votos registrados.</b>
 {% endif %}
-</b>
 </p>
 
 {% if voters_page.has_previous %}
