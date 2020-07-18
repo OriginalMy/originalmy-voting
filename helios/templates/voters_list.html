@@ -103,16 +103,8 @@ Status da Eleição: Eleição aberta.<br />
 {% if election.num_cast_votes %}
 -- Total de votos: {{election.num_cast_votes}} {% ifequal election.num_cast_votes 1 %}voto registrado{% else %}votos registrados{% endifequal %}<br />
 {% else %}
-{% if not election.pretty_result %}
 -- Total de votos: 0 (zero)<br />
-<b>Esta eleição não possui votos registrados.</b><br />
-<b><span style="font-size:0.8em;">Pauta #{{forloop.counter}}</span><br />{{question.question}}</b><br />
-<table class="pretty" style="width: auto;">
-{% for answer in question.answers %}
-<tr><td style="padding-right:80px;{% if answer.winner %}font-weight:bold;{% endif %}">{{answer.answer}}</td><td align="right" style="{% if answer.winner %}font-weight:bold;{% endif %}">{{answer.count}}</td></tr>
-{% endfor %}
-</table>
-{% endfor %}
+<b>Esta eleição não possui votos registrados.</br><br />
 {% endif %}
 </p>
 
