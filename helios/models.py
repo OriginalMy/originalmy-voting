@@ -361,14 +361,14 @@ class Election(HeliosModel):
     if self.questions == None or len(self.questions) == 0:
       issues.append(
         {'type': 'questions',
-         'action': "-- Adicione as pautas que serão votadas no link acima"}
+         'action': "-- No menu [ pautas ] acima, adicione as pautas que serão votadas"}
         )
   
     trustees = Trustee.get_by_election(self)
     if len(trustees) == 0:
       issues.append({
           'type': 'trustees',
-          'action': "-- Adicione pelo menos um curador"
+          'action': "-- No menu [ curadores ] acima, adicione pelo menos um curador"
           })
 
     for t in trustees:
@@ -381,7 +381,7 @@ class Election(HeliosModel):
     if self.voter_set.count() == 0 and not self.openreg:
       issues.append({
           "type" : "voters",
-          "action" : '-- Caso a eleicao seja privada, faça o upload da lista com os eleitores em arquivo .csv no link acima.<br />Caso seja publica, abra a eleição para o publico)'
+          "action" : '-- No menu [ eleitores ] acima, faça o upload do arquivo .csv com a lista dos eleitores, caso a eleição seja privada.'
           })
 
     return issues    
