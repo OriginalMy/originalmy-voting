@@ -1,8 +1,10 @@
 {% extends TEMPLATE_BASE %}
 
 {% block content %}
-  <h2 class="title">{{election.name}} &mdash; Gerenciar Eleitores <span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">voltar para eleição</a>]</span></h2>
-
+  <h3 class="title">{{election.name}} &mdash; Gerenciar Eleitores 
+    <br />
+    <small><a class="small button" href="{% url "election@view" election.uuid %}">voltar para eleição</a></small>
+  </h3>
 <form method="get" action="{% url "helios.views.voters_search" election.uuid %}"><b>pesquisar</b>: <input type="text" name="q" /> <input type="submit" value="pesquisar" /></form>
 
 {% if upload_p %}

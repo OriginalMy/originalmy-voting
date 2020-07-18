@@ -4,7 +4,7 @@
 {% block content %}
   <h3 class="title">{{election.name}} &mdash; Pautas
     <br />
-    <small><a class="small button" href="{% url "election@view" election.uuid %}">voltar para a eleição</a></small>
+    <small><a class="small button" href="{% url "election@view" election.uuid %}">finalizar pautas</a></small>
   </h3>
   <script language="javascript">
 {% if election.questions %}

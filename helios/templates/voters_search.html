@@ -1,7 +1,10 @@
 {% extends TEMPLATE_BASE %}
 
 {% block content %}
-  <h2 class="title">{{election.name}} &mdash; Pesquisar Eleitores por '{{search_term}}' <span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">voltar para eleição</a>]</span></h2>
+  <h3 class="title">{{election.name}} &mdash; Pesquisar Eleitores por '{{search_term}}' 
+    <br />
+    <small><a class="small button" href="{% url "election@view" election.uuid %}">voltar para eleição</a></small>
+  </h3>
 
 {% if voter %}
 Eleitor Encontrado: {{voter.name}} ({{voter.voter_id}})<br /><br />
