@@ -59,7 +59,7 @@ Mais de <b>2,000,000 de votos</b> já foram feitos utilizando este protocolo.
 <!--<div class="row right">{{user.display_html_big|safe}}</div>-->
 {% if create_p %}
 <a class="small button" href="{% url "elections@new" %}">Criar eleição</a>
-<h5 class="subheader">Administração</h5>
+<h5 class="subheader">Eleições que administrei</h5>
 {% if elections_administered %}
 <ul>
 {% for election in elections_administered %}
@@ -75,7 +75,7 @@ Mais de <b>2,000,000 de votos</b> já foram feitos utilizando este protocolo.
 <div class="row"></div>
 {% endif %}
 
-<h5 class="subheader">Votos recentes</h5>
+<h5 class="subheader">Eleições que votei</h5>
 {% if elections_voted %}
 <ul>
 {% for election in elections_voted %}
@@ -86,7 +86,7 @@ Mais de <b>2,000,000 de votos</b> já foram feitos utilizando este protocolo.
 <em>Nenhum registro</em>
 {% endif %}
 <div class="row right"><a class="tiny button" href="{% url "elections@voted" %}">ver tudo</a></div>
-<div class="row"></div>
+<div class="row"><a class="small button" href="{% url "elections@new" %}">Criar eleição</a></div>
 {% else %}
 {% if settings.SHOW_LOGIN_OPTIONS %}
 <h5>Faça login para começar a votar</h5>
