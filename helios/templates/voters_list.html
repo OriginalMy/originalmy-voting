@@ -57,7 +57,7 @@ Você pode alterar esta configuração:
 <!-- Add a Voter: WORK HERE-->
 {% if upload_p and not election.openreg %}
 <p>
-<a class="small button" href="{% url "election@voters@upload" election_uuid=election.uuid %}">upload de eleitores em massa</a>
+<a class="small button" href="{% url "election@voters@upload" election_uuid=election.uuid %}">enviar lista de eleitores</a>
 </p>
 
 {% if voter_files %}
@@ -72,7 +72,7 @@ Informações da lista de eleitores enviada:
 {% endif %}
  bytes, em {{vf.uploaded_at}}:
 {% if vf.processing_finished_at %}
-<em>processamento finalizado: {{vf.num_voters}} eleitores carregados</em>
+<em>arquivo processado: {{vf.num_voters}} eleitores carregados</em>
 {% else %}
 
 {% if vf.processing_started_at %}
