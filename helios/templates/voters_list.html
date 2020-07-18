@@ -67,7 +67,7 @@ Antes do Envio em Massa:
 {% else %}
 {{vf.voter_file_content|length}}
 {% endif %}
- bytes, at {{vf.uploaded_at}}:
+ bytes, em {{vf.uploaded_at}}:
 {% if vf.processing_finished_at %}
 <em>processamento finalizado: {{vf.num_voters}} eleitores carregados</em>
 {% else %}

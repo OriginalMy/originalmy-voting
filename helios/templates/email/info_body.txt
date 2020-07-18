@@ -5,4 +5,4 @@ Caro(a) {{voter.name}},
 Link para eleição: {{election_vote_url}}
 
 --
-OmyVote
+OMyVote

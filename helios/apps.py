@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 class HeliosConfig(AppConfig):
     name = 'helios'
-    verbose_name = "OmyVote"
+    verbose_name = "OMyVote"

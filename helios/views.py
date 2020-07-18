@@ -448,7 +448,7 @@ Acesse agora seu dashboard de curador em
   %s
   
 --
-OmyVote
+OMyVote
 """ % (election.name, url)
 
   utils.send_email(settings.SERVER_EMAIL, ["%s <%s>" % (trustee.name, trustee.email)], 'Voce foi cadastrado como curador para %s' % election.name, body)
@@ -893,7 +893,7 @@ def voter_delete(request, election, voter_uuid):
 Seu voto foi removido da eleicao "%s".
   
 --
-OmyVote
+OMyVote
 """ % (election.name)
       voter.user.send_message(subject, body)
 

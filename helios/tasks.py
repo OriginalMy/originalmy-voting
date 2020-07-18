@@ -99,7 +99,7 @@ def election_compute_tally(election_id):
 A contagem criptografada para a eleicao %s foi computada.
 
 --
-OmyVote
+OMyVote
 """ % election.name)
 
     if election.has_helios_trustee():
@@ -111,13 +111,13 @@ def tally_helios_decrypt(election_id):
     election = Election.objects.get(id=election_id)
     election.helios_trustee_decrypt()
     election_notify_admin.delay(election_id=election_id,
-                                subject='OmyVote Decrypt',
+                                subject='OMyVote Decrypt',
                                 body="""
-OmyVote descriptografou sua parte da contagem
+OMyVote descriptografou sua parte da contagem
 para a eleicao %s.
 
 --
-OmyVote
+OMyVote
 """ % election.name)
 
 
@@ -134,7 +134,7 @@ ja foi processado.
 %s eleitores foram adicionados.
 
 --
-OmyVote
+OMyVote
 """ % (voter_file.election.name, voter_file.num_voters))
 
 

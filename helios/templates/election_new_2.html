@@ -7,7 +7,7 @@ var SECRET_KEY;
 
 function before_create() {
 {% ifequal election_type "one" %}
-    return confirm('Você certificou-se de copiar a chave privada para um local seguro?\n\nDepois de clicar em OK, o OmyVote não poderá recuperar a chave secreta sem sua ajuda!');
+    return confirm('Você certificou-se de copiar a chave privada para um local seguro?\n\nDepois de clicar em OK, o OMyVote não poderá recuperar a chave secreta sem sua ajuda!');
 {% else %}
     return true;
 {% endifequal %}
@@ -48,7 +48,7 @@ $(document).ready(function() {
 
   <h2 class="title">Criar nova eleição: {{name}}</h2>
 {% ifequal election_type "helios" %}
-  <b>Uma eleição gerenciada por OmyVote</b>.
+  <b>Uma eleição gerenciada por OMyVote</b>.
 {% else %}
 {% ifequal election_type "one" %}
   <b>Uma eleição gerenciada por você, único administrador</b>.

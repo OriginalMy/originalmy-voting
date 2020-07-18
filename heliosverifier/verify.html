@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8" /> 
-  <title>OmyVote - Sistema de Verificação de Eleição</title>
+  <title>OMyVote - Sistema de Verificação de Eleição</title>
   <link rel="stylesheet" type="text/css" href="css/booth.css" />
   <link rel="stylesheet" type="text/css" href="css/forms.css" />
   <script language="javascript" src="js/jscrypto/jsbn.js"></script>
@@ -106,7 +106,7 @@ function load_election_and_ballots(election_url) {
 
             $(election.questions).each(function(qnum, q) {
                 if (q.tally_type != "homomorphic") {
-                  result_append("PROBLEMA: ela eleição não utiliza criptografia homomórfica diretamente. Como resultado, o OmyVote não poderá verificá-la.");
+                  result_append("PROBLEMA: ela eleição não utiliza criptografia homomórfica diretamente. Como resultado, o OMyVote não poderá verificá-la.");
                   return;
                 }
 
@@ -263,7 +263,7 @@ $(document).ready(function() {
 <body>
 <div id="wrapper">
 <div id="banner">
-    OmyVote - Sistema de Verificação de Eleição
+    OMyVote - Sistema de Verificação de Eleição
 </div>
 <div id="content">
 
