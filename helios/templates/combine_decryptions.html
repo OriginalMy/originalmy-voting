@@ -2,7 +2,7 @@
 
 {% block title %}Descriptografar resultados &mdash; {{election.name}}{% endblock %}
 {% block content %}
-  <h2 class="title">{{election.name}} &mdash; Descriptografar resultados <span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">cancelar</a>]</span></h2>
+  <h2 class="title">{{election.name}} &mdash; Descriptografar resultados
 
   <p>
     Você irá descriptografar os resultados para esta eleição agora. Somente você verá os resultados.
@@ -11,6 +11,7 @@
   <form method="POST" action="">
     <input type="hidden" name="csrf_token" value="{{csrf_token}}" />
     <input type="submit" class="button" value="apure os resultados!" />
+    <button onclick="document.location='{% url "election@view" election.uuid %}'; return false;">cancelar</button>
   </form>
 
 {% endblock %}
