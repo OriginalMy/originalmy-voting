@@ -300,10 +300,10 @@ Qualquer pessoa pode votar nesta eleição.
 {% if election.voting_has_stopped %}
 <p style="font-size: 1.2em;">
 {% if election.result %}
-<a class="small button" target="_blank" href="/verifier/verify.html?election_url={% url "election@home" election.uuid %}">verificar resultados da eleição</a>
+<a class="small button" target="_blank" href="/verifier/verify.html?election_url={% url "election@home" election.uuid %}">verificar resultado da eleição</a>
 {% endif %}
 
-[<a href="{{vote_url}}">revisar a cabine de votação</a>]
+<a class="small button" href="{{vote_url}}">revisar a cabine de votação</a>
 </p>
 
 {% endif %}
