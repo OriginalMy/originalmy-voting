@@ -285,22 +285,22 @@ Qualquer pessoa pode votar nesta eleição.
 {% endif %}
 
 <p style="font-size: 1.3em;">
-<a href="{% url "election@voters@list-pretty" election.uuid %}">Centro de Rastreamento de Cédulas</a> &nbsp;| &nbsp;
-<a href="{% url "election@audited-ballots" election.uuid %}">Visualizar Cédulas Auditadas</a>
+[<a href="{% url "election@voters@list-pretty" election.uuid %}">Centro de Rastreamento de Cédulas</a>] &nbsp;| &nbsp;
+[<a href="{% url "election@audited-ballots" election.uuid %}">Visualizar Cédulas Auditadas</a>]
 </p>
 
 {% endif %}
 
 {% if not election.voting_has_started %}
 <p style="font-size: 1.2em;">
-  [<a href="{{SECURE_URL_HOST}}/booth/vote.html?election_url={% url "election@home" election.uuid %}">pré-visualizar cabine de votação</a>]
+  <a class="small button" href="{{SECURE_URL_HOST}}/booth/vote.html?election_url={% url "election@home" election.uuid %}">pré-visualizar cabine de votação</a>
 </p>
 {% endif %}  
 
 {% if election.voting_has_stopped %}
 <p style="font-size: 1.2em;">
 {% if election.result %}
-[<a target="_blank" href="/verifier/verify.html?election_url={% url "election@home" election.uuid %}">verificar resultados da eleição</a>]
+<a class="small button" target="_blank" href="/verifier/verify.html?election_url={% url "election@home" election.uuid %}">verificar resultados da eleição</a>
 {% endif %}
 
 [<a href="{{vote_url}}">revisar a cabine de votação</a>]
