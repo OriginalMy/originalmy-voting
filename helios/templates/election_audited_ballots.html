@@ -3,7 +3,10 @@
 {% block title %}Cédulas auditadas para {{election.name}}{% endblock %}
 
 {% block content %}
-  <h2 class="title">{{election.name}} &mdash; Cédulas Auditadas <span style="font-size:0.7em;">[<a href="{% url "election@view" election_uuid=election.uuid %}">voltar para a eleição</a>]</span></h2>
+  <h3 class="title">{{election.name}} &mdash; Cédulas Auditadas 
+    <br />
+    <small><a class="small button" href="{% url "election@view" election_uuid=election.uuid %}">voltar para eleição</a></small>
+  </h3>
 
 <p>
   Ao preparar uma cédula com OMyVote, você recebe imediatamente um rastreador de cédula inteligente. Antes de optar por votar, você tem a opção de solicitar ao OMyVote que "abra" essa cifra criptografada e verifique se o OMyVote criptografou sua cédula corretamente. Feito isso, você pode postar a cédula aberta aqui, na lista de cédulas auditadas, para que todos possam verificar (sua identidade não está incluída). Depois de fazer isso, é necessário criptografar novamente suas opções e obter um rastreador de cédula inteligente diferente. Isso ajuda a reduzir a chance de alguém coagir você a votar de forma diferente da sua verdadeira escolha.
