@@ -275,17 +275,17 @@ Qualquer pessoa pode votar nesta eleição.
 {% if election.frozen_at %}
 <br />
 <br />Fingerprint da Eleição:<br />
-<tt style="font-size: 1.3em; font-weight: bold;">{{election.hash}}</tt>
-
+<tt style="font-size: 1.2em; font-weight: bold;">{{election.hash}}</tt>
+<br />
 
 {% if votes %}
 <p>Seu Código Rastreador de Cédula:<br />
-<tt style="font-size:14pt; font-weight: bold;">{{votes.0.vote_hash}}</tt>
+<tt style="font-size:1.2em; font-weight: bold;">{{votes.0.vote_hash}}</tt>
 </p>
 {% endif %}
 
-<p style="font-size: 1.3em;">
-[<a href="{% url "election@voters@list-pretty" election.uuid %}">Centro de Rastreamento de Cédulas</a>] &nbsp;| &nbsp;
+<p style="font-size: 1em;"><br />
+[<a href="{% url "election@voters@list-pretty" election.uuid %}">Centro de Rastreamento de Cédulas</a>] &nbsp;|&nbsp;
 [<a href="{% url "election@audited-ballots" election.uuid %}">Visualizar Cédulas Auditadas</a>]
 </p>
 
