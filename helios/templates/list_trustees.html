@@ -3,7 +3,10 @@
 {% block title %}Trustees for {{election.name}}{% endblock %}
 
 {% block content %}
-  <h3 class="title">{{election.name}} &mdash; Curadores <span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">voltar para a eleição</a>]</span></h3>
+  <h3 class="title">{{election.name}} &mdash; Curadores 
+    <br />
+    <small><a class="small button" href="{% url "election@view" election_uuid %}">voltar para eleição</a></small>
+  </h3>
 
 <p>
     Curadores são os responsáveis por descriptografar o resultado da eleição.<br />
