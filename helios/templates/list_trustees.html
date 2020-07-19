@@ -10,25 +10,25 @@
 
 <p>
     Curadores são os responsáveis por descriptografar o resultado da eleição.<br />
-    Cada curador gera um par de chaves (pública e privada) e submete somente a chave pública para o OmyVote.<br />
+    Cada curador gera um par de chaves (pública e privada) e submete somente a chave pública para o OMyVote.<br />
     Quando chegar o momento de descriptografar o resultado, cada curador precisará fornecer a sua chave privada.
 </p>
 
 {% if not election.frozen_at %}
 
 <p>
-  OmyVote é o primeiro curador automaticamente e vai gerenciar as próprias chaves para descriptografar a o resultado da eleição automaticamente.<br />
-  Você pode adicionar mais curadores se você desejar, e pode inclusive remover o OmyVote da curadoria<br />
+  OMyVote é o primeiro curador automaticamente e vai gerenciar as próprias chaves para descriptografar a o resultado da eleição automaticamente.<br />
+  Você pode adicionar mais curadores se você desejar, e pode inclusive remover o OMyVote da curadoria<br />
   Contudo, nós recomendamos que você faça isso apenas se tiver um sólido entendimento do papel dos curadores.
 </p>
 
 {% if admin_p %}
 <p>
-    [ <a onclick="return(confirm('Adicionar seu próprio curador exige um pouco mais de trabalho para contabilizar a eleição.\nVocê precisará que os curadores adicionais gerem pares de chaves e protejam sua chave secreta.\n\nSe você não tem certeza do que isso significa, é altamente recomendável\nque você clique em cancelar e deixe que OmyVote faça a contagem da eleição para você.'));" href="{% url "election@trustees@new" election.uuid %}">adicionar um curador</a> ]
+    [ <a onclick="return(confirm('Adicionar seu próprio curador exige um pouco mais de trabalho para contabilizar a eleição.\nVocê precisará que os curadores adicionais gerem pares de chaves e protejam sua chave secreta.\n\nSe você não tem certeza do que isso significa, é altamente recomendável\nque você clique em cancelar e deixe que OMyVote faça a contagem da eleição para você.'));" href="{% url "election@trustees@new" election.uuid %}">adicionar um curador</a> ]
 </p>
 {% if not election.has_helios_trustee %}
 <p>
-    <a href="{% url "election@trustees@add-helios" election.uuid %}">Adicionar OmyVote como curador</a>
+    <a href="{% url "election@trustees@add-helios" election.uuid %}">Adicionar OMyVote como curador</a>
 </p>
 {% endif %}
 {% endif %}
@@ -42,11 +42,11 @@
 <h5>Curador #{{forloop.counter}}: {{t.name}} 
 {% if admin_p %}
 {% if t.secret_key %}
-{% if not election.frozen_at %}[<a onclick="return confirm('Você tem certeza que deseja remover OmyVote da curadoria?');" href="{% url "election@trustees@delete" election.uuid %}?uuid={{t.uuid}}">x</a>]{% endif %}
+{% if not election.frozen_at %}[<a onclick="return confirm('Você tem certeza que deseja remover OMyVote da curadoria?');" href="{% url "election@trustees@delete" election.uuid %}?uuid={{t.uuid}}">x</a>]{% endif %}
 {% else %}
 ({{t.email}})
 {% if not election.frozen_at %}[<a onclick="return confirm('Você tem certeza que deseja remover este curador?');" href="{% url "election@trustees@delete" election.uuid %}?uuid={{t.uuid}}">x</a>]{% endif %}
-<span style="font-size: 1em;"><a class="small button" onclick="return confirm('Você tem certeza que deseja enviar esta URL de administração para este curador?');" href="{% url "election@trustee@send-url" election.uuid t.uuid %}">nofiticar curador</a></span>
+<span style="font-size: 0.8em;"><a class="small button" onclick="return confirm('Você tem certeza que deseja enviar esta URL de administração para este curador?');" href="{% url "election@trustee@send-url" election.uuid t.uuid %}">nofiticar curador</a></span>
 {% endif %}
 {% endif %}
 </h5>
