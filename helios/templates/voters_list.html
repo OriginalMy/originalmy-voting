@@ -97,6 +97,10 @@ Status da Eleição: Eleição encerrada.<br />
 {% else %}
 {% if election.voting_has_started %}
 Status da Eleição: Eleição aberta.<br />
+{% else %}
+{% if not election.voting_has_started %}
+Status da Eleição: Eleição não iniciada.<br />
+{% endif %}
 {% endif %}
 {% endif %}
 -- Total de eleitores: {{total_voters}}<br />
