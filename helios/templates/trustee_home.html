@@ -9,7 +9,7 @@ Você enviou sua Chave Pública com sucesso.<br />
 O fingerprint da sua Chave Pública é: <b>{{trustee.public_key_hash}}</b>.<br />
 Você pode <a href="{% url "election@trustee@check-sk" election.uuid trustee.uuid %}">verificar se você possui a Chave Privada correta</a>.
 {% else %}
-<a href="{% url "election@trustee@key-generator" election.uuid trustee.uuid %}">configure as suas chaves</a>
+<a class="small button" href="{% url "election@trustee@key-generator" election.uuid trustee.uuid %}">configure as suas chaves</a>
 {% endif %}
 </p>
 
