@@ -103,7 +103,7 @@ Depois de fazer isso, a eleição estará pronta para votação e será aberta a
 em {{election.voting_starts_at}}, de acordo com as configurações.
 {% else %}
 Depois que você fizer isso, a eleição será imediatamente aberta para votação.<br />
-Não se esqueça de notificar os eleitores por email (eleitores & cédulas > enviar email > enviar).
+Não se esqueça de notificar os eleitores por email <a class="small button" href="{% url "election@voters@email" election.uuid %}">notificar eleitores</a>.
 {% endif %}
 {% endif %}
 
@@ -114,7 +114,7 @@ Não se esqueça de notificar os eleitores por email (eleitores & cédulas > env
 O cálculo dos resultados está a caminho.<br />
 Recarregue esta página em alguns minutos.
 {% else %}
-Você já notificou os eleitores de que a eleição está aberta? (eleitores & cédulas > enviar email > enviar)<br /><br />
+Você já notificou os eleitores de que a eleição está aberta? <a class="small button" href="{% url "election@voters@email" election.uuid %}">notificar eleitores</a><br /><br />
 [<a href="{% url "election@compute-tally" election.uuid %}">Clique aqui para encerrar a eleição</a>]<br /><br />
 Os votos serão combinados em uma contagem criptografada. Uma vez feito isso,<br />
 os curadores deverão habilitar a apuração dos votos.
