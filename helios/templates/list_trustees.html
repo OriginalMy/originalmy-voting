@@ -39,14 +39,14 @@
 
 {% else %}
 {% for t in trustees %}
-<h5> Curador #{{forloop.counter}}: {{t.name}} 
+<h5>Curador #{{forloop.counter}}: {{t.name}} 
 {% if admin_p %}
 {% if t.secret_key %}
 {% if not election.frozen_at %}[<a onclick="return confirm('Você tem certeza que deseja remover OmyVote da curadoria?');" href="{% url "election@trustees@delete" election.uuid %}?uuid={{t.uuid}}">x</a>]{% endif %}
 {% else %}
 ({{t.email}})
 {% if not election.frozen_at %}[<a onclick="return confirm('Você tem certeza que deseja remover este curador?');" href="{% url "election@trustees@delete" election.uuid %}?uuid={{t.uuid}}">x</a>]{% endif %}
-[<a onclick="return confirm('Você tem certeza que deseja enviar esta URL de administração para este curador?');" href="{% url "election@trustee@send-url" election.uuid t.uuid %}">enviar login</a>]
+<a class="small button" onclick="return confirm('Você tem certeza que deseja enviar esta URL de administração para este curador?');" href="{% url "election@trustee@send-url" election.uuid t.uuid %}">nofiticar curador</a>
 {% endif %}
 {% endif %}
 </h5>
@@ -55,15 +55,15 @@
 {% if t.public_key_hash %}
   Fingerprint da Chave Pública: <tt style="font-size:1.5em;">{{t.public_key_hash}}</tt>
 {% else %}
-Nenhuma chave pública enviada ainda.
+Status: Nenhuma chave pública enviada ainda.
 {% endif %}
 </p>
 
 {% if election.encrypted_tally %}
 {% if t.decryption_factors %}
-<b>contagem gravada para este curador.</b>
+Status: <b>contagem gravada para este curador.</b>
 {% else %}
-<em>aguardando este curador liberar a contagem</em>
+Status: <em>aguardando este curador liberar a contagem</em>
 {% endif %}
 {% endif %}
 </li>
