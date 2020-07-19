@@ -111,10 +111,15 @@ function show_pk() {
 
 <p id="generator">
 
-<span id="buttons"><button onclick="generate_keypair(); return false;" id="generate_button">Gerar Chaves para Eleição</button></span>
+<span id="buttons"><button class="small button" onclick="generate_keypair(); return false;" id="generate_button">Gerar Chaves para Eleição</button></span>
 
 <br />
-Se você já gerou o seu par de chaves, você pode <a href="javascript:show_key_reuse()">reutilizá-lo</a>.
+Se você já gerou o seu par de chaves, você pode <a href="javascript:show_key_reuse()">reutilizá-lo</a> clicando no botão abaixo.
+<br />
+<br />
+<a class="small button" href="javascript:show_key_reuse()">carregar chaves criadas previamente</a>
+
+
 </p>
 
 <div id="reuse">
