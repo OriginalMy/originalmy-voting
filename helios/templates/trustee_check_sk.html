@@ -35,22 +35,25 @@ function check_sk(sk_value) {
     
     $('#processing').hide();
 
-    var reset_link = "<br /><a href='javascript:reset();'>try again</a>";
+    var reset_link = "<br />[<a href='javascript:reset();'>tentar novamente</a>]";
     if (key_ok_p) {
       $('#result').html("chave privada correta!");
     } else {
-      $('#result').html("OH OH, sua chave privada não coincide." + reset_link);
+      $('#result').html("OH OH, sua Chave Privada não coincide." + reset_link);
     }
 }
 </script>
-  <h2 class="title">{{election.name}} &mdash; Curador {{trustee.name}} &mdash; Verificar Chave Privada <span style="font-size:0.7em;">[<a href="{% url "election@trustee" election_uuid=election.uuid trustee_uuid=trustee.uuid %}">voltar para a página de curadores</a>]</span></h2>
+  <h3 class="title">{{election.name}} &mdash; Curador {{trustee.name}} &mdash; Verificar Chave Privada 
+    <br />
+    <small><a class="small button" href="{% url "election@trustee" election_uuid=election.uuid trustee_uuid=trustee.uuid %}">voltar para a página de curadores</a></small>
+  </h3>
 
 <p>
 O fingerprint da sua chave pública é: <b>{{trustee.public_key_hash}}</b>
 </p>
 
 <div id="loading">
-carregando funções de criptografia...
+Status: Carregando funções de criptografia...
 </div>
 
 <div id="input" style="display:none;">
@@ -62,12 +65,12 @@ para verificar se você possui as credenciais corretas, cole aqui a sua chave pr
 <textarea name="secret_key" cols="60" rows ="5" wrap="soft" style="height: 25em;">
 </textarea>
 <br />
-<input type="submit" value="checar" />
+<input class="small button" type="submit" value="verificar" />
 </form>
 </div>
 
 <div id="processing" style="display:none;">
-checando sua chave secreta...
+Status: Verificando sua chave secreta...
 </div>
 
 <div id="result">

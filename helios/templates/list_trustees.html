@@ -46,7 +46,7 @@
 {% else %}
 ({{t.email}})
 {% if not election.frozen_at %}[<a onclick="return confirm('Você tem certeza que deseja remover este curador?');" href="{% url "election@trustees@delete" election.uuid %}?uuid={{t.uuid}}">x</a>]{% endif %}
-<span style="font-size: 0.8em;"><a class="small button" onclick="return confirm('Você tem certeza que deseja enviar esta URL de administração para este curador?');" href="{% url "election@trustee@send-url" election.uuid t.uuid %}">nofiticar curador</a></span>
+<span style="font-size: 0.6em;"><a class="small button" onclick="return confirm('Você tem certeza que deseja enviar esta URL de administração para este curador?');" href="{% url "election@trustee@send-url" election.uuid t.uuid %}">nofiticar curador</a></span>
 {% endif %}
 {% endif %}
 </h5>

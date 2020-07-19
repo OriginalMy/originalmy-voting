@@ -2,7 +2,7 @@
 
 {% block title %}Publicar resultado &mdash; {{election.name}}{% endblock %}
 {% block content %}
-  <h2 class="title">{{election.name}} &mdash; Publicar Resultado <span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">cancelar</a>]</span></h2>
+  <h3 class="title">{{election.name}} &mdash; Publicar Resultado <span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">cancelar</a>]</span></h3>
 
   <p>
     Você vai publicar o resultado para esta eleição

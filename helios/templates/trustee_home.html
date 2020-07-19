@@ -22,7 +22,7 @@ Você pode [<a href="{% url "election@trustee@check-sk" election.uuid trustee.uu
 Você executou e enviou os dados descriptografados com sucesso
 {% else %}
     A contagem criptografada para esta eleição está pronta.<br />
-    <a class="small button" href="{% url "election@trustee@decrypt-and-prove" election.uuid trustee.uuid %}">descriptografe o resultado com a sua chave privada</a>
+    <a class="small button" href="{% url "election@trustee@decrypt-and-prove" election.uuid trustee.uuid %}">descriptografar o resultado com a sua chave privada</a>
 {% endif %}
 {% else %}
 Depois que o registro for calculado, volte aqui para fornecer sua chave secreta para fins de descriptografia.<br />
