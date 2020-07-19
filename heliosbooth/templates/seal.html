@@ -23,7 +23,7 @@
 
 <b>Pauta #{$T.question$index + 1}: {$T.question.short_name}</b><br>
 {#if $T.choices[$T.question$index].length == 0}
-<div style="margin-left: 15px;">&#x2610; <i>Voto em Branco/Abstenção</i><br />Nenhuma opção selecionada</div>
+<div style="margin-left: 15px;">&#x2610; <i>Voto em Branco</i></div>
 {#/if}
 {#foreach $T.choices[$T.question$index] as choice}
 <div style="margin-left: 15px;">&#x2713; {$T.choice}</div>
