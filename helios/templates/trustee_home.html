@@ -1,13 +1,16 @@
 {% extends "helios/templates/cryptobase.html" %}
 
 {% block content %}
-  <h2 class="title">{{election.name}} &mdash; Home do Curador {{trustee.name}}</span></h2>
+  <h3 class="title">{{election.name}} &mdash; Home do Curador {{trustee.name}}</span>
+    <br />
+    <small><a class="small button" href="{% url "election@view" election.uuid %}">voltar para a eleição</a></small>
+  </h3>
 
 <p>
 {% if trustee.public_key_hash %}
 Você enviou sua Chave Pública com sucesso.<br />
 O fingerprint da sua Chave Pública é: <b>{{trustee.public_key_hash}}</b>.<br />
-Você pode <a href="{% url "election@trustee@check-sk" election.uuid trustee.uuid %}">verificar se você possui a Chave Privada correta</a>.
+Você pode [<a href="{% url "election@trustee@check-sk" election.uuid trustee.uuid %}">verificar se você possui a Chave Privada correta clicando aqui</a>].
 {% else %}
 <a class="small button" href="{% url "election@trustee@key-generator" election.uuid trustee.uuid %}">configure as suas chaves</a>
 {% endif %}
@@ -19,7 +22,7 @@ Você pode <a href="{% url "election@trustee@check-sk" election.uuid trustee.uui
 Você executou e enviou os dados descriptografados com sucesso
 {% else %}
     A contagem criptografada para esta eleição está pronta.<br />
-    <a href="{% url "election@trustee@decrypt-and-prove" election.uuid trustee.uuid %}">descriptografe com a sua chave privada</a>
+    <a class="small button" href="{% url "election@trustee@decrypt-and-prove" election.uuid trustee.uuid %}">descriptografe o resultado com a sua chave privada</a>
 {% endif %}
 {% else %}
 Depois que o registro for calculado, volte aqui para fornecer sua chave secreta para fins de descriptografia.<br />
