@@ -131,7 +131,10 @@ function reset() {
 }
 
 </script>
-  <h2 class="title">Curador {{trustee.name}} &mdash; Resultado descriptografado para {{election.name}}</h2>
+  <h3 class="title">Curador {{trustee.name}} &mdash; Descriptografar resultado para {{election.name}}
+    <br />
+    <small><a class="small button" href="{% url "election@trustee" election_uuid=election.uuid trustee_uuid=trustee.uuid %}">voltar para a página de curadores</a></small>
+  </h3>
 
 <p>
     <b>Curador:</b> <tt>{{trustee.email}}</tt><br />
@@ -191,11 +194,14 @@ function reset() {
           <textarea id="result_textarea" cols="60" rows="5" wrap="soft" style="height: 25em;"></textarea>
           <button onclick="submit_result();">Carregar fatores de descriptografia no servidor</button>
       </p>
-      <p><a href="javascript:reset()">redefinir e reiniciar o processo de descriptografia</a></p>
+      <p>[<a href="javascript:reset()">redefinir e reiniciar o processo de descriptografia</a>]</p>
   </div>
   
   <div id="done_div">
-      Finalizado! <a href="{% url "election@view" election.uuid %}">Voltar para a eleição</a>
+      Finalizado! 
+      <br />
+      <br />
+      <a class='small button' href="{% url "election@view" election.uuid %}">Voltar para a eleição</a>
   </div>
   
   <div id="error_div">

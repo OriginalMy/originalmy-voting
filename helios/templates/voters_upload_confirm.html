@@ -26,7 +26,7 @@ ESPERE:<br />
 </p>
 <br />
 
-<a href="{% url "election@voters@upload-cancel" election.uuid %}">esqueça, quero enviar outro arquivo</a>
+[<a href="{% url "election@voters@upload-cancel" election.uuid %}">cancelar, quero enviar outro arquivo</a>]
 </p>
 
 {% else %}
@@ -37,7 +37,7 @@ ESPERE:<br />
   <input type="submit" value="Sim, pode prosseguir" />
 </form>
 
-<a href="{% url "election@voters@upload-cancel" election.uuid %}">não, quero enviar outro arquivo</a>
+[<a href="{% url "election@voters@upload-cancel" election.uuid %}">cancelar, quero enviar outro arquivo</a>]
 
 {% endif %}
 
