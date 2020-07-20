@@ -113,7 +113,7 @@ Depois que você fizer isso, a eleição será imediatamente aberta para votaç�
 O cálculo dos resultados está a caminho.<br />
 Recarregue esta página em alguns minutos.
 {% else %}
-Você já notificou os eleitores de que a eleição está aberta? <span style="font-size: 1em;"><a class="small button" href="{% url "election@voters@email" election.uuid %}">notificar eleitores</a></span><br /><br />
+Você já notificou os eleitores de que a eleição está aberta? <span style="font-size: 0.6em;"><a class="small button" href="{% url "election@voters@email" election.uuid %}">notificar eleitores</a></span><br /><br />
 [<a href="{% url "election@compute-tally" election.uuid %}">Clique aqui para encerrar a eleição</a>]<br /><br />
 Os votos serão combinados em uma contagem criptografada. Uma vez feito isso,<br />
 os curadores deverão habilitar a apuração dos votos.
