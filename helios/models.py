@@ -1024,7 +1024,7 @@ class CastVote(HeliosModel):
 
   class Meta:
       app_label = 'helios'
-      unique_together = (('vote_hash', 'vote_tinyhash'))
+      unique_together = (('vote', 'vote_hash', 'vote_tinyhash'))
 
   @property
   def datatype(self):
