@@ -57,7 +57,7 @@ Você pode alterar esta configuração:
 <!-- Add a Voter: WORK HERE-->
 {% if upload_p and not election.openreg %}
 <p>
-<a class="small button" href="{% url "election@voters@upload" election_uuid=election.uuid %}">adicionar eleitores (enviar arquivo)</a>
+<a class="small button" href="{% url "election@voters@upload" election_uuid=election.uuid %}">adicionar eleitores (carregar arquivo)</a>
 </p>
 
 {% if voter_files %}
