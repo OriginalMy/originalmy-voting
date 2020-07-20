@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('vote', helios.datatypes.djangofield.LDObjectField()),
-                ('vote_hash', models.CharField(max_length=100, unique=True, null=True)),
+                ('vote_hash', models.CharField(max_length=100, unique=True)),
                 ('vote_tinyhash', models.CharField(max_length=50, unique=True, null=True)),
                 ('cast_at', models.DateTimeField(auto_now_add=True)),
                 ('quarantined_p', models.BooleanField(default=False)),

@@ -1004,7 +1004,7 @@ class CastVote(HeliosModel):
   vote = LDObjectField(type_hint = 'legacy/EncryptedVote')
 
   # cache the hash of the vote
-  vote_hash = models.CharField(max_length=100)
+  vote_hash = models.CharField(max_length=100, unique=True)
 
   # a tiny version of the hash to enable short URLs
   vote_tinyhash = models.CharField(max_length=50, null=True, unique=True)
@@ -1024,6 +1024,7 @@ class CastVote(HeliosModel):
 
   class Meta:
       app_label = 'helios'
+      unique_together = (('vote_hash', 'vote_tinyhash'))
 
   @property
   def datatype(self):
