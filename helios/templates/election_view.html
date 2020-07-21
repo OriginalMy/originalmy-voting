@@ -95,7 +95,7 @@ esta eleição {# { election.election_type } #} <u>não</u> está destacada na p
 {{issue.action}}{% if forloop.last %}{% else %}, e{% endif %}<br />
 {% endfor %}
 {% else %}
-[<a href="{% url "election@freeze" election.uuid %}">Clique aqui para congelar configurações e abrir a eleição</a>]
+<b>[<a href="{% url "election@freeze" election.uuid %}">Clique aqui para congelar configurações e abrir a eleição</a>]</b>
 <br /> 
 <br />
 {% if election.voting_starts_at %}
@@ -114,27 +114,27 @@ O cálculo dos resultados está a caminho.<br />
 Recarregue esta página em alguns minutos.
 {% else %}
 Você já notificou os eleitores de que a eleição está aberta? <span style="font-size: 0.6em;"><a class="small button" href="{% url "election@voters@email" election.uuid %}">notificar eleitores</a></span><br /><br />
-[<a href="{% url "election@compute-tally" election.uuid %}">Clique aqui para encerrar a eleição</a>]<br /><br />
+<b>[<a href="{% url "election@compute-tally" election.uuid %}">Clique aqui para encerrar a eleição</a>]</b><br /><br />
 Os votos serão combinados em uma contagem criptografada. Uma vez feito isso,<br />
 os curadores deverão habilitar a apuração dos votos.
 {% endif %}
 {% else %}
 
 {% if election.result %}
-[<a href="{% url "election@release-result" election.uuid %}">Clique aqui para publicar os resultados</a>]<br /><br />
+<b>[<a href="{% url "election@release-result" election.uuid %}">Clique aqui para publicar os resultados</a>]</b><br /><br />
 O resultado exibido abaixo é visível apenas para você.<br />
 Depois de publicar o resultado, ele ficará visível para todos.<br />
 Não se esqueça de notificar os eleitores por email.
 {% else %}
 
 {% if election.ready_for_decryption_combination %}
-[<a href="{% url "election@combine-decryptions" election.uuid %}">
+<b>[<a href="{% url "election@combine-decryptions" election.uuid %}">
 {% if election.num_trustees == 1 %}
 Clique aqui para descriptografar os resultados
 {% else %}
 Clique aqui para combinar descriptografia dos curadores e calcular resultados
 {% endif %}
-</a>]<br /><br />
+</a>]</b><br /><br />
 {% if election.num_trustees == 1 %}
 O resultado será calculado e mostrado a você, administrador, apenas.<br />
 Não se esqueça de notificar os eleitores por email.
@@ -144,7 +144,7 @@ Depois de fazer isso, a contagem ficará visível para você, administrador, ape
 Não se esqueça de notificar os eleitores por email.
 {% endif %}
 {% else %}
-<a href="{% url "election@trustees@view" election.uuid %}">Aguardando curadores (para descriptografar)</a>
+<b><a href="{% url "election@trustees@view" election.uuid %}">Aguardando curadores (para descriptografar)</a></b>
 {% endif %}
 
 {% endif %}

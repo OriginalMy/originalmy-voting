@@ -14,15 +14,15 @@
     Prepare um arquivo de texto (CSV) com valores separados por vírgula, com os campos:
 </p>
 <pre>
-   &lt;id_unico&gt;,&lt;email&gt,&lt;nome completo&gt;
+   &lt;cpf&gt;,&lt;email&gt,&lt;nome completo&gt;
 </pre>
 
 <p>
 Por exemplo:
   </p>
   <pre>
-      arnaldo,arnaldo@site.net,Arnaldo Faria
-      joaocarlos,joaocarlos@gmail.com,João Carlos
+    29138582402,roberta@hotmail.com,Roberta Sanches 
+    69362947521,marcelo.carvalho@ig.com.br,Marcelo Carvalho
       ...
   </pre> 
 
@@ -34,7 +34,7 @@ Por exemplo:
   {% endif %}
     <input type="hidden" name="csrf_token" value="{{csrf_token}}" />
     <div>
-      <label for="voters_file">Envie um arquivo .csv</label>
+      <label for="voters_file">Escolha um arquivo .csv e em seguida clique em Enviar</label>
       <input type="file" name="voters_file" id="voters_file" accept=".csv"/>  
     </div>
     <input type="submit" value="enviar" />

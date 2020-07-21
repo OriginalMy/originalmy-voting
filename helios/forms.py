@@ -10,8 +10,8 @@ from django.conf import settings
 
 
 class ElectionForm(forms.Form):
-  short_name = forms.SlugField(max_length=40, label="Nome curto", help_text='sem espacos, fara parte do URL da sua eleicao, por exemplo convencao-2020')
-  name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'size':60}), label="Nome", help_text='o nome bonito para sua eleicao, por exemplo Eleicao do Conselho Administrativo 2010')
+  short_name = forms.SlugField(max_length=40, label="Nome curto", help_text='Sem espacos. Fara parte do URL da sua eleicao, por exemplo convencao-2020')
+  name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'size':60}), label="Nome", help_text='o nome forte para sua eleicao, por exemplo Eleicao do Conselho Administrativo 2010')
   description = forms.CharField(max_length=4000, label="Descricao", widget=forms.Textarea(attrs={'cols': 70, 'wrap': 'soft'}), required=False)
   election_type = forms.ChoiceField(label="Tipo", choices = Election.ELECTION_TYPES)
   use_voter_aliases = forms.BooleanField(required=False, label="Usar codinomes para eleitores", initial=False, help_text='Se selecionado, as identidades dos eleitores serao substituidas por codinomes, por exemplo "V12", no centro de rastreamento de votos')
