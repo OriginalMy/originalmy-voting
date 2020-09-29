@@ -1,8 +1,8 @@
-Dear {{voter.name}},
+Caro(a) {{voter.name}},
 
 {{custom_message|safe}}
 
-Election Link: {{election_vote_url}}
+Link para eleição: {{election_vote_url}}
 
 --
-Helios
+OMyVote

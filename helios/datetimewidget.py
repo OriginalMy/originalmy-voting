@@ -14,7 +14,7 @@ import datetime, time
 from django.utils.safestring import mark_safe
 
 # DATETIMEWIDGET
-calbtn = u'''<img src="%smedia/admin/img/admin/icon_calendar.gif" alt="calendar" id="%s_btn" style="cursor: pointer;" title="Select date" />
+calbtn = u'''<img src="%smedia/admin/img/admin/icon_calendar.gif" alt="calendar" id="%s_btn" style="cursor: pointer;" title="Selecionar data" />
 <script type="text/javascript">
     Calendar.setup({
         inputField     :    "%s",

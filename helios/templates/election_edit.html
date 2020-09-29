@@ -2,7 +2,10 @@
 
 {% block content %}
 
-  <h2 class="title">{{election.name}} &mdash; Update <span style="font-size:0.7em;">[<a href="{% url "election@view" election.uuid %}">cancel</a>]</span></h2>
+  <h3 class="title">{{election.name}} &mdash; Editar eleição
+    <br />
+    <small><a class="small button" href="{% url "election@view" election.uuid %}">cancelar e voltar</a></small>
+  </h3>
   
 {% if error %}
 <p style="color: red;">
@@ -16,7 +19,7 @@
      {{election_form.as_table}}
      </table>
   <div>
-  <label for="">&nbsp;</label><input type="submit" value="Update" id="update_button" />
+  <label for="">&nbsp;</label><input type="submit" value="Salvar eleição" id="update_button" />
   </div>
   </form>
 

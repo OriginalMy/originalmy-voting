@@ -15,7 +15,7 @@ from helios.models import Trustee
 
 class Command(BaseCommand):
     args = ''
-    help = 'decrypt elections where helios is the trustee'
+    help = 'descriptografar eleição onde OMyVote é o curador'
     
     def handle(self, *args, **options):
         # query for elections where decryption is ready to go and Helios is the trustee

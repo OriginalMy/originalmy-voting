@@ -16,16 +16,16 @@
 <br />
 {% endif %}
 
-You are logged in as <u>{{voter.display_html_big|safe}}</u><br /><br />
+Você está logado como <u>{{voter.display_html_big|safe}}</u><br /><br />
 
-    <button type="submit" class="large">CAST this ballot</button>
-    <span style="font-size:0.8em;"><br />You can cast as many ballots as you want.<br />Only the last one counts.</span>
+    <button type="submit" class="large">Envie sua cédula</button>
+    <span style="font-size:0.8em;"><br />Você pode enviar quantas cédulas quiser<br />Somente a última será contabilizada.</span>
 </form>
 
 <p>
-    <button class="tiny" onclick="document.location='{% url "election@view" election.uuid %}';">cancel</button><br />
-    <span style="font-size:0.8em;">If you cancel now, your ballot will <em>NOT</em> be recorded.<br />
-    You can start the voting process over again, of course.</span>
+    <button class="tiny" onclick="document.location='{% url "election@view" election.uuid %}';">cancelar</button><br />
+    <span style="font-size:0.8em;">Você pode cancelar agora. Sua cédula <em>NÃO</em> será gravada.<br />
+    Você pode iniciar o processo de voto novamente.</span>
 </p>
 
 <!-- for now, for CSRF protection, no auto-submit just yet (benadida) -->
@@ -34,11 +34,11 @@ You are logged in as <u>{{voter.display_html_big|safe}}</u><br /><br />
 </div>
   {% else %}
 <p style="font-size:1.4em;">
-  voting has stopped, sorry.
+  eleição parou, desculpe.
 </p>
   {% endif %}
 {% else %}
 <p style="font-size:1.4em;">
-  voting has not yet begun, sorry.
+  votação ainda não iniciou, desculpe.
 </p>
 {% endif %}

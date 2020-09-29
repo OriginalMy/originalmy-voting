@@ -254,7 +254,7 @@ if (typeof jQuery === "undefined" &&
         try {
           return fun();
         } catch (e) {
-          return this.error({name: lib, message: 'could not be initialized', more: e.name + ' ' + e.message});
+          return this.error({name: lib, message: 'nao pode ser inicializado', more: e.name + ' ' + e.message});
         }
       }
 

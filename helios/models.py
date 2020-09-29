@@ -52,11 +52,11 @@ class Election(HeliosModel):
   name = models.CharField(max_length=250)
   
   ELECTION_TYPES = (
-    ('election', 'Election'),
-    ('referendum', 'Referendum')
+    ('0', 'Eleição'),
+    ('1', 'Referendo')
     )
 
-  election_type = models.CharField(max_length=250, null=False, default='election', choices = ELECTION_TYPES)
+  election_type = models.CharField(max_length=250, null=False, default='0', choices = ELECTION_TYPES)
   private_p = models.BooleanField(default=False, null=False)
 
   description = models.TextField()
@@ -155,7 +155,7 @@ class Election(HeliosModel):
   @property
   def metadata(self):
     return {
-      'help_email': self.help_email or 'help@heliosvoting.org',
+      'help_email': self.help_email or 'contato@originalmy.com',
       'private_p': self.private_p,
       'use_advanced_audit_features': self.use_advanced_audit_features,
       'randomize_answer_order': self.randomize_answer_order
@@ -312,7 +312,7 @@ class Election(HeliosModel):
       return []
 
   def eligibility_category_id(self, user_type):
-    "when eligibility is by category, this returns the category_id"
+    "quando a elegibilidade é por categoria, isso retorna o category_id"
     if not self.eligibility:
       return None
     
@@ -326,7 +326,7 @@ class Election(HeliosModel):
   @property
   def pretty_eligibility(self):
     if not self.eligibility:
-      return "Anyone can vote."
+      return "Qualquer um pode votar."
     else:
       return_val = "<ul>"
       
@@ -361,27 +361,27 @@ class Election(HeliosModel):
     if self.questions == None or len(self.questions) == 0:
       issues.append(
         {'type': 'questions',
-         'action': "add questions to the ballot"}
+         'action': "-- No menu [ pautas ] acima, adicione as pautas que serão votadas"}
         )
   
     trustees = Trustee.get_by_election(self)
     if len(trustees) == 0:
       issues.append({
           'type': 'trustees',
-          'action': "add at least one trustee"
+          'action': "-- No menu [ curadores ] acima, adicione pelo menos um curador"
           })
 
     for t in trustees:
       if t.public_key == None:
         issues.append({
             'type': 'trustee keypairs',
-            'action': 'have trustee %s generate a keypair' % t.name
+            'action': '-- O curador %s precisa gerar o par de chaves' % t.name
             })
 
     if self.voter_set.count() == 0 and not self.openreg:
       issues.append({
           "type" : "voters",
-          "action" : 'enter your voter list (or open registration to the public)'
+          "action" : '-- No menu [ eleitores ] acima, faça o upload do arquivo .csv com a lista dos eleitores, caso a eleição seja privada.'
           })
 
     return issues    
@@ -505,7 +505,7 @@ class Election(HeliosModel):
     election is frozen when the voter registration, questions, and trustees are finalized
     """
     if len(self.issues_before_freeze) > 0:
-      raise Exception("cannot freeze an election that has issues")
+      raise Exception("nao pode congelar uma eleição que possui problemas ou pendencias")
 
     self.frozen_at = datetime.datetime.utcnow()
     
@@ -663,9 +663,9 @@ class ElectionLog(models.Model):
   a log of events for an election
   """
 
-  FROZEN = "frozen"
-  VOTER_FILE_ADDED = "voter file added"
-  DECRYPTIONS_COMBINED = "decryptions combined"
+  FROZEN = "congelado"
+  VOTER_FILE_ADDED = "arquivo de eleitores adicionado"
+  DECRYPTIONS_COMBINED = "descriptografia combinada"
 
   election = models.ForeignKey(Election, on_delete=models.CASCADE)
   log = models.CharField(max_length=500)
@@ -978,7 +978,7 @@ class Voter(HeliosModel):
 
   def generate_password(self, length=10):
     if self.voter_password:
-      raise Exception("password already exists")
+      raise Exception("usuário ou senha já existente")
     
     self.voter_password = heliosutils.random_string(length, alphabet='abcdefghjkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789')
 
@@ -1004,7 +1004,7 @@ class CastVote(HeliosModel):
   vote = LDObjectField(type_hint = 'legacy/EncryptedVote')
 
   # cache the hash of the vote
-  vote_hash = models.CharField(max_length=100)
+  vote_hash = models.CharField(max_length=100, unique=True)
 
   # a tiny version of the hash to enable short URLs
   vote_tinyhash = models.CharField(max_length=50, null=True, unique=True)
@@ -1024,6 +1024,7 @@ class CastVote(HeliosModel):
 
   class Meta:
       app_label = 'helios'
+      unique_together = (('vote_hash', 'vote_tinyhash'))
 
   @property
   def datatype(self):
@@ -1075,7 +1076,7 @@ class CastVote(HeliosModel):
   def verify_and_store(self):
     # if it's quarantined, don't let this go through
     if self.is_quarantined:
-      raise Exception("cast vote is quarantined, verification and storage is delayed.")
+      raise Exception("voto em quarentena, verificação e armazenamento atrasados.")
 
     result = self.vote.verify(self.voter.election)
 
@@ -1100,7 +1101,7 @@ class CastVote(HeliosModel):
     
     # check the election
     if self.vote.election_uuid != election.uuid:
-      issues.append("the vote's election UUID does not match the election for which this vote is being cast")
+      issues.append("o UUID do voto desta eleição não corresponde à eleição para a qual este voto está sendo lançado")
     
     return issues
     
@@ -1175,7 +1176,7 @@ class Trustee(HeliosModel):
     # not saved yet?
     if not self.secret:
       self.secret = heliosutils.random_string(12)
-      self.election.append_log("Trustee %s added" % self.name)
+      self.election.append_log("Curador %s adicionado" % self.name)
       
     super(Trustee, self).save(*args, **kwargs)
   

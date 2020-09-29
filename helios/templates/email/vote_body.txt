@@ -1,29 +1,29 @@
-Dear {{voter.name}},
+Caro(a) {{voter.name}},
 
 {{custom_message|safe}}
 
-Election URL:  {{election_vote_url}}
-Election Fingerprint:  {{voter.election.hash}}
+URL da eleição:  {{election_vote_url}}
+Fingerprint da eleição:  {{voter.election.hash}}
 {% ifequal voter.voter_type "password" %}
-Your voter ID: {{voter.voter_login_id}}
-Your password: {{voter.voter_password}}
+Seu ID de eleitor: {{voter.voter_login_id}}
+Sua senha: {{voter.voter_password}}
 {% else %}
-Log in with your {{voter.voter_type}} account.
+Acesse com sua conta {{voter.voter_type}}.
 {% endifequal %}{% if voter.vote_hash %}
-We have recorded your vote with smart tracker:
+Nós gravamos seu voto com o seguinte Código Rastreador de Cédula:
 
   {{voter.vote_hash}}
 
-You may re-vote if you wish: only your last vote counts.
+Você pode votar novamente se desejar: somente o último voto conta.
 {% endif %}{% if election.use_voter_aliases %}
-In order to protect your privacy, this election is configured
-to never display your voter login ID, name, or email address to the public.
-Instead, the ballot tracking center will only display your alias.
+Para proteger sua privacidade, esta eleição está configurada
+para nunca exibir seu ID de login, nome ou endereço de email do eleitor ao público.
+Em vez disso, o centro de rastreamento de cédulas exibirá apenas seu apelido.
 
-Your voter alias is {{voter.alias}}.
+Seu codinome de eleitor é {{voter.alias}}.
 
-IMPORTANTLY, when you are prompted to log in to vote,
-please use your *voter ID*, not your alias.
+IMPORTANTE, quando você for solicitado a fazer login para votar,
+use seu * ID do eleitor *, não seu apelido.
 {% endif %}
 --
-Helios
+OMyVote

@@ -7,28 +7,28 @@
 
 {% block content %}
 
-<div class="row"><div class="large-5 columns large-centered"><a href="/"><img border="0" src="{{ settings.MAIN_LOGO_URL }}" /></a></div></div>
+<div class="row"><div class="large-5 columns large-centered"><p><br /><br /><a href="/"><img border="0" src="{{ settings.MAIN_LOGO_URL }}" /></a></div></p></div>
 <div class="row">&nbsp;</div>
 <div class="large-9 columns">
   {% if settings.MASTER_HELIOS %}
-<p>Helios offers <b>verifiable online elections</b>.</p>
+<p>OriginalMy oferece <b>eleições online verificáveis</b>.</p>
 
-<p>We believe democracy is important, whether it’s your book club, parent-teacher association, student government, workers’ union, or state. So we’ve made truly verifiable elections as easy as everything else on the Web.</p>
+<p>Acreditamos que fortalecer a democracia é importante seja na sua associação, assembléia, partido político, conselho, empresa ou mesmo no Estado. Por isso disponibilizamos eleições verificáveis tão simples como tudo na Internet</p>
 
 <p>
-Helios elections are:
+As eleições com a OriginalMy são:
 <ul class="disc">
-<li><b>private</b>: no one knows how you voted.</li>
-<li><b>verifiable</b>: each voter gets a tracking number.</li>
-<li><b>proven</b>: Helios is open-source, vetted by top-tier experts, and in use by major organizations.</li>
+<li><b>privadas</b>: ninguém sabe em quem você votou.</li>
+<li><b>verificáveis</b>: cada eleitor recebe um código para rastreio.</li>
+<li><b>comprovada</b>: Integrada ao protocolo open-source Helios, validado por especialistas, e utilizada por grandes corporações.</li>
 </ul>
 
 <p>
-More than <b>2,000,000 votes</b> have been cast using Helios.
+Mais de <b>2,000,000 de votos</b> já foram feitos utilizando este protocolo.
 </p>
 
 {% if create_p %}
-<a class="button" href="{% url "elections@new" %}">create an election</a>
+<!-- <a class="button" href="{% url "elections@new" %}">Criar uma eleição</a> -->
 {% endif %}
 
   {% else %}
@@ -46,7 +46,7 @@ More than <b>2,000,000 votes</b> have been cast using Helios.
     {% endfor %}
   </p>
   {% else %}
-  <h4>no featured elections at the moment</h4>
+  <h4>nenhuma eleição em destaque no momento</h4>
   {% endif %}
 {% endif %}
   
@@ -58,8 +58,8 @@ More than <b>2,000,000 votes</b> have been cast using Helios.
 {% if user %}
 <!--<div class="row right">{{user.display_html_big|safe}}</div>-->
 {% if create_p %}
-<a class="small button" href="{% url "elections@new" %}">create election</a>
-<h5 class="subheader">Administration</h5>
+<a class="small button" href="{% url "elections@new" %}">Criar eleição</a>
+<h5 class="subheader">Eleições que administrei</h5>
 {% if elections_administered %}
 <ul>
 {% for election in elections_administered %}
@@ -67,15 +67,15 @@ More than <b>2,000,000 votes</b> have been cast using Helios.
 {% endfor %}
 </ul>
 {% else %}
-<em>none yet</em>
+<em>Nenhum registro</em>
 {% endif %}
 <div class="row right">
-<a class="tiny button" href="{% url "elections@administered" %}">see all</a>
+<a class="tiny button" href="{% url "elections@administered" %}">ver tudo</a>
 </div>
 <div class="row"></div>
 {% endif %}
 
-<h5 class="subheader">Recent Votes</h5>
+<h5 class="subheader">Eleições que votei</h5>
 {% if elections_voted %}
 <ul>
 {% for election in elections_voted %}
@@ -83,17 +83,17 @@ More than <b>2,000,000 votes</b> have been cast using Helios.
 {% endfor %}
 </ul>
 {% else %}
-<em>none yet</em>
+<em>Nenhum registro</em>
 {% endif %}
-<div class="row right"><a class="tiny button" href="{% url "elections@voted" %}">see all</a></div>
+<div class="row right"><a class="tiny button" href="{% url "elections@voted" %}">ver tudo</a></div>
 <div class="row"></div>
 {% else %}
 {% if settings.SHOW_LOGIN_OPTIONS %}
-<h5>Log In to Start Voting</h5>
+<h5>Faça login para começar a votar</h5>
 {{login_box|safe}}
 {% else %}
 <p>
-Select an election to start voting. You will be asked for your voting credentials after you complete a ballot.
+Selecione uma eleição disponível para votar. O sistema solicitará suas credenciais antes de concluir seu voto.
 </p>
 {% endif %}
 {% endif %}

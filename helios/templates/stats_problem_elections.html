@@ -1,14 +1,14 @@
 {% extends TEMPLATE_BASE %}
-{% block title %}Statistics{% endblock %}
+{% block title %}Estatísticas{% endblock %}
 
 {% block content %}
-<h1>Problematic Elections</h1>
+<h1>Eleições com problemas</h1>
 
-Unfrozen for more than a day.
+Descongeladas por mais de um dia.
 
 {% for election in elections %}
 <p>
-<b><a href="{% url "election@view" election.uuid %}">{{election.name}}</a></b> -- {{election.num_voters}} voters
+<b><a href="{% url "election@view" election.uuid %}">{{election.name}}</a></b> -- {{election.num_voters}} eleitores
 </p>
 {% endfor %}
 

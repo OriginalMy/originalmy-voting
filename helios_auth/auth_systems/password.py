@@ -90,10 +90,10 @@ def password_forgotten_view(request):
     
     body = """
 
-This is a password reminder:
+Este e um lembrete de senha:
 
-Your username: %s
-Your password: %s
+Seu nome de usuario: %s
+Sua senha: %s
 
 --
 %s

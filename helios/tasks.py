@@ -94,12 +94,12 @@ def election_compute_tally(election_id):
     election.compute_tally()
 
     election_notify_admin.delay(election_id=election_id,
-                                subject="encrypted tally computed",
+                                subject="contagem criptografada computada",
                                 body="""
-The encrypted tally for election %s has been computed.
+A contagem criptografada para a eleicao %s foi computada.
 
 --
-Helios
+OMyVote
 """ % election.name)
 
     if election.has_helios_trustee():
@@ -111,13 +111,13 @@ def tally_helios_decrypt(election_id):
     election = Election.objects.get(id=election_id)
     election.helios_trustee_decrypt()
     election_notify_admin.delay(election_id=election_id,
-                                subject='Helios Decrypt',
+                                subject='OMyVote Decrypt',
                                 body="""
-Helios has decrypted its portion of the tally
-for election %s.
+OMyVote descriptografou sua parte da contagem
+para a eleicao %s.
 
 --
-Helios
+OMyVote
 """ % election.name)
 
 
@@ -126,15 +126,15 @@ def voter_file_process(voter_file_id):
     voter_file = VoterFile.objects.get(id=voter_file_id)
     voter_file.process()
     election_notify_admin.delay(election_id=voter_file.election.id,
-                                subject='voter file processed',
+                                subject='arquivo de eleitores processado',
                                 body="""
-Your voter file upload for election %s
-has been processed.
+O upload do arquivo de eleitores para a eleicao %s
+ja foi processado.
 
-%s voters have been created.
+%s eleitores foram adicionados.
 
 --
-Helios
+OMyVote
 """ % (voter_file.election.name, voter_file.num_voters))
 
 

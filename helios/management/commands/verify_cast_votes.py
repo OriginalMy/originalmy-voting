@@ -21,7 +21,7 @@ def get_cast_vote_to_verify():
 
 class Command(BaseCommand):
     args = ''
-    help = 'verify votes that were cast'
+    help = 'verificar votos que foram registrados'
     
     def handle(self, *args, **options):
         while True:

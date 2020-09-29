@@ -1,18 +1,18 @@
 
-<h3>Your audited ballot</h3>
+<h3>Sua cédula auditada</h3>
 
 <p>
-<b><u>IMPORTANT</u></b>: this ballot, now that it has been audited, <em>will not be tallied</em>.<br />
-To cast a ballot, you must click the "Back to Voting" button below, re-encrypt it, and choose "cast" instead of "audit."
+<b><u>IMPORTANTE</u></b>: esta cédula, agora que foi auditada, <em>não será contabilizada</em>.<br />
+Para votar, você deve clicar no botão "Voltar à votação" abaixo, criptografá-lo novamente e escolher "votar" em vez de "auditar".
 </p>
 
 <p>
-<b>Why?</b> Helios prevents you from auditing and casting the same ballot to provide you with some protection against coercion.
+<b>Por que?</b> O OMyVote evita que você audite e faça o mesmo voto para lhe fornecer alguma proteção contra coerção.
 </p>
 
 <p>
-<b>Now what?</b> <a onclick="$('#audit_trail').select(); return false;" href="#">Select your ballot audit info</a>, copy it to your clipboard, then use the <a target="_blank" href="single-ballot-verify.html?election_url={$T.election_url}">ballot verifier</a> to verify it.<br />
-Once you're satisfied, click the "back to voting" button to re-encrypt and cast your ballot.
+<b>E agora?</b> <a onclick="$('#audit_trail').select(); return false;" href="#">Selecione as informações de auditoria de cédula</a>, copie para a área de transferência e use <a target="_blank" href="single-ballot-verify.html?election_url={$T.election_url}">sistema de verificação de cédulas</a> para verificá-la.<br />
+Quando estiver satisfeito, clique no botão "voltar à votação" para criptografar novamente e votar.
 </p>
 
 <form action="#">
@@ -20,14 +20,14 @@ Once you're satisfied, click the "back to voting" button to re-encrypt and cast 
 {$T.audit_trail}
 </textarea>
 <br /><br />
-Before going back to voting,<br />
-you can post this audited ballot to the Helios tracking center so that others might double-check the verification of this ballot.
+Antes de voltar à votação,<br />
+você pode postar esta cédula auditada no centro de rastreamento OMyVote para que outros possam verificar a auditoria dessa cédula.
 <br /><br />
-<b>Even if you post your audited ballot, you must go back to voting and choose "cast" if you want your vote to count.</b>
+<b>Mesmo que você publique sua cédula auditada, você deve voltar à votação e escolher "votar" se quiser que seu voto conte.</b>
 <br /><br />
-<input type="button" value="back to voting" onclick="BOOTH.reset_ciphertexts();BOOTH.seal_ballot();" class="pretty" />
+<input type="button" value="voltar para a votação" onclick="BOOTH.reset_ciphertexts();BOOTH.seal_ballot();" class="pretty" />
 &nbsp; &nbsp;&nbsp;
-<input type="button" value="post audited ballot to tracking center" onclick="$(this).attr('disabled', 'disabled');BOOTH.post_audited_ballot();" id="post_audited_ballot_button" class="pretty" style="font-size:0.8em;"/>
+<input type="button" value="enviar cédula auditada para centro de rastreamento" onclick="$(this).attr('disabled', 'disabled');BOOTH.post_audited_ballot();" id="post_audited_ballot_button" class="pretty" style="font-size:0.8em;"/>
 
 </form>
 

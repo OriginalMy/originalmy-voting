@@ -1,21 +1,16 @@
 {% extends TEMPLATE_BASE %}
 
 {% block content %}
-<h1>Why we need your information</h1>
+<h1>Por que precisamos das suas informações</h1>
 
 <p>
-It looks like you declined to grant us permission to access your
-information. We understand and value your privacy. We ask for this
-information so we can contact you with your voting tracking number and
-when an election in which you participated has been tallied. We
-promise not to use this information for any other purpose. Without
-this information, we unfortunately cannot help you vote.
+    Parece que você se recusou a nos conceder permissão para acessar suas informações. Entendemos e valorizamos sua privacidade. Solicitamos essas informações para que possamos entrar em contato com seu número de rastreamento de votação e quando uma eleição na qual você participou foi registrada. Prometemos não usar essas informações para nenhum outro propósito. Sem essas informações, infelizmente não podemos ajudá-lo a votar.
 </p>
 
 <form method="POST" action="">
 <input type="hidden" name="csrf_token" value="{{csrf_token}}" />
-<input type="submit" value="OK, I understand, let's do this login thing." /><br /><br />
-<a href="http://google.com">nope, get me out of here</a>.
+<input type="submit" value="OK, entendo, vamos fazer essa coisa de login." /><br /><br />
+<a href="http://google.com">não, quero sair daqui</a>.
 </form>
 
 {% endblock %}
