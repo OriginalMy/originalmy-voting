@@ -336,7 +336,7 @@
             BOOTH.click_checkbox_script(question_num, ans, true);
           });
           BOOTH.dirty[question_num] = old_dirty;
-          Voting.init();
+          if(question_num !== 0) Voting.init();
         };
 
         BOOTH.click_checkbox_script = function (question_num, answer_num) {
