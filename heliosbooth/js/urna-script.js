@@ -800,7 +800,7 @@ const Voting = (function Voting() {
     return new Promise((resolve) => resolve(votingSession));
   };
 
-  vm.goToRoleVote = function (ballot) {
+  vm.goToRoleVote = function (index) {
     const voting = vm.voting[index];
     if ($u(window).width() < 600) $u("#NumberKeyboard").show();
     $u(".CandidateTitle").text(voting.name);
