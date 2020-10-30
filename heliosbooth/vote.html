@@ -415,6 +415,7 @@
               BOOTH.setup_election(raw_json, election_metadata);
               BOOTH.show_election();
               BOOTH.election_url = election_url;
+              BOOTH.show_question(0);
             });
           });
 
@@ -673,8 +674,6 @@
         BOOTH.do_done = function () {
           BOOTH.started_p = false;
         };
-
-        BOOTH.show_question(0);
       </script>
       <div id="page">
         <div id="election_div" class="panel">
