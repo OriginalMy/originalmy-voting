@@ -701,8 +701,6 @@ const Voting = (function Voting() {
     const voting = vm.voting[vm.votingStepIndex];
     $u(window).scrollTop();
 
-    BOOTH.click_checkbox();
-
     if (vm.confirm) {
       vm.confirm = false;
       const candidate = vm.searchByCandidate();
