@@ -718,7 +718,6 @@ const Voting = (function Voting() {
         parseInt(boothCandidate.data("answer")),
         true
       );
-      BOOTH.validate_and_confirm(boothCandidate.data("question"));
       return vm.nextRoleToVote();
     }
     vm.confirm = true;
