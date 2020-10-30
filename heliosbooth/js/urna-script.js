@@ -682,7 +682,6 @@ const Voting = (function Voting() {
     vm.position = 0;
     vm.confirm = false;
     vm.voteNumbers.val("");
-    vm.votingStepIndex = --vm.votingStepIndex;
     vm.goToRoleVote(vm.votingStepIndex);
   };
 
