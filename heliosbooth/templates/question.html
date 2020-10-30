@@ -1,5 +1,10 @@
 <link rel="stylesheet" href="css/urna-style.css" />
-<div id="BoothContainer" class="container" data-ballot="{$T.question.question}" data-question="{$T.question_num}">
+<div
+  id="BoothContainer"
+  class="container"
+  data-ballot="{$T.question.question}"
+  data-question="{$T.question_num}"
+>
   <div class="screens">
     <div class="display">
       <div class="screen" data-step="1" id="VoteScreen">
@@ -16,7 +21,9 @@
             </div>
           </div>
           <div class="candidate-enter__placeholder">
-            <img src="https://eleicoes2022.s3.amazonaws.com/person-placeholder.png" />
+            <img
+              src="https://eleicoes2022.s3.amazonaws.com/person-placeholder.png"
+            />
           </div>
         </div>
       </div>
@@ -171,7 +178,10 @@
   </div>
   <div class="keyboard">
     <div class="justice-logo">
-      <img src="https://eleicoes2022.s3.amazonaws.com/brasao.gif" class="justice-logo__image" />
+      <img
+        src="https://eleicoes2022.s3.amazonaws.com/brasao.gif"
+        class="justice-logo__image"
+      />
       <span class="justice-logo__text">JUSTIÇA<br />ELEITORAL</span>
     </div>
     <div class="keyboard__buttons">
@@ -223,3 +233,21 @@
   value="sim"
 />
 {#/for}
+<form
+  method="POST"
+  onsubmit="BOOTH.do_done();"
+  action="{$T.cast_url}"
+  id="send_ballot_form"
+  class="prettyform"
+  style="display: none"
+>
+  <input type="hidden" name="election_uuid" value="{$T.election_uuid}" />
+  <input type="hidden" name="election_hash" value="{$T.election_hash}" />
+  <textarea name="encrypted_vote" style="display: none">
+    {$T.encrypted_vote_json}
+  </textarea>
+  <div id="submit_button">
+    <label for="submit">&nbsp;</label>
+    <input type="submit" value="Enviar Cédula" class="pretty" />
+  </div>
+</form>
