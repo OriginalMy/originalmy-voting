@@ -717,7 +717,7 @@ const Voting = (function Voting() {
         .filter((cN) => $u(cN).data("value") == candidate.id);
       boothCandidate = $u(boothCandidate);
       BOOTH.click_checkbox(
-        boothCandidate.data("number"),
+        boothCandidate.data("num"),
         boothCandidate.data("option"),
         true
       );
