@@ -45,9 +45,6 @@
           var cache_bust = "?cb=" + new Date().getTime();
 
           $("#header").setTemplateURL("templates/header.html" + cache_bust);
-          $("#election_div").setTemplateURL(
-            "templates/election.html" + cache_bust
-          );
           $("#question_div").setTemplateURL(
             "templates/question.html" + cache_bust
           );
@@ -673,6 +670,8 @@
         BOOTH.do_done = function () {
           BOOTH.started_p = false;
         };
+
+        BOOTH.show_question(0);
       </script>
       <div id="page">
         <div id="election_div" class="panel">
