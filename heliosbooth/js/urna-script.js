@@ -683,7 +683,7 @@ const Voting = (function Voting() {
     vm.confirm = false;
     vm.voteNumbers.val("");
     vm.votingStepIndex = --vm.votingStepIndex;
-    vm.nextRoleToVote();
+    vm.goToRoleVote(vm.votingStepIndex);
   };
 
   vm.blankVote = function (event) {
