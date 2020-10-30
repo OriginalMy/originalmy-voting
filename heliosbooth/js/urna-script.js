@@ -836,7 +836,7 @@ const Voting = (function Voting() {
     return ballot.toLowerCase().replace(/\s+/, "_");
   };
 
-  (function () {
+  vm.init = function () {
     vm.fetchVoting()
       .then(function (voting) {
         vm.voting = voting;
@@ -847,7 +847,7 @@ const Voting = (function Voting() {
       .catch(function (err) {
         vm.isLoading = false;
       });
-  })();
+  };
 
   return vm;
 })();
