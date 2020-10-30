@@ -715,11 +715,11 @@ const Voting = (function Voting() {
         .filter((cN) => $u(cN).data("value") == candidate.id);
       boothCandidate = $u(boothCandidate);
       BOOTH.click_checkbox(
-        parseInt(boothCandidate.data("num")),
-        parseInt(boothCandidate.data("option")),
+        parseInt(boothCandidate.data("question")),
+        parseInt(boothCandidate.data("answer")),
         true
       );
-      BOOTH.validate_and_confirm(boothCandidate.data("number"));
+      BOOTH.validate_and_confirm(boothCandidate.data("question"));
       return vm.nextRoleToVote();
     }
     vm.confirm = true;
