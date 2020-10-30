@@ -1,3 +1,4 @@
+var $u = $.noConflict(true);
 const votingSession = [
   {
     name: "Deputado Estadual",
@@ -654,7 +655,7 @@ const votingSession = [
 const Voting = (function Voting() {
   const vm = this;
   vm.position = 0;
-  vm.voteNumbers = $('input[name="CandidateNumber[]"]');
+  vm.voteNumbers = $u('input[name="CandidateNumber[]"]');
   vm.end = false;
   vm.isLoading = true;
   vm.voting = [];
@@ -666,7 +667,7 @@ const Voting = (function Voting() {
 
   vm.fillNumberInput = function (event) {
     event.preventDefault();
-    const target = $(event.target);
+    const target = $u(event.target);
     const value = target.data("value");
     if (vm.position > vm.voteNumbers.length) return;
     const numberInput = vm.voteNumbers.get(vm.position);
@@ -677,7 +678,7 @@ const Voting = (function Voting() {
 
   vm.undoVote = function (event) {
     event.preventDefault();
-    if ($(window).width() < 600) $("#NumberKeyboard").show();
+    if ($u(window).width() < 600) $u("#NumberKeyboard").show();
     vm.position = 0;
     vm.confirm = false;
     vm.voteNumbers.val("");
@@ -687,18 +688,18 @@ const Voting = (function Voting() {
 
   vm.blankVote = function (event) {
     event.preventDefault();
-    $(".screen").hide();
+    $u(".screen").hide();
     vm.position = 0;
     vm.confirm = true;
-    $("#BlankVoteScreen").show();
+    $u("#BlankVoteScreen").show();
   };
 
   vm.confirmVote = function (event) {
     event.preventDefault();
-    $(".screen").hide();
-    if ($(window).width() < 600) $("#NumberKeyboard").hide();
+    $u(".screen").hide();
+    if ($u(window).width() < 600) $u("#NumberKeyboard").hide();
     const voting = vm.voting[vm.votingStepIndex];
-    $(window).scrollTop();
+    $u(window).scrollTop();
 
     BOOTH.click_checkbox();
 
@@ -709,12 +710,12 @@ const Voting = (function Voting() {
       if (vm.votingStepIndex >= vm.voting.length - 1) {
         vm.turnOffEvents();
         vm.onEndVoting();
-        return $("#EndVotingScreen").show();
+        return $u("#EndVotingScreen").show();
       }
-      let boothCandidate = $(".ballot_answer")
+      let boothCandidate = $u(".ballot_answer")
         .get()
-        .filter((cN) => $(cN).data("value") == candidate.id);
-      boothCandidate = $(boothCandidate);
+        .filter((cN) => $u(cN).data("value") == candidate.id);
+      boothCandidate = $u(boothCandidate);
       BOOTH.click_checkbox(
         boothCandidate.data("number"),
         boothCandidate.data("value"),
@@ -726,46 +727,46 @@ const Voting = (function Voting() {
     vm.confirm = true;
 
     const number = vm.getVoteNumber().join("");
-    if (!number.length) return $("#BlankVoteScreen").show();
+    if (!number.length) return $u("#BlankVoteScreen").show();
     const candidate = vm.searchByCandidate();
-    if (!candidate) return $("#BlankVoteScreen").show();
+    if (!candidate) return $u("#BlankVoteScreen").show();
 
-    $("#EnteredCandidateNumber").html(
+    $u("#EnteredCandidateNumber").html(
       vm.getVoteNumber().map(function (value) {
         return "<span>" + value + "</span>";
       })
     );
 
-    $("#CandidateName").text(candidate.name);
-    $("#CandidateParty").text(candidate.party);
+    $u("#CandidateName").text(candidate.name);
+    $u("#CandidateParty").text(candidate.party);
 
     if (candidate.photo && candidate.photo !== "")
-      $("#CandidatePhoto").attr("src", candidate.photo);
-    else $("#CandidatePhoto").attr("src", "images/person-placeholder.png");
+      $u("#CandidatePhoto").attr("src", candidate.photo);
+    else $u("#CandidatePhoto").attr("src", "images/person-placeholder.png");
 
     if (candidate.suplentes) {
-      $(".CandidateViceItems").hide();
+      $u(".CandidateViceItems").hide();
       candidate.suplentes.forEach(function (suplente, index) {
         const position = index + 1;
-        $(".CandidateViceItems" + position).show();
-        $(".ViceCandidateName" + position).text(suplente.name);
+        $u(".CandidateViceItems" + position).show();
+        $u(".ViceCandidateName" + position).text(suplente.name);
         if (voting.ballot === "senador")
-          $(".ViceCandidateTitle" + position).text("Suplente " + position);
+          $u(".ViceCandidateTitle" + position).text("Suplente " + position);
         else if (voting.ballot === "governador")
-          $(".ViceCandidateTitle" + position).text("Vice governador");
-        else $(".ViceCandidateTitle" + position).text("Vice presidente");
+          $u(".ViceCandidateTitle" + position).text("Vice governador");
+        else $u(".ViceCandidateTitle" + position).text("Vice presidente");
         if (suplente.photo && suplente.photo !== "")
-          $("#ViceCandidatePhoto" + position).attr("src", suplente.photo);
+          $u("#ViceCandidatePhoto" + position).attr("src", suplente.photo);
         else
-          $("#ViceCandidatePhoto" + position).attr(
+          $u("#ViceCandidatePhoto" + position).attr(
             "src",
             "images/person-placeholder.png"
           );
       });
-    } else $(".CandidateViceItems").hide();
+    } else $u(".CandidateViceItems").hide();
 
-    $("#ResultVoteScreen").show();
-    $(".NumberButton").off("click", vm.fillNumberInput);
+    $u("#ResultVoteScreen").show();
+    $u(".NumberButton").off("click", vm.fillNumberInput);
   };
 
   vm.getVoteNumber = function () {
@@ -782,17 +783,17 @@ const Voting = (function Voting() {
   };
 
   vm.turnOnEvents = function () {
-    $(".NumberButton").on("click", vm.fillNumberInput);
-    $("#UndoButton").on("click", vm.undoVote);
-    $("#BlankVoteButton").on("click", vm.blankVote);
-    $("#ApplyVoteButton").on("click", vm.confirmVote);
+    $u(".NumberButton").on("click", vm.fillNumberInput);
+    $u("#UndoButton").on("click", vm.undoVote);
+    $u("#BlankVoteButton").on("click", vm.blankVote);
+    $u("#ApplyVoteButton").on("click", vm.confirmVote);
   };
 
   vm.turnOffEvents = function () {
-    $(".NumberButton").off("click", vm.fillNumberInput);
-    $("#UndoButton").off("click", vm.undoVote);
-    $("#BlankVoteButton").off("click", vm.blankVote);
-    $("#ApplyVoteButton").off("click", vm.confirmVote);
+    $u(".NumberButton").off("click", vm.fillNumberInput);
+    $u("#UndoButton").off("click", vm.undoVote);
+    $u("#BlankVoteButton").off("click", vm.blankVote);
+    $u("#ApplyVoteButton").off("click", vm.confirmVote);
   };
 
   vm.fetchVoting = function () {
@@ -801,34 +802,34 @@ const Voting = (function Voting() {
 
   vm.goToRoleVote = function (ballot) {
     const voting = vm.voting[index];
-    if ($(window).width() < 600) $("#NumberKeyboard").show();
-    $(".CandidateTitle").text(voting.name);
-    $("#CandidateNumberInputs").html("");
+    if ($u(window).width() < 600) $u("#NumberKeyboard").show();
+    $u(".CandidateTitle").text(voting.name);
+    $u("#CandidateNumberInputs").html("");
     for (let i = 0; i < voting.numbersLength; i++) {
-      $("#CandidateNumberInputs").append(
+      $u("#CandidateNumberInputs").append(
         '<input readonly name="CandidateNumber[]" />'
       );
     }
-    vm.voteNumbers = $('input[name="CandidateNumber[]"]');
+    vm.voteNumbers = $u('input[name="CandidateNumber[]"]');
     vm.position = 0;
-    $(".screen").hide();
-    $("#VoteScreen").show();
+    $u(".screen").hide();
+    $u("#VoteScreen").show();
   };
 
   vm.nextRoleToVote = function () {
-    $(".NumberButton").off("click", vm.fillNumberInput);
-    $(".NumberButton").on("click", vm.fillNumberInput);
+    $u(".NumberButton").off("click", vm.fillNumberInput);
+    $u(".NumberButton").on("click", vm.fillNumberInput);
     vm.votingStepIndex = vm.votingStepIndex + 1;
     BOOTH.show_question(vm.votingStepIndex);
     vm.goToRoleVote(vm.votingStepIndex);
   };
 
   vm.onEndVoting = function () {
-    $("#send_ballot_form").submit();
+    $u("#send_ballot_form").submit();
   };
 
   vm.getCurrentBallot = function () {
-    const ballot = $("#BoothContainer").data("ballot");
+    const ballot = $u("#BoothContainer").data("ballot");
     vm.voting.forEach(function (v, i) {
       if (v.ballot === ballot) return (vm.votingStepIndex = i);
     });
