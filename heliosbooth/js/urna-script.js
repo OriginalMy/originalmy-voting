@@ -813,10 +813,8 @@ const Voting = (function Voting() {
   };
 
   vm.nextRoleToVote = function () {
-    $u(".NumberButton").off("click", vm.fillNumberInput);
-    $u(".NumberButton").on("click", vm.fillNumberInput);
-    vm.votingStepIndex = vm.votingStepIndex + 1;
     BOOTH.next(vm.votingStepIndex);
+    vm.votingStepIndex = vm.votingStepIndex + 1;
     vm.goToRoleVote(vm.votingStepIndex);
   };
 
