@@ -800,9 +800,7 @@ const Voting = (function Voting() {
   };
 
   vm.goToRoleVote = function (ballot) {
-    const voting = vm.voting.find((v) => v.ballot === ballot);
-    if (!voting)
-      throw new Error("Ballot not found check container data-ballot");
+    const voting = vm.voting[index];
     if ($(window).width() < 600) $("#NumberKeyboard").show();
     $(".CandidateTitle").text(voting.name);
     $("#CandidateNumberInputs").html("");
@@ -821,6 +819,7 @@ const Voting = (function Voting() {
     $(".NumberButton").off("click", vm.fillNumberInput);
     $(".NumberButton").on("click", vm.fillNumberInput);
     vm.votingStepIndex = vm.votingStepIndex + 1;
+    BOOTH.show_question(vm.votingStepIndex);
     vm.goToRoleVote(vm.votingStepIndex);
   };
 
