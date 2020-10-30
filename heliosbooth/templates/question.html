@@ -1,66 +1,230 @@
-
-<form onsubmit="return false;" class="prettyform" id="answer_form">
-<input type="hidden" name="question_num" value="{$T.question_num}" />
-
-<p>
-<br /> 
-<b>{$T.question.question}</b>
-<br />
-<span style="font-size: 0.6em;">#{$T.question_num + 1} de {$T.last_question_num + 1} &mdash;
- votar para 
-{#if $T.question.min && $T.question.min > 0}
-{#if $T.question.max}
-{$T.question.min} para {$T.question.max}
-{#else}
-pelo menos {$T.question.min}
-{#/if}
-{#else}
-{#if $T.question.max}
-{#if $T.question.max > 1}até {#/if}{$T.question.max}
-{#else}
-quantos você aprovar
-{#/if} 
-{#/if}
-</span>
-</p>
-
+<link rel="stylesheet" href="css/urna-style.css" />
+<div id="BoothContainer" class="container" data-ballot="{$T.question.question}">
+  <div class="screens">
+    <div class="display">
+      <div class="screen" data-step="1" id="VoteScreen" style="display: none">
+        <div class="candidate-enter">
+          <div class="candidate-enter__content">
+            <div class="candidate-enter__title">
+              <h1 class="CandidateTitle">{$T.question.question}</h1>
+            </div>
+            <div id="CandidateNumberInputs" class="candidate-enter__number">
+              <input name="CandidateNumber[]" />
+              <input name="CandidateNumber[]" />
+              <input name="CandidateNumber[]" />
+              <input name="CandidateNumber[]" />
+            </div>
+          </div>
+          <div class="candidate-enter__placeholder">
+            <img src="/static/helios/person-placeholder.png" />
+          </div>
+        </div>
+      </div>
+      <div
+        class="screen"
+        data-step="2"
+        id="ResultVoteScreen"
+        style="display: none"
+      >
+        <div class="candidate-result">
+          <div class="candidate-result__content">
+            <span class="candidate-result__label">SEU VOTO PARA</span>
+            <div class="candidate-result__title">
+              <h1 class="CandidateTitle">{$T.question.question}</h1>
+            </div>
+            <div class="candidate-result__info candidate-result__info--number">
+              <span class="label">Número:</span>
+              <span id="EnteredCandidateNumber" class="value value--number">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+              </span>
+            </div>
+            <div class="candidate-result__info candidate-result__info--name">
+              <span class="label">Nome:</span>
+              <span class="value" id="CandidateName">JOSÉ</span>
+            </div>
+            <div class="candidate-result__info candidate-result__info--party">
+              <span class="label">Partido:</span>
+              <span class="value" id="CandidateParty">BUMBAS</span>
+            </div>
+            <div
+              class="CandidateViceItems CandidateViceItems1 candidate-result__info candidate-result__info--vice"
+              style="display: none"
+            >
+              <span class="label"
+                ><span class="ViceCandidateTitle1"></span>:</span
+              >
+              <span class="ViceCandidateName1 value"></span>
+            </div>
+            <div
+              class="CandidateViceItems CandidateViceItems2 candidate-result__info candidate-result__info--vice"
+              style="display: none"
+            >
+              <span class="label"
+                ><span class="ViceCandidateTitle2"></span>:</span
+              >
+              <span class="ViceCandidateName2 value"></span>
+            </div>
+            <div class="candidate-result__instructions">
+              <span class="candidate-result__instruction">Aperte a tecla:</span>
+              <span class="candidate-result__instruction"
+                >VERDE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;para CONFIRMAR este
+                voto</span
+              >
+              <span class="candidate-result__instruction"
+                >LARANJA&nbsp;&nbsp;para REINICIAR este voto</span
+              >
+            </div>
+          </div>
+          <div class="candidate-result__photos">
+            <div
+              class="candidate-result__placeholder candidate-result__placeholder--main"
+            >
+              <img
+                src="/static/helios/person-placeholder.png"
+                id="CandidatePhoto"
+              />
+              <span class="CandidateTitle candidate-result__title-legend"
+                >Title 1</span
+              >
+            </div>
+            <div class="candidate-result__suplentes">
+              <div
+                class="CandidateViceItems CandidateViceItems1 candidate-result__placeholder candidate-result__placeholder--vice"
+                style="display: none"
+              >
+                <img
+                  src="/static/helios/person-placeholder.png"
+                  id="ViceCandidatePhoto1"
+                />
+                <span class="candidate-result__title-legend"
+                  ><span class="ViceCandidateName1"></span
+                ></span>
+              </div>
+              <div
+                class="CandidateViceItems CandidateViceItems2 candidate-result__placeholder candidate-result__placeholder--vice"
+                style="display: none"
+              >
+                <img
+                  src="/static/helios/person-placeholder.png"
+                  id="ViceCandidatePhoto2"
+                />
+                <span class="candidate-result__title-legend"
+                  ><span class="ViceCandidateName2"></span
+                ></span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="candidate-result__instructions candidate-result__instructions--mobile"
+          >
+            <span class="candidate-result__instruction">Aperte a tecla:</span>
+            <span class="candidate-result__instruction"
+              >VERDE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;para CONFIRMAR este
+              voto</span
+            >
+            <span class="candidate-result__instruction"
+              >LARANJA&nbsp;&nbsp;para REINICIAR este voto</span
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="screen"
+        data-step="blank"
+        id="BlankVoteScreen"
+        style="display: none"
+      >
+        <div class="candidate-result">
+          <div class="candidate-result__content">
+            <span class="candidate-result__label">SEU VOTO PARA</span>
+            <div class="candidate-result__title">
+              <h1 class="CandidateTitle">{$T.question.question}</h1>
+            </div>
+            <div class="candidate-result__blank">VOTO EM BRANCO</div>
+            <div class="candidate-result__instructions">
+              <span class="candidate-result__instruction">Aperte a tecla:</span>
+              <span class="candidate-result__instruction"
+                >VERDE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;para CONFIRMAR este
+                voto</span
+              >
+              <span class="candidate-result__instruction"
+                >LARANJA&nbsp;&nbsp;para REINICIAR este voto</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="screen"
+        data-step="end"
+        id="EndVotingScreen"
+        style="display: none"
+      >
+        <div class="voting-end">
+          <h1>FIM</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="keyboard">
+    <div class="justice-logo">
+      <img src="/static/helios/brasao.gif" class="justice-logo__image" />
+      <span class="justice-logo__text">JUSTIÇA<br />ELEITORAL</span>
+    </div>
+    <div class="keyboard__buttons">
+      <div class="keyboard__numbers" id="NumberKeyboard">
+        <div class="keyboard__button-row">
+          <button class="btn btn-number NumberButton" data-value="1">1</button>
+          <button class="btn btn-number NumberButton" data-value="2">2</button>
+          <button class="btn btn-number NumberButton" data-value="3">3</button>
+        </div>
+        <div class="keyboard__button-row">
+          <button class="btn btn-number NumberButton" data-value="4">4</button>
+          <button class="btn btn-number NumberButton" data-value="5">5</button>
+          <button class="btn btn-number NumberButton" data-value="6">6</button>
+        </div>
+        <div class="keyboard__button-row">
+          <button class="btn btn-number NumberButton" data-value="7">7</button>
+          <button class="btn btn-number NumberButton" data-value="8">8</button>
+          <button class="btn btn-number NumberButton" data-value="9">9</button>
+        </div>
+        <div class="keyboard__button-row">
+          <button class="btn btn-number NumberButton" data-value="0">0</button>
+        </div>
+      </div>
+      <div class="keyboard__options">
+        <button class="btn btn-option btn-option--branco" id="BlankVoteButton">
+          BRANCO
+        </button>
+        <button class="btn btn-option btn-option--corrige" id="UndoButton">
+          CORRIGE
+        </button>
+        <button
+          class="btn btn-option btn-option--confirma"
+          id="ApplyVoteButton"
+        >
+          CONFIRMA
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 {#foreach $T.question.answers as answer}
-<div id="answer_label_{$T.question_num}_{$T.answer_ordering[$T.answer$index]}">
-  <input type="checkbox" class="ballot_answer" id="answer_{$T.question_num}_{$T.answer_ordering[$T.answer$index]}" name="answer_{$T.question_num}_{$T.answer_ordering[$T.answer$index]}" value="sim" onclick="BOOTH.click_checkbox({$T.question_num}, {$T.answer_ordering[$T.answer$index]}, this.checked);" />
-
-  <label class="answer" for="answer_{$T.question_num}_{$T.answer_ordering[$T.answer$index]}">
-    {$T.question.answers[$T.answer_ordering[$T.answer$index]]}
-
-    {#if $T.question.answer_urls && $T.question.answer_urls[$T.answer_ordering[$T.answer$index]] && $T.question.answer_urls[$T.answer_ordering[$T.answer$index]] != ""}
-      &nbsp;&nbsp;
-      <span style="font-size: 12pt;">
-        [<a target="_blank" href="{$T.question.answer_urls[$T.answer_ordering[$T.answer$index]]}" rel="noopener noreferrer">mais detalhes</a>]
-      </span>
-    {#/if}
-  </label>
-</div>
+<input
+  type="checkbox"
+  style="display: none"
+  class="ballot_answer"
+  data-number="{$T.question_num}"
+  data-value="{$T.answer_ordering[$T.answer$index]}"
+  value="sim"
+/>
 {#/for}
-
-<div id="warning_box" style="color: green; text-align:center; font-size: 0.8em; padding-top:10px; padding-bottom: 10px; height:50px;">
-</div>
-
-
-{#if $T.show_reviewall}
-<div style="float: right;">
-<input type="button" onclick="BOOTH.validate_and_confirm({$T.question_num});" value="Continuar" />
-</div>
-{#/if}
-
-{#if $T.question_num != 0}
-<input type="button" onclick="BOOTH.previous({$T.question_num})" value="Anterior" />
-&nbsp;
-{#/if}
-
-{#if $T.question_num < $T.last_question_num}
-<input type="button" onclick="BOOTH.next({$T.question_num})" value="Próximo" />
-&nbsp;
-{#/if}
-
-<br clear="both" />
-
-</form>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"
+></script>
+<script src="js/urna-script.js"></script>

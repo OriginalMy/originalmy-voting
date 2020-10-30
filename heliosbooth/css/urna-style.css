@@ -1,0 +1,520 @@
+* {
+  box-sizing: border-box;
+  font-family: Roboto, HelveticaNeue, Arial, sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  overflow: auto;
+}
+
+.container {
+  display: flex;
+  padding: 20px 30px 40px 40px;
+  background-color: #e5e6e8;
+  margin: auto;
+  max-width: 1200px;
+  height: 580px;
+  margin-top: 84px;
+}
+
+@media only screen and (max-width:720px) {
+  html,
+  body {
+    background-color: #e5e6e8;
+  }
+  .container {
+    min-width: 320px;
+    height: auto;
+    padding: 10px;
+    flex-direction: column;
+    margin-top: 0px;
+  }
+}
+
+@media only screen and (min-height: 600px) and (max-width: 720px) {
+  .container {
+    min-width: 360px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.screens {
+  width: 70%;
+  padding-top: 5%;
+  padding-right: 5%;
+}
+
+@media only screen and (max-width: 720px) {
+  .screens {
+    width: 100%;
+    height: 100%;
+    padding-top: 0;
+    padding-right: 0;
+  }
+}
+
+.screen {
+  display: flex;
+  height: 100%;
+}
+
+@media only screen and (max-width: 720px) {
+  .screen {
+    flex-wrap: wrap;
+  }
+}
+
+.keyboard {
+  width: 30%;
+}
+
+.keyboard__button-row {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.keyboard__buttons {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.keyboard__numbers {
+  padding: 10% 10%;
+  padding-bottom: 0;
+}
+
+.keyboard__options {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 40px;
+  padding-left: 3%;
+  padding-right: 3%;
+  align-items: flex-end;
+}
+
+@media only screen and (max-width: 720px) {
+  .keyboard {
+    width: 100%;
+  }
+  .keyboard__buttons {
+    padding-top: 10px;
+  }
+}
+
+.btn {
+  border-radius: 5px;
+}
+
+.btn-number {
+  width: 30%;
+  height: 60px;
+  text-align: left;
+  background-color: #000;
+  color: #fff;
+  font-size: 2rem;
+  border: none;
+  font-weight: bold;
+  box-shadow: 2px 3px 2px 1px rgba(255, 255, 255, 0.2);
+}
+
+.btn-option {
+  border: none;
+  height: 50px;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.5rem;
+  text-align: center;
+  box-shadow: 2px 3px 2px 1px rgba(255, 255, 255, 0.2);
+}
+
+.btn-option.btn-option--branco {
+  background-color: #fff;
+  width: 80px;
+}
+
+.btn-option.btn-option--corrige {
+  background-color: #df6933;
+  width: 80px;
+}
+
+.btn-option.btn-option--confirma {
+  background-color: #58aa8a;
+  width: 80px;
+  height: 60px;
+}
+
+@media only screen and (max-width: 720px) {
+  .btn-number {
+    width: 30%;
+    height: 50px;
+  }
+
+  .btn-option.btn-option--confirma {
+    background-color: #58aa8a;
+    width: 100px;
+    height: 60px;
+  }
+}
+
+.justice-logo {
+  display: flex;
+  background-color: #fff;
+  align-items: center;
+  padding: 20px;
+  height: 80px;
+}
+
+@media only screen and (max-width: 720px) {
+  .justice-logo {
+    display: none;
+  }
+}
+
+.justice-logo__image {
+  display: block;
+  width: 60px;
+  height: 60px;
+}
+
+.justice-logo__text {
+  flex: 1;
+  font-size: 1.2rem;
+  text-align: right;
+  font-weight: bold;
+}
+
+.display {
+  border: 2px solid #000;
+  width: 100%;
+  height: 420px;
+  background-color: #fff;
+}
+
+@media only screen and (max-width: 720px) {
+  .display {
+    height: 100%;
+  }
+}
+
+.candidate-enter {
+  display: flex;
+  width: 100%;
+}
+
+.candidate-enter__content {
+  flex: 1;
+}
+
+.candidate-enter__title {
+  padding-top: 5%;
+}
+
+.candidate-enter__title h1 {
+  text-align: center;
+}
+
+@media only screen and (max-width: 720px) {
+  .candidate-enter__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  .candidate-enter__title {
+    padding: 0;
+    flex: 0;
+  }
+
+  .candidate-enter__title h1 {
+    margin: 10px 0;
+  }
+}
+
+.candidate-enter__placeholder {
+  width: 150px;
+  height: 170px;
+  border: 1px solid #000;
+  margin-top: 2.2%;
+  margin-right: 1.1%;
+  padding-bottom: 5%;
+}
+
+.candidate-enter__placeholder img {
+  display: block;
+  width: 100%;
+  height: 150px;
+  margin: auto;
+}
+
+@media only screen and (max-width: 720px) {
+  .candidate-enter__placeholder {
+    display: none;
+  }
+}
+
+.candidate-enter__number {
+  display: flex;
+  padding-top: 5%;
+  padding-left: 15%;
+}
+
+.candidate-enter__number input {
+  width: 60px;
+  height: 60px;
+  margin-right: 1%;
+  border-radius: 0;
+  border-color: #000;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 720px) {
+  .candidate-enter__number {
+    display: flex;
+    padding-top: 0;
+    padding-left: 0;
+    flex: 1;
+    align-items: center;
+    padding-top: 20px;
+  }
+
+  .candidate-enter__number input {
+    width: 45px;
+    height: 50px;
+    margin-right: 1px;
+    font-size: 1.75rem;
+  }
+}
+
+.candidate-result {
+  position: relative;
+  display: flex;
+  width: 100%;
+  padding-top: 2%;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.candidate-result__label {
+  text-transform: uppercase;
+  display: block;
+  font-weight: bold;
+}
+
+.candidate-result__title {
+  text-align: center;
+}
+
+.candidate-result__info {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.candidate-result__info--party {
+  margin-bottom: 10px;
+}
+
+.candidate-result__info--vice {
+  margin-bottom: 10px;
+}
+
+.candidate-result__info .label {
+  font-size: 1.2rem;
+  margin-right: 2%;
+}
+
+.candidate-result__content {
+  flex: 1;
+}
+
+.candidate-result__info .value {
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.candidate-result__info .value.value--number {
+  display: flex;
+}
+
+@media only screen and (max-width: 720px) {
+  .candidate-result__info .label {
+    font-size: 1rem;
+  }
+  .candidate-result__info .value { 
+    font-size: 1.2rem
+  }
+}
+
+
+.value.value--number span {
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  margin-right: 1%;
+  display: block;
+  border-radius: 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.candidate-result__photos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.candidate-result__placeholder {
+  border: 1px solid #000;
+  margin-top: 1%;
+  margin-right: 1%;
+  padding-bottom: 5%;
+}
+
+.candidate-result__placeholder img {
+  width: 100%;
+  height: 110px;
+  display: block;
+  margin: auto;
+}
+
+.candidate-result__placeholder--main {
+  width: 110px;
+  max-height: 160px;
+}
+
+.candidate-result__placeholder--vice {
+  width: 110px;
+  max-height: 150px;
+  margin-top: 20px;
+}
+
+.candidate-result__placeholder--vice img {
+  height: 120px;
+}
+
+.candidate-result__suplentes {
+  display: flex;
+}
+
+@media only screen and (max-width: 720px) {
+  .candidate-result {
+    display: block;
+    padding-bottom: 10px;
+  }
+
+  .candidate-result__placeholder {
+    border: 1px solid #000;
+    margin-top: 0;
+    margin-right: 1%;
+    padding-bottom: 0;
+  }
+
+  .candidate-result__placeholder--main {
+    max-width: 150px;
+    max-height: 180px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .candidate-result__placeholder img {
+    width: 100%;
+    height: 100%;
+    max-height: 150px;
+  }
+
+  .candidate-result__photos {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .candidate-result__placeholder--vice {
+    width: 120px;
+    height: 150px;
+    margin-top: 0;
+  }
+
+  .candidate-result__placeholder--vice img {
+    height: 120px;
+  }
+
+  .candidate-result__suplentes {
+    margin-top: 10px;
+  }
+}
+
+.candidate-result__title-legend {
+  text-align: center;
+  display: block;
+  margin-top: 5%;
+}
+
+.candidate-result__instructions {
+  display: block;
+  border-top: 1px solid #000;
+  padding-top: 2%;
+  padding-left: 1%;
+  position: absolute;
+  bottom: 2%;
+  width: 81%;
+}
+
+.candidate-result__instructions--mobile {
+  display: none;
+}
+
+.candidate-result__instruction {
+  display: block;
+}
+
+.candidate-result__blank {
+  text-align: center;
+  font-size: 3rem;
+  height: 230px;
+  display: flex;
+  padding-top: 10%;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 720px) {
+  .candidate-result__instructions {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    display: none;
+  }
+  .candidate-result__instructions--mobile {
+    display: block;
+    margin-top: 10px;
+  }
+}
+
+.voting-end {
+  display: flex;
+  width: 100%;
+  height: 420px;
+  align-items: center;
+  justify-content: center;
+}
+.voting-end h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 6rem;
+}
