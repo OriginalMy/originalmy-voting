@@ -797,6 +797,7 @@ const Voting = (function Voting() {
   };
 
   vm.goToRoleVote = function (index) {
+    vm.votingStepIndex = index;
     const voting = vm.voting[index];
     if ($u(window).width() < 600) $u("#NumberKeyboard").show();
     $u(".CandidateTitle").text(voting.name);
@@ -834,7 +835,7 @@ const Voting = (function Voting() {
     vm.fetchVoting()
       .then(function (voting) {
         vm.voting = voting;
-        vm.goToRoleVote(0);
+        vm.goToRoleVote(parseInt($u("#BoothContainer").data("question")));
         vm.turnOnEvents();
         vm.isLoading = false;
       })
