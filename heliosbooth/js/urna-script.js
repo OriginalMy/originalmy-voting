@@ -817,7 +817,7 @@ const Voting = (function Voting() {
     $u(".NumberButton").off("click", vm.fillNumberInput);
     $u(".NumberButton").on("click", vm.fillNumberInput);
     vm.votingStepIndex = vm.votingStepIndex + 1;
-    BOOTH.show_question(vm.votingStepIndex);
+    BOOTH.next(vm.votingStepIndex);
     vm.goToRoleVote(vm.votingStepIndex);
   };
 
