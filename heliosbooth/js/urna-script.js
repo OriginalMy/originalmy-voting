@@ -839,7 +839,7 @@ const Voting = (function Voting() {
     vm.fetchVoting()
       .then(function (voting) {
         vm.voting = voting;
-        vm.goToRoleVote(vm.getCurrentBallot());
+        vm.goToRoleVote(0);
         vm.turnOnEvents();
         vm.isLoading = false;
       })
