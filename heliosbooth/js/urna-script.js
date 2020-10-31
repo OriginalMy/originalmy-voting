@@ -704,11 +704,6 @@ const Voting = (function Voting() {
       vm.confirm = false;
       const candidate = vm.searchByCandidate();
       vm.votes[voting.ballot] = candidate;
-      if (vm.votingStepIndex >= vm.voting.length - 1) {
-        vm.turnOffEvents();
-        vm.onEndVoting();
-        return $u("#EndVotingScreen").show();
-      }
       let boothCandidate = $u(".ballot_answer")
         .get()
         .filter((cN) => $u(cN).data("value") == candidate.id);
@@ -718,6 +713,11 @@ const Voting = (function Voting() {
         parseInt(boothCandidate.data("answer")),
         true
       );
+      if (vm.votingStepIndex >= vm.voting.length - 1) {
+        vm.turnOffEvents();
+        vm.onEndVoting();
+        return $u("#EndVotingScreen").show();
+      }
       return vm.nextRoleToVote();
     }
     vm.confirm = true;
