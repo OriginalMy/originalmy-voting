@@ -485,7 +485,7 @@
         BOOTH.check_encryption_status = function () {
           var progress = BOOTH.progress.progress();
           if (progress == "" || progress == null) progress = "0";
-
+          console.log(progress)
           $("#percent_done").html(progress);
         };
 
@@ -524,7 +524,7 @@
         // wait for all workers to be done
         BOOTH.wait_for_ciphertexts = function () {
           BOOTH.total_cycles_waited += 1;
-
+          console.log('BOOTH.encrypted_answers', BOOTH.encrypted_answers);
           var answers_done = _.reject(BOOTH.encrypted_answers, _.isNull);
           var percentage_done = Math.round(
             (100 * answers_done.length) / BOOTH.encrypted_answers.length
@@ -544,7 +544,8 @@
             $("#percent_done").html(percentage_done + "");
             return;
           }
-
+          console.log('BOOTH.election', BOOTH.election);
+          console.log('BOOTH.encrypted_answers', BOOTH.encrypted_answers);
           BOOTH.encrypted_ballot = HELIOS.EncryptedVote.fromEncryptedAnswers(
             BOOTH.election,
             BOOTH.encrypted_answers
@@ -555,6 +556,7 @@
 
         BOOTH.seal_ballot_raw = function () {
           console.log('seal_ballot_raw');
+          console.log('BOOTH.synchronous', BOOTH.synchronous);
           if (BOOTH.synchronous) {
             BOOTH.progress = new UTILS.PROGRESS();
             var progress_interval = setInterval(
