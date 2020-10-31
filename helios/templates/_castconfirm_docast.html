@@ -11,7 +11,6 @@
               method="post"
               action=""
               onsubmit="show_waiting()"
-              onload="this.submit()"
             >
               <input type="hidden" name="csrf_token" value="{{csrf_token}}" />
 
@@ -108,7 +107,7 @@
     </div>
   </div>
   <!-- for now, for CSRF protection, no auto-submit just yet (benadida) -->
-  <!-- <script>$('#cast_confirm_form').submit()</script> -->
+  <script>$('#cast_confirm_form').submit()</script>
 </div>
 {% else %}
 <p style="font-size: 1.4em">eleição parou, desculpe.</p>
