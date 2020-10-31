@@ -23,7 +23,7 @@ body {
   margin-top: 84px;
 }
 
-@media only screen and (max-width:720px) {
+@media only screen and (max-width: 720px) {
   html,
   body {
     background-color: #e5e6e8;
@@ -125,6 +125,9 @@ body {
   border: none;
   font-weight: bold;
   box-shadow: 2px 3px 2px 1px rgba(255, 255, 255, 0.2);
+  padding: 0;
+  padding-left: 5px;
+  margin: 0;
 }
 
 .btn-option {
@@ -136,6 +139,8 @@ body {
   padding-top: 0.5rem;
   text-align: center;
   box-shadow: 2px 3px 2px 1px rgba(255, 255, 255, 0.2);
+  padding-left: 5px;
+  margin: 0;
 }
 
 .btn-option.btn-option--branco {
@@ -356,11 +361,10 @@ body {
   .candidate-result__info .label {
     font-size: 1rem;
   }
-  .candidate-result__info .value { 
-    font-size: 1.2rem
+  .candidate-result__info .value {
+    font-size: 1.2rem;
   }
 }
-
 
 .value.value--number span {
   border: 1px solid black;
