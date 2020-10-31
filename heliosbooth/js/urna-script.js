@@ -822,7 +822,7 @@ const Voting = (function Voting() {
   };
 
   vm.onEndVoting = function () {
-    $u("#send_ballot_form").submit();
+    BOOTH.cast_ballot()
   };
 
   vm.getCurrentBallot = function () {
