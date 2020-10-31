@@ -648,11 +648,11 @@
         };
 
         BOOTH.cast_ballot = function () {
-          console.log('cast_ballot');
+          console.log("cast_ballot");
           // show progress spinner
           $("#loading_div").show();
           //$("#proceed_button").attr("disabled", "disabled");
-          console.log('setup_ballot');
+          console.log("setup_ballot");
           // at this point, we delete the plaintexts by resetting the ballot
           BOOTH.setup_ballot(BOOTH.election);
 
@@ -687,10 +687,93 @@
       </script>
       <div id="page">
         <div id="election_div" class="panel">
-          <h3>Verificando recursos e carregando cabine de eleição...</h3>
-          <div align="center">
-            <img src="loading.gif" /><br />Este processo pode levar até 10
-            segundos
+          <div class="container">
+            <div class="screens">
+              <div class="display">
+                <div class="screen" data-step="end" id="EndVotingScreen">
+                  <div class="voting-end">
+                    <h3>
+                      Verificando recursos e carregando cabine de eleição...
+                    </h3>
+                    <div align="center">
+                      <img src="loading.gif" /><br />Este processo pode levar
+                      até 10 segundos
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="keyboard">
+              <div class="justice-logo">
+                <img
+                  src="https://eleicoes2022.s3.amazonaws.com/brasao.gif"
+                  class="justice-logo__image"
+                />
+                <span class="justice-logo__text">JUSTIÇA<br />ELEITORAL</span>
+              </div>
+              <div class="keyboard__buttons">
+                <div class="keyboard__numbers" id="NumberKeyboard">
+                  <div class="keyboard__button-row">
+                    <button class="btn btn-number NumberButton" data-value="1">
+                      1
+                    </button>
+                    <button class="btn btn-number NumberButton" data-value="2">
+                      2
+                    </button>
+                    <button class="btn btn-number NumberButton" data-value="3">
+                      3
+                    </button>
+                  </div>
+                  <div class="keyboard__button-row">
+                    <button class="btn btn-number NumberButton" data-value="4">
+                      4
+                    </button>
+                    <button class="btn btn-number NumberButton" data-value="5">
+                      5
+                    </button>
+                    <button class="btn btn-number NumberButton" data-value="6">
+                      6
+                    </button>
+                  </div>
+                  <div class="keyboard__button-row">
+                    <button class="btn btn-number NumberButton" data-value="7">
+                      7
+                    </button>
+                    <button class="btn btn-number NumberButton" data-value="8">
+                      8
+                    </button>
+                    <button class="btn btn-number NumberButton" data-value="9">
+                      9
+                    </button>
+                  </div>
+                  <div class="keyboard__button-row">
+                    <button class="btn btn-number NumberButton" data-value="0">
+                      0
+                    </button>
+                  </div>
+                </div>
+                <div class="keyboard__options">
+                  <button
+                    class="btn btn-option btn-option--branco"
+                    id="BlankVoteButton"
+                  >
+                    BRANCO
+                  </button>
+                  <button
+                    class="btn btn-option btn-option--corrige"
+                    id="UndoButton"
+                  >
+                    CORRIGE
+                  </button>
+                  <button
+                    class="btn btn-option btn-option--confirma"
+                    id="ApplyVoteButton"
+                  >
+                    CONFIRMA
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
