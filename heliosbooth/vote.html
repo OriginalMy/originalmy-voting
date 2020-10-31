@@ -430,16 +430,16 @@
         };
 
         BOOTH.hide_progress = function () {
-          $("#progress_div").hide();
+          //$("#progress_div").hide();
         };
 
         BOOTH.show_progress = function (step_num) {
-          $("#progress_div").show();
-          $(["1", "2", "3", "4"]).each(function (n, step) {
-            if (step == step_num)
-              $("#progress_" + step).attr("class", "selected");
-            else $("#progress_" + step).attr("class", "unselected");
-          });
+          //$("#progress_div").show();
+          // $(["1", "2", "3", "4"]).each(function (n, step) {
+          //   if (step == step_num)
+          //     $("#progress_" + step).attr("class", "selected");
+          //   else $("#progress_" + step).attr("class", "unselected");
+          // });
         };
 
         BOOTH.so_lets_go = function () {
@@ -558,7 +558,7 @@
           if (BOOTH.synchronous) {
             BOOTH.progress = new UTILS.PROGRESS();
             var progress_interval = setInterval(
-              "BOOTH.check_encryption_status()",
+              BOOTH.check_encryption_status,
               500
             );
             console.log(BOOTH.election,
@@ -648,7 +648,7 @@
         BOOTH.cast_ballot = function () {
           // show progress spinner
           $("#loading_div").show();
-          $("#proceed_button").attr("disabled", "disabled");
+          //$("#proceed_button").attr("disabled", "disabled");
 
           // at this point, we delete the plaintexts by resetting the ballot
           BOOTH.setup_ballot(BOOTH.election);
