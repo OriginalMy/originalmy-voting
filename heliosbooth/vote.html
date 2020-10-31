@@ -28,6 +28,7 @@
       language="javascript"
       src="js/20160507-helios-booth-compressed.js"
     ></script>
+    <link rel="stylesheet" href="css/urna-style.css" />
   </head>
   <body>
     <!-- <span style="float:right; padding: 7px 15px 5px 10px;">[<a href="javascript:BOOTH.exit();">sair</a>]</span>
@@ -336,7 +337,7 @@
             BOOTH.click_checkbox_script(question_num, ans, true);
           });
           BOOTH.dirty[question_num] = old_dirty;
-          if(question_num !== 0) Voting.init();
+          if (question_num !== 0) Voting.init();
         };
 
         BOOTH.click_checkbox_script = function (question_num, answer_num) {
@@ -485,7 +486,7 @@
         BOOTH.check_encryption_status = function () {
           var progress = BOOTH.progress.progress();
           if (progress == "" || progress == null) progress = "0";
-          console.log(progress)
+          console.log(progress);
           $("#percent_done").html(progress);
         };
 
@@ -524,7 +525,7 @@
         // wait for all workers to be done
         BOOTH.wait_for_ciphertexts = function () {
           BOOTH.total_cycles_waited += 1;
-          console.log('BOOTH.encrypted_answers', BOOTH.encrypted_answers);
+          console.log("BOOTH.encrypted_answers", BOOTH.encrypted_answers);
           var answers_done = _.reject(BOOTH.encrypted_answers, _.isNull);
           var percentage_done = Math.round(
             (100 * answers_done.length) / BOOTH.encrypted_answers.length
@@ -544,8 +545,8 @@
             $("#percent_done").html(percentage_done + "");
             return;
           }
-          console.log('BOOTH.election', BOOTH.election);
-          console.log('BOOTH.encrypted_answers', BOOTH.encrypted_answers);
+          console.log("BOOTH.election", BOOTH.election);
+          console.log("BOOTH.encrypted_answers", BOOTH.encrypted_answers);
           BOOTH.encrypted_ballot = HELIOS.EncryptedVote.fromEncryptedAnswers(
             BOOTH.election,
             BOOTH.encrypted_answers
@@ -555,17 +556,15 @@
         };
 
         BOOTH.seal_ballot_raw = function () {
-          console.log('seal_ballot_raw');
-          console.log('BOOTH.synchronous', BOOTH.synchronous);
+          console.log("seal_ballot_raw");
+          console.log("BOOTH.synchronous", BOOTH.synchronous);
           if (BOOTH.synchronous) {
             BOOTH.progress = new UTILS.PROGRESS();
             var progress_interval = setInterval(
               BOOTH.check_encryption_status,
               500
             );
-            console.log(BOOTH.election,
-              BOOTH.ballot.answers,
-              BOOTH.progress)
+            console.log(BOOTH.election, BOOTH.ballot.answers, BOOTH.progress);
             BOOTH.encrypted_ballot = new HELIOS.EncryptedVote(
               BOOTH.election,
               BOOTH.ballot.answers,
@@ -612,7 +611,7 @@
 
           // if we don't have the ability to do crypto in the browser,
           // we use the server
-          console.log('BigInt.in_browser', BigInt.in_browser);
+          console.log("BigInt.in_browser", BigInt.in_browser);
           if (!BigInt.in_browser) {
             BOOTH.show_encryption_message_before(
               BOOTH.request_ballot_encryption,
@@ -712,17 +711,99 @@
         </div>
 
         <div id="encrypting_div" class="panel" style="display: none">
-          <h3 align="center">
-            OMyVote está criptografando o seu voto<br />
-            <img src="encrypting.gif" />
-            <span
-              style="font-size: 0.7em; display: none"
-              id="percent_done_container"
-              >(<span id="percent_done">0</span>%)</span
-            >
-          </h3>
-
-          <p align="center"><b>Este processo pode levar até 2 minutos.</b></p>
+          <div class="container">
+            <div class="screens">
+              <div class="display">
+                <div class="screen" data-step="end" id="EndVotingScreen">
+                  <div class="voting-end">
+                    <h3 align="center">
+                      OMyVote está criptografando o seu voto<br />
+                      <img src="encrypting.gif" />
+                      <span
+                        style="font-size: 0.7em; display: none"
+                        id="percent_done_container"
+                        >(<span id="percent_done">0</span>%)</span
+                      >
+                    </h3>
+                    <p align="center">
+                      <b>Este processo pode levar até 2 minutos.</b>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="keyboard">
+              <div class="justice-logo">
+                <img
+                  src="/static/helios/brasao.gif"
+                  class="justice-logo__image"
+                />
+                <span class="justice-logo__text">JUSTIÇA<br />ELEITORAL</span>
+              </div>
+              <div class="keyboard__buttons">
+                <div class="keyboard__numbers" id="NumberKeyboard">
+                  <div class="keyboard__button-row">
+                    <button class="btn btn-number NumberButton" data-value="1">
+                      1
+                    </button>
+                    <button class="btn btn-number NumberButton" data-value="2">
+                      2
+                    </button>
+                    <button class="btn btn-number NumberButton" data-value="3">
+                      3
+                    </button>
+                  </div>
+                  <div class="keyboard__button-row">
+                    <button class="btn btn-number NumberButton" data-value="4">
+                      4
+                    </button>
+                    <button class="btn btn-number NumberButton" data-value="5">
+                      5
+                    </button>
+                    <button class="btn btn-number NumberButton" data-value="6">
+                      6
+                    </button>
+                  </div>
+                  <div class="keyboard__button-row">
+                    <button class="btn btn-number NumberButton" data-value="7">
+                      7
+                    </button>
+                    <button class="btn btn-number NumberButton" data-value="8">
+                      8
+                    </button>
+                    <button class="btn btn-number NumberButton" data-value="9">
+                      9
+                    </button>
+                  </div>
+                  <div class="keyboard__button-row">
+                    <button class="btn btn-number NumberButton" data-value="0">
+                      0
+                    </button>
+                  </div>
+                </div>
+                <div class="keyboard__options">
+                  <button
+                    class="btn btn-option btn-option--branco"
+                    id="BlankVoteButton"
+                  >
+                    BRANCO
+                  </button>
+                  <button
+                    class="btn btn-option btn-option--corrige"
+                    id="UndoButton"
+                  >
+                    CORRIGE
+                  </button>
+                  <button
+                    class="btn btn-option btn-option--confirma"
+                    id="ApplyVoteButton"
+                  >
+                    CONFIRMA
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div id="seal_div" class="panel"></div>

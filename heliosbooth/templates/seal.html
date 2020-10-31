@@ -1,56 +1,93 @@
-
-{#if $T.election_metadata.use_advanced_audit_features}
-<div style="float: right; background: lightgrey; margin-left: 20px; padding: 0px 10px 10px 10px; border: 1px solid #ddd; width:200px;">
-<h4><a onclick="$('#auditbody').slideToggle(250);" href="#">Auditar</a> <span style="font-size: 0.8em; color: #444">[opcional]</span></h4>
-<div id="auditbody" style="display:none;">
-<p>
-    Se você escolher, poderá auditar sua cédula e revelar como suas escolhas foram criptografadas.
-</p>
-<p>
-    Você será orientado a criptografar novamente suas opções para a transmissão final do seu voto.
-</p>
-<input type="button" value="Verificar Criptografia" onclick="BOOTH.audit_ballot();" class="pretty" />
-</p>
-</div>
-</div>
-{#/if}
-
-<h3>Revisar sua cédula</h3>
-
-
-<div style="padding: 10px; margin-bottom: 10px; background-color: #eee; border: 1px #ddd solid; max-width: 340px;">
-{#foreach $T.questions as question}
-
-<b>Pauta #{$T.question$index + 1}: {$T.question.short_name}</b><br>
-{#if $T.choices[$T.question$index].length == 0}
-<div style="margin-left: 15px;">&#x2610; <i>Voto em Branco</i></div>
-{#/if}
-{#foreach $T.choices[$T.question$index] as choice}
-<div style="margin-left: 15px;">&#x2713; {$T.choice}</div>
-{#/for}
-{#if $T.choices[$T.question$index].length < $T.question.max}
-[você selecionou {$T.choices[$T.question$index].length} candidatos; você pode selecionar de {$T.question.min} até {$T.question.max} candidatos]<br />
-{#/if}
-[<a onclick="BOOTH.show_question({$T.question$index}); return false;" href="#">editar respostas</a>]
-{#if !$T.question$last}<br><br>{#/if}
-{#/for}
-</div>
-
-
-<p><p>Seu Código de Rastreamento de Cédula é <b><tt style="font-size: 11pt;">{$T.encrypted_vote_hash}</tt></b>, e você pode <a onclick="BOOTH.show_receipt(); return false;" href="#">imprimí-lo</a>.<br /><br /></p>
-
-<p>
-    Depois de clicar em "Enviar", a versão não criptografada da sua cédula será destruída e apenas a versão criptografada será registrada. A versão criptografada será enviada ao servidor OMyVote.</p>
-
-<button id="proceed_button" onclick="BOOTH.cast_ballot();">Enviar este Voto!</button><br />
-<div id="loading_div"><img src="loading.gif" id="proceed_loading_img" /></div>
-
-
-
-<form method="POST" action="{$T.cast_url}" id="send_ballot_form" class="prettyform">
-<input type="hidden" name="election_uuid" value="{$T.election_uuid}" />
-<input type="hidden" name="election_hash" value="{$T.election_hash}" />
-<textarea name="encrypted_vote" style="display: none;">
+<form
+  method="POST"
+  action="{$T.cast_url}"
+  id="send_ballot_form"
+  class="prettyform"
+>
+  <input type="hidden" name="election_uuid" value="{$T.election_uuid}" />
+  <input type="hidden" name="election_hash" value="{$T.election_hash}" />
+  <textarea name="encrypted_vote" style="display: none">
 {$T.encrypted_vote_json}
-</textarea>
+</textarea
+  >
 </form>
+<form
+  method="POST"
+  onsubmit="BOOTH.do_done();"
+  action="{$T.cast_url}"
+  id="send_ballot_form"
+  class="prettyform"
+  style="display: none"
+>
+  <input type="hidden" name="election_uuid" value="{$T.election_uuid}" />
+  <input type="hidden" name="election_hash" value="{$T.election_hash}" />
+  <textarea name="encrypted_vote" style="display: none">
+{$T.encrypted_vote_json}
+</textarea
+  >
+  <div id="submit_button">
+    <label for="submit">&nbsp;</label>
+    <input type="submit" value="Enviar Cédula" class="pretty" />
+  </div>
+</form>
+<div
+  id="BoothContainer"
+  class="container"
+  data-ballot="{$T.question.question}"
+  onload="BOOTH.cast_ballot();"
+>
+  <div class="screens">
+    <div class="display">
+      <div class="screen" data-step="end" id="EndVotingScreen">
+        <div class="voting-end">
+          <h1>FIM</h1>
+          <div id="loading_div">
+            <img src="loading.gif" id="proceed_loading_img" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="keyboard">
+    <div class="justice-logo">
+      <img src="/static/helios/brasao.gif" class="justice-logo__image" />
+      <span class="justice-logo__text">JUSTIÇA<br />ELEITORAL</span>
+    </div>
+    <div class="keyboard__buttons">
+      <div class="keyboard__numbers" id="NumberKeyboard">
+        <div class="keyboard__button-row">
+          <button class="btn btn-number NumberButton" data-value="1">1</button>
+          <button class="btn btn-number NumberButton" data-value="2">2</button>
+          <button class="btn btn-number NumberButton" data-value="3">3</button>
+        </div>
+        <div class="keyboard__button-row">
+          <button class="btn btn-number NumberButton" data-value="4">4</button>
+          <button class="btn btn-number NumberButton" data-value="5">5</button>
+          <button class="btn btn-number NumberButton" data-value="6">6</button>
+        </div>
+        <div class="keyboard__button-row">
+          <button class="btn btn-number NumberButton" data-value="7">7</button>
+          <button class="btn btn-number NumberButton" data-value="8">8</button>
+          <button class="btn btn-number NumberButton" data-value="9">9</button>
+        </div>
+        <div class="keyboard__button-row">
+          <button class="btn btn-number NumberButton" data-value="0">0</button>
+        </div>
+      </div>
+      <div class="keyboard__options">
+        <button class="btn btn-option btn-option--branco" id="BlankVoteButton">
+          BRANCO
+        </button>
+        <button class="btn btn-option btn-option--corrige" id="UndoButton">
+          CORRIGE
+        </button>
+        <button
+          class="btn btn-option btn-option--confirma"
+          id="ApplyVoteButton"
+        >
+          CONFIRMA
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
