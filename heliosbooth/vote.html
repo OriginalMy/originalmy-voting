@@ -560,6 +560,9 @@
               "BOOTH.check_encryption_status()",
               500
             );
+            console.log(BOOTH.election,
+              BOOTH.ballot.answers,
+              BOOTH.progress)
             BOOTH.encrypted_ballot = new HELIOS.EncryptedVote(
               BOOTH.election,
               BOOTH.ballot.answers,
