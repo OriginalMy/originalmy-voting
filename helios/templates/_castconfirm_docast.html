@@ -1,6 +1,13 @@
 {% if election.voting_has_started %} {% if not election.voting_has_stopped %}
 <div id="cast_form">
   <div class="container">
+    <div class="justice-logo justice-logo--mobile">
+      <img
+        src="https://eleicoes2022.s3.amazonaws.com/brasao.gif"
+        class="justice-logo__image"
+      />
+      <span class="justice-logo__text">JUSTIÇA<br />ELEITORAL</span>
+    </div>
     <div class="screens">
       <div class="display">
         <div class="screen" data-step="end" id="EndVotingScreen">
