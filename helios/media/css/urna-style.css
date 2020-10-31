@@ -108,6 +108,7 @@ body {
   }
   .keyboard__buttons {
     padding-top: 10px;
+    display: none;
   }
 }
 
