@@ -704,15 +704,17 @@ const Voting = (function Voting() {
       vm.confirm = false;
       const candidate = vm.searchByCandidate();
       vm.votes[voting.ballot] = candidate;
-      let boothCandidate = $u(".ballot_answer")
-        .get()
-        .filter((cN) => $u(cN).data("value") == candidate.id);
-      boothCandidate = $u(boothCandidate);
-      BOOTH.click_checkbox(
-        parseInt(boothCandidate.data("question")),
-        parseInt(boothCandidate.data("answer")),
-        true
-      );
+      if(candidate) {
+        let boothCandidate = $u(".ballot_answer")
+          .get()
+          .filter((cN) => $u(cN).data("value") == candidate.id);
+        boothCandidate = $u(boothCandidate);
+        BOOTH.click_checkbox(
+          parseInt(boothCandidate.data("question")),
+          parseInt(boothCandidate.data("answer")),
+          true
+        );
+      }
       if (vm.votingStepIndex >= vm.voting.length - 1) {
         vm.turnOffEvents();
         vm.onEndVoting();
