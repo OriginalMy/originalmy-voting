@@ -8,6 +8,8 @@
     lang="{% firstof LANGUAGE_CODE 'en' %}">
   <head>
     <title>{% block title %}{% endblock %} - OMyVote</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% block css %}
       <!--
           <link rel="stylesheet" type="text/css"  media="screen, projection" href="{{ MEDIA_URL }}combined-{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}.css" />
