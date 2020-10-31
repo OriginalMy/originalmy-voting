@@ -647,10 +647,11 @@
         };
 
         BOOTH.cast_ballot = function () {
+          console.log('cast_ballot');
           // show progress spinner
           $("#loading_div").show();
           //$("#proceed_button").attr("disabled", "disabled");
-
+          console.log('setup_ballot');
           // at this point, we delete the plaintexts by resetting the ballot
           BOOTH.setup_ballot(BOOTH.election);
 

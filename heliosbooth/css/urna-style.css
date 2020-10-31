@@ -512,6 +512,7 @@ body {
   height: 420px;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 .voting-end h1 {
   margin: 0;
