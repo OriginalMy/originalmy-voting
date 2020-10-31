@@ -554,6 +554,7 @@
         };
 
         BOOTH.seal_ballot_raw = function () {
+          console.log('seal_ballot_raw');
           if (BOOTH.synchronous) {
             BOOTH.progress = new UTILS.PROGRESS();
             var progress_interval = setInterval(
@@ -609,6 +610,7 @@
 
           // if we don't have the ability to do crypto in the browser,
           // we use the server
+          console.log('BigInt.in_browser', BigInt.in_browser);
           if (!BigInt.in_browser) {
             BOOTH.show_encryption_message_before(
               BOOTH.request_ballot_encryption,
