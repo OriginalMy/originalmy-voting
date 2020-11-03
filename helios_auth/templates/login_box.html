@@ -1,6 +1,5 @@
 {% if default_auth_system %}
-<p>
-<a class="small button" href="{% url "auth@start" system_name=default_auth_system %}?return_url={{return_url}}">Login</a></p>
+<a class="omyvote-auth-btn small button" href="{% url "auth@start" system_name=default_auth_system %}?return_url={{return_url}}">Login</a>
 {% else %}
 {% for auth_system in enabled_auth_systems %}
 {% ifequal auth_system "password" %}
