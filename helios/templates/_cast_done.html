@@ -1,0 +1,26 @@
+{% extends TEMPLATE_BASE %}
+{% block title %}Confirmação de Voto{% endblock %}
+
+{% block content %}
+<h3>Voto registrado com sucesso em {{election.name}}!</h3>
+
+<p>
+    Parabéns, seu voto foi <b><u>registrado com sucesso</u></b>!
+</p>
+
+<p>
+  O seu Rastreador de Cédula Digital é:<br /><br />
+    <tt style="font-size:1.8em; font-weight: bold; padding-left: 20px;">  {{vote_hash}}</tt>
+</p>
+
+{% if logout %}
+<p><b>Para sua segurança, nós deslogamos você.</b></p>
+<iframe width="0" height="0" border="0" frameborder="0" src="{% url "auth@logout" %}">
+</iframe>
+{% endif %}
+
+<p style="font-size: 1.4em;">
+<small><a class="small button" href="{% url "election@view" election.uuid %}">voltar para página da eleição</a></small>
+</p>
+
+{% endblock %}

@@ -541,4 +541,11 @@ body {
   .justice-logo--mobile .justice-logo__text {
     font-size: 1.2rem;
   }
+
+  #footer {
+    position: absolute;
+    bottom: -30px;
+    display: flex;
+    flex-direction: row-reverse;
+  }
 }
