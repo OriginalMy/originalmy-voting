@@ -684,7 +684,7 @@ def one_election_cast_confirm(request, election):
     # status update this vote
     if voter and voter.can_update_status():
       status_update_label = voter.user.update_status_template() % "seu rastreador de cédula digital"
-      status_update_message = "Eu votei em %s - meu código de rastreamento de cédula é %s.. #omyvote" % (get_election_url(election),cast_vote.vote_hash[:10])
+      status_update_message = "Eu votei em %s - meu código de rastreamento de cédula é %s.. #OMyVote" % (get_election_url(election),cast_vote.vote_hash[:10])
     else:
       status_update_label = None
       status_update_message = None
