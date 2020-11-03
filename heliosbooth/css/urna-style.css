@@ -435,10 +435,12 @@ body {
   }
 
   .candidate-result__photos {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .candidate-result__placeholder--vice {
