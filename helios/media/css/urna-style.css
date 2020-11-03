@@ -41,10 +41,9 @@ body {
   .container {
     min-width: 360px;
     margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  }
+  div#header {
+    padding: 0;
   }
 }
 
@@ -311,9 +310,9 @@ body {
   position: relative;
   display: flex;
   width: 100%;
-  padding-top: 2%;
-  padding-left: 1%;
-  padding-right: 1%;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .candidate-result__label {
@@ -406,7 +405,7 @@ body {
 
 .candidate-result__placeholder--vice {
   width: 110px;
-  max-height: 150px;
+  max-height: 165px;
   margin-top: 20px;
 }
 
@@ -445,10 +444,12 @@ body {
   }
 
   .candidate-result__photos {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .candidate-result__placeholder--vice {
