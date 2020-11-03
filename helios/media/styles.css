@@ -1,6 +1,6 @@
 .omyvote-auth-btn {
-  padding: 0.5rem 1rem;
-  font-size: 1.25rem;
+  padding: 1rem 1.5rem !important;
+  font-size: 1.25rem !important;
   line-height: 1.5;
 }
 
@@ -44,5 +44,8 @@
   }
   .omyvote-ballot-tracker {
     padding: 20px;
+  }
+  .omyvote-auth-btn {
+    width: 100%;
   }
 }
