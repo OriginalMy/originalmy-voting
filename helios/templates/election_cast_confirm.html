@@ -73,31 +73,28 @@ requer credenciais específicas.
         [<a href="{% url "election@view" election.uuid %}">retornar à página principal da eleição</a>]
     </p>
   {% else %}
-  <div>
-    <h1>Espere! Você precisa se autenticar.</h1>
-    {% if election.openreg %}
+    <div class="omyvote-auth-disclamer">
+      <h1 class="omyvote-auth-disclamer__title">Faça o login</h1>
+      {% if election.openreg %}
 
-      {% if election.eligibility %}
+        {% if election.eligibility %}
+        {% else %}
+          <p class="omyvote-auth-disclamer__paragraph">Esta eleição está aberta <em>publicamente</em>, faça login com a sua conta de preferência.</p>
+        {% endif %}
+
       {% else %}
-      Esta eleição está aberta <em>publicamente</em>, faça login com a sua conta de preferência.
+        <p class="omyvote-auth-disclamer__paragraph">Está eleição está aberta apenas para <em>eleitores registrados</em>, faça login com a conta registrada.</p>
       {% endif %}
-
-    {% else %}
-      Está eleição está aberta apenas para <em>eleitores registrados</em>, faça login com a conta registrada.
-    {% endif %}
-
-
-    {{login_box|safe}}
-
-    <br />
-    Não se preocupe, lembraremos da sua cédula enquanto você faz login.
-    </h1>
+      <div class="omyvote-auth-btn__container">
+        {{login_box|safe}}
+      </div>
+      <p class="omyvote-auth-disclamer__paragraph">Não se preocupe, lembraremos da sua cédula enquanto você faz login.</p>
+    </div>
   {% endif %}
-
 {% endif %}
-<div class="">
-  Seu Rastreador de Cédula Digital é:<br /><br />
-  <span style="font-size:1.3em; font-weight: bold; padding-left: 20px;word-wrap: break-word;">  {{vote_fingerprint}}</span>
+<div class="omyvote-ballot-tracker">
+  <span class="omyvote-ballot-tracker__label">Rastreador de Cédula Digital:</span>
+  <span class="omyvote-ballot-tracker__fingerprint">  {{vote_fingerprint}}</span>
 </div>
 
 {# this closes the IF ELSE of this being password_only #}

@@ -1,0 +1,49 @@
+.omyvote-auth-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.omyvote-auth-btn__container {
+  display: flex;
+  justify-content: center;
+}
+
+/*-----------------------------------------------
+| ELECTION CAST CONFIRM
+------------------------------------------------*/
+.omyvote-auth-disclamer {
+  padding: 20px;
+}
+
+.omyvote-auth-disclamer__title {
+  text-align: center;
+}
+
+.omyvote-auth-disclamer__paragraph {
+
+}
+
+.omyvote-ballot-tracker {
+  padding: 20px;
+}
+
+.omyvote-ballot-tracker__label {
+  display: block;
+}
+
+.omyvote-ballot-tracker__fingerprint {
+  font-size: 1.3em;
+  font-weight: bold;
+  padding-left: 20px;
+  word-wrap: break-word;
+}
+
+@media only screen and (max-width: 720px) {
+  .omyvote-auth-disclamer {
+    padding: 20px;
+  }
+  .omyvote-ballot-tracker {
+    padding: 20px;
+  }
+}
