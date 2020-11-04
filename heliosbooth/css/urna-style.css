@@ -132,6 +132,7 @@ div#header {
   padding-top: 0.5rem;
   text-align: center;
   box-shadow: 2px 3px 2px 1px rgba(255, 255, 255, 0.2);
+  font-weight: normal;
 }
 
 .btn-option.btn-option--branco {
