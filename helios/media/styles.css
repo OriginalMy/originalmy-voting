@@ -20,8 +20,8 @@
   text-align: center;
 }
 
-.omyvote-auth-disclamer__paragraph {
-
+.omyvote-auth-disclamer .omyvote-auth-disclamer__paragraph:first-child {
+  text-align: center;
 }
 
 .omyvote-ballot-tracker {

@@ -35,71 +35,129 @@ window.onbeforeunload = function(evt) {
   
   return message;
 };
-
 </script>
-
-<div id="all_forms">
-
-{% if voter %}
-
-{% include "_castconfirm_docast.html" %}
-
-{% else %}
-
-{% if show_password %}
-{% if user %}
-<h1>Atenção!</h1>
-<p>
-Você está logado como <u>{{user.display_html_small|safe}}</u>, mas esta eleição<br />
-requer credenciais específicas.
-</p>
-{% endif %}
-{% with cast_ballot="1" %}
-{% include "_castconfirm_password.html" %}
-{% endwith %}
-
-{% else %}
-
-  {% if user %}
-    <h1>Atenção!</h1>
-    <b>Desculpe, você consta como <em>
-      {% if election.openreg %}
-        <u>não elegível</u></em> para esta eleição.
-      {% else %}
-        não registrado</em> para esta eleição. O registro está encerrado.
-      {% endif %}
-      </b><br /></p>
-    <p>
-        [<a href="{% url "election@view" election.uuid %}">retornar à página principal da eleição</a>]
-    </p>
-  {% else %}
-    <div class="omyvote-auth-disclamer">
-      <h1 class="omyvote-auth-disclamer__title">Faça o login</h1>
-      {% if election.openreg %}
-
-        {% if election.eligibility %}
-        {% else %}
-          <p class="omyvote-auth-disclamer__paragraph">Esta eleição está aberta <em>publicamente</em>, faça login com a sua conta de preferência.</p>
-        {% endif %}
-
-      {% else %}
-        <p class="omyvote-auth-disclamer__paragraph">Está eleição está aberta apenas para <em>eleitores registrados</em>, faça login com a conta registrada.</p>
-      {% endif %}
-      <p class="omyvote-auth-disclamer__paragraph">Não se preocupe, lembraremos da sua cédula enquanto você faz login.</p>
-      <div class="omyvote-auth-btn__container">
-        {{login_box|safe}}
+<div class="booth">
+  <div class="justice-logo justice-logo--mobile">
+    <img
+      src="https://eleicoes2022.s3.amazonaws.com/brasao.gif"
+      class="justice-logo__image"
+    />
+    <span class="justice-logo__text">JUSTIÇA<br />ELEITORAL</span>
+  </div>
+  <div class="screens">
+    <div class="display">
+      <div class="screen" data-step="end" id="EndVotingScreen">
+          <div class="voting-login" id="all_forms">
+            {% if voter %}
+            
+            {% include "_castconfirm_docast.html" %}
+            
+            {% else %}
+            
+            {% if show_password %}
+            {% if user %}
+            <h1>Atenção!</h1>
+            <p>
+            Você está logado como <u>{{user.display_html_small|safe}}</u>, mas esta eleição<br />
+            requer credenciais específicas.
+            </p>
+            {% endif %}
+            {% with cast_ballot="1" %}
+            {% include "_castconfirm_password.html" %}
+            {% endwith %}
+            
+            {% else %}
+            
+              {% if user %}
+                <h1>Atenção!</h1>
+                <b>Desculpe, você consta como <em>
+                  {% if election.openreg %}
+                    <u>não elegível</u></em> para esta eleição.
+                  {% else %}
+                    não registrado</em> para esta eleição. O registro está encerrado.
+                  {% endif %}
+                  </b><br /></p>
+                <p>
+                    [<a href="{% url "election@view" election.uuid %}">retornar à página principal da eleição</a>]
+                </p>
+              {% else %}
+                <div class="omyvote-auth-disclamer">
+                  <h1 class="omyvote-auth-disclamer__title">Faça o login</h1>
+                  {% if election.openreg %}
+            
+                    {% if election.eligibility %}
+                    {% else %}
+                      <p class="omyvote-auth-disclamer__paragraph">Esta eleição está aberta <em>publicamente</em>, faça login com a sua conta de preferência.</p>
+                    {% endif %}
+            
+                  {% else %}
+                    <p class="omyvote-auth-disclamer__paragraph">Está eleição está aberta apenas para <em>eleitores registrados</em>, faça login com a conta registrada.</p>
+                  {% endif %}
+                  <p class="omyvote-auth-disclamer__paragraph">Não se preocupe, lembraremos da sua cédula enquanto você faz login.</p>
+                  <div class="omyvote-auth-btn__container">
+                    {{login_box|safe}}
+                  </div>
+                </div>
+              {% endif %}
+            {% endif %}
+            <div class="omyvote-ballot-tracker">
+              <span class="omyvote-ballot-tracker__label">Rastreador de Cédula Digital:</span>
+              <span class="omyvote-ballot-tracker__fingerprint">  {{vote_fingerprint}}</span>
+            </div>
+            
+            {# this closes the IF ELSE of this being password_only #}
+            {% endif %}
+            
+          </div>
       </div>
     </div>
-  {% endif %}
-{% endif %}
-<div class="omyvote-ballot-tracker">
-  <span class="omyvote-ballot-tracker__label">Rastreador de Cédula Digital:</span>
-  <span class="omyvote-ballot-tracker__fingerprint">  {{vote_fingerprint}}</span>
+  </div>
+  <div class="keyboard">
+    <div class="justice-logo">
+      <img
+        src="https://eleicoes2022.s3.amazonaws.com/brasao.gif"
+        class="justice-logo__image"
+      />
+      <span class="justice-logo__text">JUSTIÇA<br />ELEITORAL</span>
+    </div>
+    <div class="keyboard__buttons">
+      <div class="keyboard__numbers" id="NumberKeyboard">
+        <div class="keyboard__button-row">
+          <button class="btn btn-number NumberButton" data-value="1">1</button>
+          <button class="btn btn-number NumberButton" data-value="2">2</button>
+          <button class="btn btn-number NumberButton" data-value="3">3</button>
+        </div>
+        <div class="keyboard__button-row">
+          <button class="btn btn-number NumberButton" data-value="4">4</button>
+          <button class="btn btn-number NumberButton" data-value="5">5</button>
+          <button class="btn btn-number NumberButton" data-value="6">6</button>
+        </div>
+        <div class="keyboard__button-row">
+          <button class="btn btn-number NumberButton" data-value="7">7</button>
+          <button class="btn btn-number NumberButton" data-value="8">8</button>
+          <button class="btn btn-number NumberButton" data-value="9">9</button>
+        </div>
+        <div class="keyboard__button-row">
+          <button class="btn btn-number NumberButton" data-value="0">0</button>
+        </div>
+      </div>
+      <div class="keyboard__options">
+        <button class="btn btn-option btn-option--branco" id="BlankVoteButton">
+          BRANCO
+        </button>
+        <button class="btn btn-option btn-option--corrige" id="UndoButton">
+          CORRIGE
+        </button>
+        <button
+          class="btn btn-option btn-option--confirma"
+          id="ApplyVoteButton"
+        >
+          CONFIRMA
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
-{# this closes the IF ELSE of this being password_only #}
-{% endif %}
-
-</div>
 
 {% endblock %}
