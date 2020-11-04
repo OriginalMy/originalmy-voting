@@ -45,5 +45,5 @@ class TallyNotificationEmailForm(forms.Form):
 
 class VoterPasswordForm(forms.Form):
   voter_id = forms.CharField(max_length=50, label="ID do Eleitor")
-  password = forms.CharField(widget=forms.PasswordInput(), max_length=100)
+  password = forms.CharField(widget=forms.PasswordInput(), max_length=100, label="Senha")
 
