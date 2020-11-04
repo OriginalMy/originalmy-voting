@@ -45,6 +45,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 20px;
 }
 
 .voting-login__label-desc {
