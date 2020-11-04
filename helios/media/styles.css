@@ -41,11 +41,10 @@
 
 .voting-login {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
   width: 100%;
-  height: 418px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .voting-login__label-desc {
