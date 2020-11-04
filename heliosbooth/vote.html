@@ -405,6 +405,7 @@
 
         BOOTH.show_encryption_message_before = function (func_to_execute) {
           BOOTH.show_progress("2");
+          BOOTH.show($("#EndVotingScreen"));
           BOOTH.show($("#encrypting_div"));
 
           func_to_execute();
@@ -823,7 +824,7 @@
                 <div class="screen" data-step="end" id="EndVotingScreen">
                   <div class="voting-end">
                     <h3 align="center">
-                      OMyVote está criptografando o seu voto<br />
+                      Criptografando voto<br />
                       <img src="encrypting.gif" />
                       <span
                         style="font-size: 0.7em; display: none"
