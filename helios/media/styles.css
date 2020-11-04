@@ -45,7 +45,7 @@
   align-items: center;
   padding: 20px;
   width: 100%;
-  height: 100%;
+  height: 418px;
 }
 
 .voting-login__label-desc {
@@ -97,5 +97,8 @@ table.voting-login__form-table {
   .omyvote-ballot-tracker {
     width: 100%;
     align-self: end;
+  }
+  .voting-login {
+    height: 100%;
   }
 }
