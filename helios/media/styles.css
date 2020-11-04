@@ -38,6 +38,12 @@
   word-wrap: break-word;
 }
 
+.voting-login {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
 @media only screen and (max-width: 720px) {
   .omyvote-auth-disclamer {
     padding: 20px;

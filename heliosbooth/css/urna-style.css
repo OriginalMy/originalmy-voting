@@ -396,7 +396,7 @@ div#header {
 
 .candidate-result__placeholder--vice {
   width: 110px;
-  max-height: 150px;
+  max-height: 165px;
   margin-top: 20px;
 }
 
@@ -445,7 +445,7 @@ div#header {
 
   .candidate-result__placeholder--vice {
     width: 120px;
-    height: 150px;
+    max-height: 165px;
     margin-top: 0;
   }
 
