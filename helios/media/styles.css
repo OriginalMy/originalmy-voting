@@ -25,7 +25,8 @@
 }
 
 .omyvote-ballot-tracker {
-  padding: 20px;
+  align-self: end;
+  width: 100%;
 }
 
 .omyvote-ballot-tracker__label {
@@ -33,7 +34,7 @@
 }
 
 .omyvote-ballot-tracker__fingerprint {
-  font-size: 1.3em;
+  font-size: 0.9em;
   font-weight: bold;
   word-wrap: break-word;
 }
@@ -48,21 +49,29 @@
 }
 
 .voting-login__label-desc {
-  margin-bottom: 0;
+  margin-bottom: 20px;
   width: 100%;
 }
 
 form.voting-login__form {
   width: 100%;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-form.voting-login__form th, td {
+form.voting-login__form th,
+td {
   border: 0;
 }
 
 form.voting-login__form td input {
   border-radius: 5px;
+}
+
+form.voting-login__form th label {
+  font-weight: bold;
 }
 
 table.voting-login__form-table {
@@ -84,5 +93,9 @@ table.voting-login__form-table {
   }
   .omyvote-auth-btn {
     width: 100%;
+  }
+  .omyvote-ballot-tracker {
+    width: 100%;
+    align-self: end;
   }
 }
