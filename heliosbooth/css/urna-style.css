@@ -152,7 +152,7 @@ div#header {
 
 @media only screen and (max-width: 720px) {
   .btn-number {
-    width: 30%;
+    width: 70px;
     height: 50px;
   }
 
@@ -226,7 +226,7 @@ div#header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0;
+    padding: 20px 0 40px;
   }
 
   .candidate-enter__title {
