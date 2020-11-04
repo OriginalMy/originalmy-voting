@@ -47,6 +47,10 @@ window.onbeforeunload = function(evt) {
   <div class="screens">
     <div class="display">
       <div class="screen" data-step="end" id="EndVotingScreen">
+          <div class="voting-login" id="waiting_div">
+            Verificando e enviando sua cédula<br />
+              <img src="/static/helios/loading.gif" />
+          </div>
           <div class="voting-login" id="all_forms">
             {% if voter %}
             
