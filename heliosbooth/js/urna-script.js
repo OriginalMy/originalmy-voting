@@ -244,7 +244,7 @@ const votingSession = [
       },
       {
         name: "Reggae",
-        id: "92002",
+        id: "9202",
         party: "PMus",
         photo:
           "https://eleicoes2022.s3.amazonaws.com/deputado_federal/92_partido_dos_ritmos_musicais/9202_reggae.PNG",
