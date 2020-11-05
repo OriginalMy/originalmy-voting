@@ -709,7 +709,7 @@ const Voting = (function Voting() {
       vm.confirm = false;
       const candidate = vm.searchByCandidate();
       vm.votes[voting.ballot] = candidate;
-      if(candidate) {
+      if (candidate) {
         let boothCandidate = $u(".ballot_answer")
           .get()
           .filter((cN) => $u(cN).data("value") == candidate.id);
@@ -727,7 +727,9 @@ const Voting = (function Voting() {
         return $u("#EndVotingScreen").show();
       }
       vm.finalAudio.play();
-      return vm.nextRoleToVote();
+      return setTimeout(() => {
+        vm.nextRoleToVote();
+      }, 2000);
     }
     vm.confirm = true;
 
