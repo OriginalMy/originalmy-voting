@@ -665,6 +665,7 @@ const Voting = (function Voting() {
   vm.confirm = false;
   vm.votes = [];
   vm.teclaAudio = null;
+  vm.confirmAudio = null;
   vm.finalAudio = null;
 
   vm.fillNumberInput = function (event) {
@@ -704,7 +705,6 @@ const Voting = (function Voting() {
     if ($u(window).width() < 600) $u("#NumberKeyboard").hide();
     const voting = vm.voting[vm.votingStepIndex];
     $u(window).scrollTop();
-    vm.teclaAudio.play();
     if (vm.confirm) {
       vm.confirm = false;
       const candidate = vm.searchByCandidate();
@@ -726,6 +726,7 @@ const Voting = (function Voting() {
         vm.finalAudio.play();
         return $u("#EndVotingScreen").show();
       }
+      vm.confirmAudio.play();
       return vm.nextRoleToVote();
     }
     vm.confirm = true;
@@ -842,8 +843,8 @@ const Voting = (function Voting() {
   };
 
   vm.init = function () {
-    vm.teclaAudio = new Audio('tecla.ogg');
-    vm.finalAudio = new Audio('finalizacao.ogg');
+    vm.teclaAudio = document.getElementById("#keyAudio");
+    vm.finalAudio = document.getElementById("#finalAudio");
     vm.fetchVoting()
       .then(function (voting) {
         vm.voting = voting;
