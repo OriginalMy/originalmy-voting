@@ -732,6 +732,7 @@ const Voting = (function Voting() {
         vm.nextRoleToVote();
       }, 2000);
     }
+    $u(".screen").hide();
     vm.confirm = true;
 
     const number = vm.getVoteNumber().join("");
