@@ -562,3 +562,28 @@ div#header {
   display: block;
   float: right;
 }
+
+
+.voting-start {
+  padding: 20px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.voting-start__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.voting-start__image {
+  margin-bottom: 20px;
+}
+
+.voting-start__button {
+  padding: 0.5rem 1.5rem;
+}

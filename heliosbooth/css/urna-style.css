@@ -27,7 +27,7 @@ div#header {
   margin-top: 84px;
 }
 
-@media only screen and (max-width:720px) {
+@media only screen and (max-width: 720px) {
   .booth {
     min-width: 320px;
     height: auto;
@@ -353,11 +353,10 @@ div#header {
   .candidate-result__info .label {
     font-size: 1rem;
   }
-  .candidate-result__info .value { 
-    font-size: 1.2rem
+  .candidate-result__info .value {
+    font-size: 1.2rem;
   }
 }
-
 
 .value.value--number span {
   border: 1px solid black;
@@ -553,7 +552,7 @@ div#header {
   color: #fff;
   font-size: 0.7rem;
   text-transform: uppercase;
-  background-image: url('https://eleicoes2022.s3.amazonaws.com/padlock.png');
+  background-image: url("https://eleicoes2022.s3.amazonaws.com/padlock.png");
   background-repeat: no-repeat;
   background-position: 6px 5px;
   background-color: #59a712;
@@ -561,4 +560,28 @@ div#header {
   width: 160px;
   display: block;
   float: right;
+}
+
+.voting-start {
+  padding: 20px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.voting-start__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.voting-start__image {
+  margin-bottom: 20px;
+}
+
+.voting-start__button {
+  padding: 0.5rem 1.5rem;
 }
