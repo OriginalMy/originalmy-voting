@@ -726,7 +726,7 @@ const Voting = (function Voting() {
         return $u("#EndVotingScreen").show();
       }
       vm.finalAudio.play();
-      return setTimeout(() => {
+      return setTimeout(function () {
         vm.nextRoleToVote();
       }, 2000);
     }
