@@ -701,7 +701,6 @@ const Voting = (function Voting() {
 
   vm.confirmVote = function (event) {
     event.preventDefault();
-    $u(".screen").hide();
     if ($u(window).width() < 600) $u("#NumberKeyboard").hide();
     const voting = vm.voting[vm.votingStepIndex];
     $u(window).scrollTop();
@@ -825,6 +824,7 @@ const Voting = (function Voting() {
   };
 
   vm.nextRoleToVote = function () {
+    $u(".screen").hide();
     $u(".NumberButton").off("click", vm.fillNumberInput);
     $u(".NumberButton").on("click", vm.fillNumberInput);
     BOOTH.next(vm.votingStepIndex);
