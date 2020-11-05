@@ -529,6 +529,9 @@ div#header {
 @media only screen and (max-width: 720px) {
   .booth {
     padding: 0;
+    max-width: 360px;
+    margin: 20px auto 0;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   }
 
   .display {
