@@ -726,7 +726,7 @@ const Voting = (function Voting() {
         vm.finalAudio.play();
         return $u("#EndVotingScreen").show();
       }
-      vm.confirmAudio.play();
+      vm.finalAudio.play();
       return vm.nextRoleToVote();
     }
     vm.confirm = true;
