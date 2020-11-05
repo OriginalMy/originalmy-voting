@@ -420,8 +420,6 @@
               BOOTH.setup_election(raw_json, election_metadata);
               BOOTH.show_election();
               BOOTH.election_url = election_url;
-              BOOTH.show_question(0);
-              Voting.init();
             });
           });
 
@@ -687,6 +685,11 @@
         BOOTH.do_done = function () {
           BOOTH.started_p = false;
         };
+
+        BOOTH.start = function () {
+          BOOTH.show_question(0);
+          Voting.init();
+        }
       </script>
       <div id="page">
         <div id="election_div" class="panel">
@@ -696,7 +699,10 @@
                 src="https://eleicoes2022.s3.amazonaws.com/brasao.gif"
                 class="justice-logo__image"
               />
-              <span class="justice-logo__text">JUSTIÇA<br />ELEITORAL</span>
+              <span class="justice-logo__text">
+                <div>JUSTIÇA<br />ELEITORAL</div>
+                <span class="security-env">Ambiente seguro</span>
+              </span>
             </div>
             <div class="screens">
               <div class="display">
@@ -724,7 +730,10 @@
                   src="https://eleicoes2022.s3.amazonaws.com/brasao.gif"
                   class="justice-logo__image"
                 />
-                <span class="justice-logo__text">JUSTIÇA<br />ELEITORAL</span>
+                <span class="justice-logo__text">
+                  <div>JUSTIÇA<br />ELEITORAL</div>
+                  <span class="security-env">Ambiente seguro</span>
+                </span>
               </div>
               <div class="keyboard__buttons">
                 <div class="keyboard__numbers" id="NumberKeyboard">
@@ -817,7 +826,10 @@
                 src="https://eleicoes2022.s3.amazonaws.com/brasao.gif"
                 class="justice-logo__image"
               />
-              <span class="justice-logo__text">JUSTIÇA<br />ELEITORAL</span>
+              <span class="justice-logo__text">
+                <div>JUSTIÇA<br />ELEITORAL</div>
+                <span class="security-env">Ambiente seguro</span>
+              </span>
             </div>
             <div class="screens">
               <div class="display">
@@ -850,7 +862,10 @@
                   src="https://eleicoes2022.s3.amazonaws.com/brasao.gif"
                   class="justice-logo__image"
                 />
-                <span class="justice-logo__text">JUSTIÇA<br />ELEITORAL</span>
+                <span class="justice-logo__text">
+                  <div>JUSTIÇA<br />ELEITORAL</div>
+                  <span class="security-env">Ambiente seguro</span>
+                </span>
               </div>
               <div class="keyboard__buttons">
                 <div class="keyboard__numbers" id="NumberKeyboard">
