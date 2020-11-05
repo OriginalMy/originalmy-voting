@@ -843,8 +843,8 @@ const Voting = (function Voting() {
   };
 
   vm.init = function () {
-    vm.teclaAudio = document.getElementById("#keyAudio");
-    vm.finalAudio = document.getElementById("#finalAudio");
+    vm.teclaAudio = document.getElementById("keyAudio");
+    vm.finalAudio = document.getElementById("finalAudio");
     vm.fetchVoting()
       .then(function (voting) {
         vm.voting = voting;
