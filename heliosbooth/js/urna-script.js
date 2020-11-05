@@ -721,12 +721,14 @@ const Voting = (function Voting() {
       }
       if (vm.votingStepIndex >= vm.voting.length - 1) {
         vm.turnOffEvents();
+        $u(".screen").hide();
         vm.onEndVoting();
         vm.finalAudio.play();
         return $u("#EndVotingScreen").show();
       }
       vm.finalAudio.play();
       return setTimeout(function () {
+        $u(".screen").hide();
         vm.nextRoleToVote();
       }, 2000);
     }
