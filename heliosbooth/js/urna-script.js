@@ -685,6 +685,7 @@ const Voting = (function Voting() {
     vm.position = 0;
     vm.confirm = false;
     vm.voteNumbers.val("");
+    vm.teclaAudio.play();
     vm.goToRoleVote(vm.votingStepIndex);
   };
 
@@ -693,6 +694,7 @@ const Voting = (function Voting() {
     $u(".screen").hide();
     vm.position = 0;
     vm.confirm = true;
+    vm.teclaAudio.play();
     $u("#BlankVoteScreen").show();
   };
 
@@ -702,7 +704,7 @@ const Voting = (function Voting() {
     if ($u(window).width() < 600) $u("#NumberKeyboard").hide();
     const voting = vm.voting[vm.votingStepIndex];
     $u(window).scrollTop();
-
+    vm.teclaAudio.play();
     if (vm.confirm) {
       vm.confirm = false;
       const candidate = vm.searchByCandidate();
