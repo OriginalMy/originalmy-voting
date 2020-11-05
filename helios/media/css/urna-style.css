@@ -582,6 +582,8 @@ div#header {
 
 .voting-start__image {
   margin-bottom: 20px;
+  width: 60px;
+  height: 60px;
 }
 
 .voting-start__button {
