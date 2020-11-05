@@ -707,19 +707,20 @@
             <div class="screens">
               <div class="display">
                 <div class="screen" data-step="end" id="EndVotingScreen">
-                  <div class="voting-end" style="padding: 20px">
-                    <h3 style="text-align: center; padding: 0; margin: 0">
-                      Verificando recursos e carregando cabine de eleição...
+                  <div class="voting-start" style="padding: 20px">
+                    <h3 class="voting-start__title">
+                      Treinamento eleições 2022
                     </h3>
-                    <div style="text-align: center">
+                    <div class="voting-start__content">
                       <img
-                        src="loading.gif"
-                        style="display: block; margin: 10px auto"
+                        src="https://eleicoes2022.s3.amazonaws.com/padlock-green.png"
+                        class="voting-start__image"
                       />
-                      <smal style="color: #565656"
-                        >Este processo pode levar até 10 segundos</smal
-                      >
+                      <span class="voting-start__text">
+                        Você está em um ambiente seguro e protegido.
+                      </span>
                     </div>
+                    <button class="voting-start__button" onclick="BOOTH.start();"></button>
                   </div>
                 </div>
               </div>

@@ -546,3 +546,19 @@ div#header {
     font-size: 1.2rem;
   }
 }
+
+.security-env {
+  padding: 7px 20px;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  background-image: url('https://eleicoes2022.s3.amazonaws.com/padlock.png');
+  background-repeat: no-repeat;
+  background-position: 6px 5px;
+  background-color: #59a712;
+  text-align: right;
+  width: 160px;
+  display: block;
+  float: right;
+}
