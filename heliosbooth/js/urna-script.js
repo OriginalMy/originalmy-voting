@@ -664,6 +664,8 @@ const Voting = (function Voting() {
   vm.currentCandidate = null;
   vm.confirm = false;
   vm.votes = [];
+  vm.teclaAudio = null;
+  vm.finalAudio = null;
 
   vm.fillNumberInput = function (event) {
     event.preventDefault();
@@ -674,6 +676,7 @@ const Voting = (function Voting() {
     if (!numberInput) return;
     numberInput.value = value;
     vm.position++;
+    vm.teclaAudio.play();
   };
 
   vm.undoVote = function (event) {
@@ -718,6 +721,7 @@ const Voting = (function Voting() {
       if (vm.votingStepIndex >= vm.voting.length - 1) {
         vm.turnOffEvents();
         vm.onEndVoting();
+        vm.finalAudio.play();
         return $u("#EndVotingScreen").show();
       }
       return vm.nextRoleToVote();
@@ -836,6 +840,8 @@ const Voting = (function Voting() {
   };
 
   vm.init = function () {
+    vm.teclaAudio = new Audio('tecla.ogg');
+    vm.finalAudio = new Audio('finalizacao.ogg');
     vm.fetchVoting()
       .then(function (voting) {
         vm.voting = voting;
