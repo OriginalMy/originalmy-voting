@@ -682,6 +682,8 @@ const Voting = (function Voting() {
 
   vm.undoVote = function (event) {
     event.preventDefault();
+    $u(".NumberButton").off("click", vm.fillNumberInput);
+    $u(".NumberButton").on("click", vm.fillNumberInput);
     if ($u(window).width() < 600) $u("#NumberKeyboard").show();
     vm.position = 0;
     vm.confirm = false;
