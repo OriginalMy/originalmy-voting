@@ -67,6 +67,7 @@ div#header {
 @media only screen and (max-width: 720px) {
   .screen {
     flex-wrap: wrap;
+    min-height: 180px;
   }
 }
 
@@ -104,6 +105,14 @@ div#header {
   }
   .keyboard__buttons {
     padding-top: 10px;
+  }
+  .keyboard__button-row {
+    margin-bottom: 1px;
+  }
+  .keyboard__numbers {
+    padding: 10px;
+    max-width: 250px;
+    margin: auto;
   }
 }
 
@@ -227,7 +236,7 @@ div#header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0 40px;
+    padding: 10px 0 20px;
   }
 
   .candidate-enter__title {
@@ -237,6 +246,7 @@ div#header {
 
   .candidate-enter__title h1 {
     margin: 10px 0;
+    font-size: 1.25rem;
   }
 }
 
@@ -286,7 +296,6 @@ div#header {
     padding-left: 0;
     flex: 1;
     align-items: center;
-    padding-top: 20px;
   }
 
   .candidate-enter__number input {
@@ -354,7 +363,10 @@ div#header {
     font-size: 1rem;
   }
   .candidate-result__info .value {
-    font-size: 1.2rem;
+    font-size: 1rem;
+  }
+  .candidate-result__title h1 {
+    font-size: 1.25rem;
   }
 }
 
@@ -398,6 +410,7 @@ div#header {
   width: 110px;
   max-height: 165px;
   margin-top: 20px;
+  margin-right: 0 !important;
 }
 
 .candidate-result__placeholder--vice img {
@@ -422,15 +435,14 @@ div#header {
   }
 
   .candidate-result__placeholder--main {
-    max-width: 150px;
+    max-width: 90px;
     max-height: 180px;
     width: 100%;
-    height: 100%;
   }
 
   .candidate-result__placeholder img {
     width: 100%;
-    height: 100%;
+    height: 100px;
     max-height: 150px;
   }
 
@@ -444,17 +456,25 @@ div#header {
   }
 
   .candidate-result__placeholder--vice {
-    width: 120px;
+    max-width: 90px;
     max-height: 165px;
     margin-top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .candidate-result__placeholder--vice:last-child {
+    border-left: 0;
   }
 
   .candidate-result__placeholder--vice img {
-    height: 120px;
+    height: 100px;
   }
 
-  .candidate-result__suplentes {
-    margin-top: 10px;
+  .value.value--number span {
+    width: 30px;
+    height: 30px;
+    font-size: 1.5rem;
+    padding-top: 1px;
   }
 }
 
@@ -501,6 +521,11 @@ div#header {
   .candidate-result__instructions--mobile {
     display: block;
     margin-top: 10px;
+    font-size: .8rem;
+  }
+
+  .candidate-result__title-legend {
+    font-size: 0.8rem;
   }
 }
 
@@ -536,8 +561,13 @@ div#header {
     border-bottom: 2px solid #000;
   }
 
+  .justice-logo__image {
+    width: 40px;
+    height: 40px;
+  }
+
   .justice-logo--mobile .justice-logo__text {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
   }
 
   div#footer {
@@ -560,6 +590,22 @@ div#header {
   width: 160px;
   display: block;
   float: right;
+}
+
+@media only screen and (max-width: 720px) {
+  .justice-logo {
+    padding: 0 10px;
+    height: 50px;
+  }
+  .security-env {
+    width: 130px;
+    font-size: 0.6rem;
+    background-position: 7px 4px;
+    padding: 0 10px;
+    height: 22px;
+    line-height: 22px;
+    background-size: 12px 12px;
+  }
 }
 
 .voting-start {
@@ -586,4 +632,44 @@ div#header {
 
 .voting-start__button {
   padding: 0.5rem 1.5rem;
+}
+
+#footer {
+  position: absolute;
+}
+
+.candidate-result__null-vote {
+  font-size: 4rem;
+  text-align: center;
+  margin-top: 2rem;
+  padding-left: 1rem;
+}
+
+.candidate-result__wrong-number {
+  font-size: 2rem;
+}
+
+@media only screen and (max-width: 720px) {
+  .voting-start, .voting-end {
+    height: calc(100vh - 137px);
+  }
+
+  .voting-start__title {
+    margin-top: 0;
+    font-size: 1.25rem;
+  }
+  #footer {
+    position: relative;
+  }
+  .candidate-result__null-vote {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .candidate-result__wrong-number {
+    font-size: 1.25rem;
+  }
 }

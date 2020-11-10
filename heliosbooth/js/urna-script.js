@@ -672,12 +672,14 @@ const Voting = (function Voting() {
     event.preventDefault();
     const target = $u(event.target);
     const value = target.data("value");
-    if (vm.position > vm.voteNumbers.length) return;
     const numberInput = vm.voteNumbers.get(vm.position);
     if (!numberInput) return;
     numberInput.value = value;
     vm.position++;
     vm.teclaAudio.play();
+    if (vm.position >= vm.voteNumbers.length) {
+      setTimeout(vm.confirmVote.bind(this), 200);
+    }
   };
 
   vm.undoVote = function (event) {
@@ -698,11 +700,12 @@ const Voting = (function Voting() {
     vm.position = 0;
     vm.confirm = true;
     vm.teclaAudio.play();
+    if ($u(window).width() < 600) $u("#NumberKeyboard").hide();
     $u("#BlankVoteScreen").show();
   };
 
   vm.confirmVote = function (event) {
-    event.preventDefault();
+    if (event) event.preventDefault();
     if ($u(window).width() < 600) $u("#NumberKeyboard").hide();
     const voting = vm.voting[vm.votingStepIndex];
     $u(window).scrollTop();
@@ -726,6 +729,7 @@ const Voting = (function Voting() {
         $u(".screen").hide();
         vm.onEndVoting();
         vm.finalAudio.play();
+        if ($u(window).width() < 600) $u("#NumberKeyboard").hide();
         return $u("#EndVotingScreen").show();
       }
       vm.finalAudio.play();
@@ -736,18 +740,23 @@ const Voting = (function Voting() {
     }
     $u(".screen").hide();
     vm.confirm = true;
-
+    $u(".NullItems").hide();
     const number = vm.getVoteNumber().join("");
-    if (!number.length) return $u("#BlankVoteScreen").show();
     const candidate = vm.searchByCandidate();
-    if (!candidate) return $u("#BlankVoteScreen").show();
-
     $u("#EnteredCandidateNumber").html(
       vm.getVoteNumber().map(function (value) {
         return "<span>" + value + "</span>";
       })
     );
-
+    if (!number.length || !candidate) {
+      $u(".candidate-result__photos").hide();
+      $u(".CandidateNameInfo,.CandidatePartyInfo").hide();
+      $u(".CandidateNameInfo,.CandidatePartyInfo").hide();
+      $u(".NullItems").show();
+      return $u("#ResultVoteScreen").show();
+    }
+    $u(".candidate-result__photos").show();
+    $u(".CandidateNameInfo,.CandidatePartyInfo").show();
     $u("#CandidateName").text(candidate.name);
     $u("#CandidateParty").text(candidate.party);
 
@@ -863,6 +872,9 @@ const Voting = (function Voting() {
         vm.isLoading = false;
       });
   };
+  if ($u(window).width() < 600) {
+    $u("#election_div .booth > .keyboard").hide();
+  }
 
   return vm;
 })();

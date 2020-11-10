@@ -4,16 +4,16 @@
   data-ballot="{$T.question.question}"
   data-question="{$T.question_num}"
 >
-<div class="justice-logo justice-logo--mobile">
-  <img
-    src="https://eleicoes2022.s3.amazonaws.com/brasao.gif"
-    class="justice-logo__image"
-  />
-  <span class="justice-logo__text">
-    <div>JUSTIÇA<br />ELEITORAL</div>
-    <span class="security-env">Ambiente seguro</span>
-  </span>
-</div>
+  <div class="justice-logo justice-logo--mobile">
+    <img
+      src="https://eleicoes2022.s3.amazonaws.com/brasao.gif"
+      class="justice-logo__image"
+    />
+    <span class="justice-logo__text">
+      <div>JUSTIÇA ELEITORAL</div>
+      <span class="security-env">Ambiente seguro</span>
+    </span>
+  </div>
   <div class="screens">
     <div class="display">
       <div class="screen" data-step="1" id="VoteScreen">
@@ -57,13 +57,13 @@
                 <span>4</span>
               </span>
             </div>
-            <div class="candidate-result__info candidate-result__info--name">
+            <div class="CandidateNameInfo candidate-result__info candidate-result__info--name">
               <span class="label">Nome:</span>
-              <span class="value" id="CandidateName">JOSÉ</span>
+              <span class="value" id="CandidateName"></span>
             </div>
-            <div class="candidate-result__info candidate-result__info--party">
+            <div class="CandidatePartyInfo candidate-result__info candidate-result__info--party">
               <span class="label">Partido:</span>
-              <span class="value" id="CandidateParty">BUMBAS</span>
+              <span class="value" id="CandidateParty"></span>
             </div>
             <div
               class="CandidateViceItems CandidateViceItems1 candidate-result__info candidate-result__info--vice"
@@ -82,6 +82,18 @@
                 ><span class="ViceCandidateTitle2"></span>:</span
               >
               <span class="ViceCandidateName2 value"></span>
+            </div>
+            <div
+              class="NullItems candidate-result__wrong-number"
+              style="display: none"
+            >
+              NÚMERO ERRADO
+            </div>
+            <div
+              class="NullItems candidate-result__null-vote"
+              style="display: none"
+            >
+              VOTO NULO
             </div>
             <div class="candidate-result__instructions">
               <span class="candidate-result__instruction">Aperte a tecla:</span>
@@ -103,7 +115,7 @@
                 id="CandidatePhoto"
               />
               <span class="CandidateTitle candidate-result__title-legend"
-                >Title 1</span
+                ></span
               >
             </div>
             <div class="candidate-result__suplentes">
