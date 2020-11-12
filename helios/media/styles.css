@@ -115,7 +115,13 @@ input.voting-login__email-input {
     width: 100%;
   }
   .voting-login__email {
+    width: 100%;
     margin-top: 20px;
     border: none;
+    padding-left: 0px;
+  }
+  .voting-login__submit-btn{
+    margin: 10px auto;
+    display: block;
   }
 }
