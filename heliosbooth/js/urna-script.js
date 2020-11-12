@@ -696,6 +696,7 @@ const Voting = (function Voting() {
 
   vm.blankVote = function (event) {
     event.preventDefault();
+    $u(".NumberButton").off("click", vm.fillNumberInput);
     $u(".screen").hide();
     vm.position = 0;
     vm.confirm = true;

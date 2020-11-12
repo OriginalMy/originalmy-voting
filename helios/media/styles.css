@@ -86,10 +86,11 @@ table.voting-login__form-table {
 }
 
 .voting-login__email {
-  margin-top: 20px;
+  border-left: 1px solid #ccc;
+  padding-left: 20px;
 }
 
-.voting-login__email-input {
+input.voting-login__email-input {
   width: 300px;
 }
 
@@ -110,7 +111,11 @@ table.voting-login__form-table {
   .voting-login {
     height: 100%;
   }
-  .voting-login__email-input {
+  input.voting-login__email-input {
     width: 100%;
-  }  
+  }
+  .voting-login__email {
+    margin-top: 20px;
+    border: none;
+  }
 }
