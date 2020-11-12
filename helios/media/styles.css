@@ -85,6 +85,14 @@ table.voting-login__form-table {
   color: #565656;
 }
 
+.voting-login__email {
+  margin-top: 20px;
+}
+
+.voting-login__email-input {
+  width: 300px;
+}
+
 @media only screen and (max-width: 720px) {
   .omyvote-auth-disclamer {
     padding: 20px;
@@ -102,4 +110,7 @@ table.voting-login__form-table {
   .voting-login {
     height: 100%;
   }
+  .voting-login__email-input {
+    width: 100%;
+  }  
 }
