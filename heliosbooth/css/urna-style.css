@@ -521,7 +521,7 @@ div#header {
   .candidate-result__instructions--mobile {
     display: block;
     margin-top: 10px;
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 
   .candidate-result__title-legend {
@@ -649,8 +649,18 @@ div#header {
   font-size: 2rem;
 }
 
+.justice-logo__images {
+  display: flex;
+}
+
+.originalmy-logo__image {
+  max-width: 60px;
+  max-height: 60px;
+}
+
 @media only screen and (max-width: 720px) {
-  .voting-start, .voting-end {
+  .voting-start,
+  .voting-end {
     height: calc(100vh - 137px);
   }
 
@@ -668,8 +678,13 @@ div#header {
     padding-left: 1rem;
     padding-bottom: 1rem;
   }
-  
+
   .candidate-result__wrong-number {
     font-size: 1.25rem;
+  }
+
+  .originalmy-logo__image {
+    max-width: 30px;
+    max-height: 30px;
   }
 }

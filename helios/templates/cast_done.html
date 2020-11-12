@@ -1,36 +1,50 @@
 {% extends TEMPLATE_BASE %} {% block title %}Confirmação de Voto{% endblock %}
 {% block extra-head %}
-  <link rel="stylesheet" href="/static/helios/css/urna-style.css" />
-{% endblock %}
-{% block content %}
+<link rel="stylesheet" href="/static/helios/css/urna-style.css" />
+{% endblock %} {% block content %}
 <div class="booth">
   <div class="justice-logo justice-logo--mobile">
     <img
       src="https://eleicoes2022.s3.amazonaws.com/brasao.gif"
       class="justice-logo__image"
     />
+    <img
+      src="https://ormy-images.s3.amazonaws.com/omy-positive-icon.svg"
+      class="originalmy-logo__image"
+    />
     <span class="justice-logo__text">
       <div>JUSTIÇA ELEITORAL</div>
       <span class="security-env">Ambiente seguro</span>
     </span>
   </div>
-  <div class="screens" style="width: 100%;">
+  <div class="screens" style="width: 100%">
     <div class="display">
       <div class="screen" data-step="end" id="EndVotingScreen">
         <div class="voting-end" style="padding: 20px">
+          <img
+            src="https://eleicoes2022.s3.amazonaws.com/padlock-green.png"
+            class="voting-start__image"
+          />
           <h1>FIM</h1>
           <p style="text-align: center">
-            Pronto, seu voto foi <b><u>registrado com sucesso</u></b>!
+            Pronto, seu voto foi <b><u>registrado com sucesso</u></b
+            >!
           </p>
           <p style="text-align: center">
             O seu comprovante de votação foi enviado para você.<br />
-            <span style="font-size: 1em; font-weight: bold; word-break: break-word;
-            text-align: center;">
+            <span
+              style="
+                font-size: 1em;
+                font-weight: bold;
+                word-break: break-word;
+                text-align: center;
+              "
+            >
               {{vote_hash}}</span
             >
           </p>
-          <p style="font-size: 1.4em;">
-          <!-- <small><a class="small button" href="{% url "election@view" election.uuid %}">voltar para página da eleição</a></small> -->
+          <p style="font-size: 1.4em">
+            <!-- <small><a class="small button" href="{% url "election@view" election.uuid %}">voltar para página da eleição</a></small> -->
           </p>
         </div>
       </div>
